@@ -1,0 +1,26 @@
+.nav {
+  background: green;
+  font-size: 1.6vmax;
+  text-align: center;
+  
+  
+ }
+ .item {
+   margin-top: 1vh;
+   transition: .5s;
+ 
+   background: #E5D9D5;
+ }
+ 
+ .item a   {
+   padding-top: 2vh;
+   display: block;
+   font-size: 2vmax;
+   text-decoration: none;
+   color: black;
+   height: 6vh;
+ }
+ .item:hover {
+   background: gray;
+ }
+ 

@@ -1,0 +1,10 @@
+.header {
+  background: yellow;
+ }
+ 
+ .header img {
+ width: 10vw;
+ height: 10vh;
+ margin-left: 1vw;
+ margin-top:1vh;
+ }
