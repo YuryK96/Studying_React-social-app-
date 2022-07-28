@@ -1,7 +1,10 @@
-.header {
+
+ .header {
+  grid-column-start: 1;
+  grid-column-end: 3;
   background: yellow;
- }
- 
+  }
+  
  .header img {
  width: 10vw;
  height: 10vh;
