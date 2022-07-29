@@ -22,4 +22,10 @@
     font-size: 1.3vmax;
     overflow: auto;
 }
+.likes {
+    color: black;
+}
+.countLikes {
+    color: green;
+}
 

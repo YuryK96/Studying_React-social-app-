@@ -23,4 +23,8 @@
  .item:hover {
    background: gray;
  }
+
+ .active {
+  background: gray;
+ }
  

@@ -1,15 +1,21 @@
 import NavbarCss from './Navbar.module.css';
+import { NavLink } from "react-router-dom";
 
-const Nav = () => {
-    return (
-      <nav className={NavbarCss.nav}>
-      <div className={NavbarCss.item}><a href="#0">Profile</a></div>
-      <div className={NavbarCss.item}><a href="#0">Messages</a></div>
-      <div className={NavbarCss.item}><a href="#0">News</a></div>
-      <div className={NavbarCss.item}><a href="#0">Music</a></div>
-      <div className={NavbarCss.item}><a href="#0">Settings</a></div>
+
+const checkLink = ({isActive}) => isActive ? NavbarCss.active : '';
+
+const Nav = (props) => {
+  return (
+    <nav className={NavbarCss.nav}>
+
+      <div className={NavbarCss.item} ><NavLink className= {checkLink} to="/Profile">Profile</NavLink></div>
+      <div  className={NavbarCss.item}><NavLink className= {checkLink} to="/Messages">Messages</NavLink></div>
+      <div className={NavbarCss.item}><NavLink className= {checkLink} to="/News">News</NavLink></div>
+      <div className={NavbarCss.item}><NavLink className= {checkLink} to="/Music">Music</NavLink></div>
+      <div className={NavbarCss.item}><NavLink className= {checkLink} to="/Setting">Settings</NavLink></div>
     </nav>
   );
+
 };
 
 export default Nav;

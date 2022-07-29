@@ -1,18 +1,32 @@
 import React from "react";
+import {BrowserRouter,Routes, Route } from "react-router-dom";
 import './App.css';
 import Header from "./components/Header/Header";
 import Nav from "./components/Navbar/Navbar";
 import Profile from "./components/Profile/Profile";
+import Dialogs from "./components/Dialogs/Dialogs";
+import Settings from "./components/Settings/Settings";
+import News from "./components/News/News";
+import Music from "./components/Music/Music";
 
 const App = () => {
   return (
-
+    <BrowserRouter>
+    
     <div className="app-wrapper">
       <Header />
-      <Nav />
-      <Profile/>
+      <Nav disabled />
+     <Routes>
+      <Route path="/Profile" element={<Profile/>}/>
+      <Route path="/Messages" element={<Dialogs/>}/>
+      <Route path="/Setting" element={<Settings/>}/>
+      <Route path="/News" element={<News/>}/>
+      <Route path="/Music" element={<Music/>}/>
+    </Routes>
 
     </div>
+
+ </BrowserRouter>
   );
 }
 
