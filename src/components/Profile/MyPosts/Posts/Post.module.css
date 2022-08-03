@@ -24,8 +24,12 @@
 }
 .likes {
     color: black;
+    font-size: 1.3vmax;
+    margin-left: 1vw;
 }
 .countLikes {
     color: green;
+    font-size: 1.3vmax;
+    text-align: center;
 }
 

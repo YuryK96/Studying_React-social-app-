@@ -1,0 +1,23 @@
+.content{
+    background: rgb(203, 198, 198);
+  }
+  .head_img img{ 
+    width: 77vw;
+    height: 20vh;
+  }
+  .avatar {
+    display: flex;
+  }
+  .avatar img {
+    width: 15vw;
+    height: 15vh;
+    margin-left: 1vw;
+    margin-top: 3vh;
+  }
+  .avatar p {
+    margin-left: 1vw;
+    margin-right: 1vw;
+    font-size: 1.6vmax;
+  }
+  
+  

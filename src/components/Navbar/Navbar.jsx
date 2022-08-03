@@ -2,9 +2,10 @@ import NavbarCss from './Navbar.module.css';
 import { NavLink } from "react-router-dom";
 
 
-const checkLink = ({isActive}) => isActive ? NavbarCss.active : '';
+const checkLink = ({isActive}) => isActive ? NavbarCss.active : '' ;
 
-const Nav = (props) => {
+
+const Nav = () => {
   return (
     <nav className={NavbarCss.nav}>
 
