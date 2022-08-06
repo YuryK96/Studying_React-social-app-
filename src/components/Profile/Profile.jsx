@@ -7,11 +7,12 @@ import ProfileInfo from './ProfileInfo/ProfileInfo';
 
 
 
-const Profile = () => {
+const Profile = (props) => {
+ 
   return (
    <div>
           <ProfileInfo/>
-          <MyPosts/>
+          <MyPosts  myPostData={props.myPostData.myPostData} addPost={props.addPost} newPostText={props.myPostData.newPostText} changeNewPostText={props.changeNewPostText}/>
 
     </div>
   )
