@@ -13,7 +13,7 @@ const Nav = () => {
       <div  className={NavbarCss.item}><NavLink className= {checkLink} to="/Messages">Messages</NavLink></div>
       <div className={NavbarCss.item}><NavLink className= {checkLink} to="/News">News</NavLink></div>
       <div className={NavbarCss.item}><NavLink className= {checkLink} to="/Music">Music</NavLink></div>
-      <div className={NavbarCss.item}><NavLink className= {checkLink} to="/Setting">Settings</NavLink></div>
+      <div className={NavbarCss.item}><NavLink className= {checkLink} to="/Setting">Setting</NavLink></div>
     </nav>
   );
 
