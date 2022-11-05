@@ -1,24 +1,18 @@
-import DialogsCss from './../Dialogs.module.css'
-import { NavLink } from 'react-router-dom';
+import DialogsCss from "./../Dialogs.module.css";
+import { NavLink } from "react-router-dom";
 
-
-  
-const DialogItem = (props) => {
- 
-let arrDialog = props.dialogsData.map(dialog => {
-    return ( <div className={DialogsCss.dialog}><NavLink to={'/dialog' + dialog.id}><p>{dialog.name}</p></NavLink></div>)
-  })
- 
+const DialogItem = ({dialogsData}) => {
+  let arrDialog = dialogsData.map((dialog) => {
     return (
+      <div className={DialogsCss.dialog}>
+        <NavLink to={"/Messages/" + dialog.id}>
+          <p>{dialog.name}</p>
+        </NavLink>
+      </div>
+    );
+  });
 
-
-        <div className={DialogsCss.dialogWrapper}>
-                {arrDialog}
-                </div>
-    )
-
-}
-
-
+  return <div className={DialogsCss.dialogWrapper}>{arrDialog}</div>;
+};
 
 export default DialogItem;

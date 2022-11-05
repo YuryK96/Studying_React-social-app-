@@ -1,12 +1,12 @@
 
 import reportWebVitals from './reportWebVitals';
-import state from './redux/state'
+import appState from './redux/state'
 import {renderEntireTree} from './render'
 
 
 
   
-renderEntireTree(state)
+renderEntireTree(appState)
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

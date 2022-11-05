@@ -1,6 +1,6 @@
 import {renderEntireTree} from './../render'
 
-let state = {
+let appState = {
     dialogsPage: {
         dialogsData: [
             { name: 'Vasya', id: '1', },
@@ -31,27 +31,28 @@ let state = {
         newPostText: '',
     },
 };
-export default state;
+export default appState;
 
 
-window.state = state;
+window.appState = appState;
+console.log(window.appState = appState)
 
 
 export let changeNewPostText = (newPostTextUp) => {
-  state.profilePage.newPostText =  newPostTextUp ;
-  renderEntireTree(state);
+  appState.profilePage.newPostText =  newPostTextUp ;
+  renderEntireTree(appState);
     
 }
 
 
 export let addPost = () =>{
     let newPost = {
-        value: state.profilePage.newPostText ,
+        value: appState.profilePage.newPostText ,
         countLikes:10,
     };
-    state.profilePage.myPostData.push(newPost)
-    state.profilePage.newPostText ='';
-    renderEntireTree(state)
+    appState.profilePage.myPostData.push(newPost)
+    appState.profilePage.newPostText ='';
+    renderEntireTree(appState)
 };
 
 export let addMessage = (messageText) =>{
@@ -60,8 +61,8 @@ export let addMessage = (messageText) =>{
         
     };
     console.log(newMessage)
-    state.dialogsPage.messagesData.push(newMessage)
-    renderEntireTree(state)
+    appState.dialogsPage.messagesData.push(newMessage)
+    renderEntireTree(appState)
 };
 
 

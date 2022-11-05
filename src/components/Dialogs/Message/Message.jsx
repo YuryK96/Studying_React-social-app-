@@ -1,27 +1,24 @@
-import { createRef } from 'react'
-import DialogsCss from './../Dialogs.module.css'
+import { createRef } from "react";
+import DialogsCss from "./../Dialogs.module.css";
 
-
-
-
-const Messages = (props) => {
-    let arrMessages = props.messagesData.map(message => {
-        return (<div className={DialogsCss.message}><p>{message.message}</p></div>)
-        
-    })
-    let messageText = createRef()
-      
-       
+const Messages = ({messagesData, addMessage}) => {
+  let arrMessages = messagesData.map((message) => {
     return (
+      <div className={DialogsCss.message}>
+        <p>{message.message}</p>
+      </div>
+    );
+  });
+  let messageText = createRef();
 
-        <div className={DialogsCss.message}>
-                {arrMessages}
+  return (
+    <div className={DialogsCss.message}>
+      {arrMessages}
 
-                <textarea ref={messageText} name="" id="" cols="30" rows="10"></textarea>
-                <button onClick={()=>props.addMessage(messageText)}>click</button>
-                </div>
-    )
-}
-
+      <textarea ref={messageText} name="" id="" cols="30" rows="10"></textarea>
+      <button onClick={() => addMessage(messageText)}>click</button>
+    </div>
+  );
+};
 
 export default Messages;

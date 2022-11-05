@@ -1,21 +1,19 @@
+import ProfileCss from "./Profile.module.css";
+import MyPosts from "./MyPosts/MyPosts";
+import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
-import ProfileCss from './Profile.module.css';
-import MyPosts from './MyPosts/MyPosts';
-import ProfileInfo from './ProfileInfo/ProfileInfo';
-
-
-
-
-
-const Profile = (props) => {
- 
+const Profile = ({myPostData,addPost, newPostText, changeNewPostText}) => {
   return (
-   <div>
-          <ProfileInfo/>
-          <MyPosts  myPostData={props.myPostData.myPostData} addPost={props.addPost} newPostText={props.myPostData.newPostText} changeNewPostText={props.changeNewPostText}/>
-
+    <div>
+      <ProfileInfo />
+      <MyPosts
+        myPostData={myPostData.myPostData}
+        addPost={addPost}
+        newPostText={newPostText}
+        changeNewPostText={changeNewPostText}
+      />
     </div>
-  )
-}
+  );
+};
 
 export default Profile;
