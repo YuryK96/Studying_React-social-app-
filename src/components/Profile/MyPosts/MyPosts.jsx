@@ -2,26 +2,15 @@ import { createRef } from "react";
 import MyPostCss from "./MyPosts.module.css";
 import Post from "./Posts/Post";
 
-const MyPosts = ({myPostData, newPostText,addPost,changeNewPostText}) => {
-  let postText = createRef();
-
+const MyPosts = ({ myPostData, newPostText, addPost, changeNewPostText }) => {
   let arrPostData = myPostData.map((post) => {
     return <Post value={post.value} countLikes={post.countLikes} />;
   });
 
-  let onNewPost = () => {
-    addPost(postText);
-  };
-
-  let onChangeText = () => {
-    changeNewPostText(postText.current.value);
-  };
-
   return (
     <div>
       <textarea
-        onChange={onChangeText}
-        ref={postText}
+        onChange={(e) => changeNewPostText(e.target.value)}
         name=""
         id=""
         cols="30"
@@ -30,7 +19,7 @@ const MyPosts = ({myPostData, newPostText,addPost,changeNewPostText}) => {
       />
       <div>
         {" "}
-        <button onClick={onNewPost}>click</button>
+        <button onClick={addPost}>click</button>
       </div>
 
       {arrPostData}

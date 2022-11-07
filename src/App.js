@@ -10,7 +10,8 @@ import News from "./components/News/News";
 import Music from "./components/Music/Music";
 
 const App = ( {appState, addPost, changeNewPostText, addMessage} ) => {
-  console.log(appState)
+ 
+  
 
   return (
     <BrowserRouter>
