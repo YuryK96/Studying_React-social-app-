@@ -9,10 +9,7 @@ import Settings from "./components/Settings/Settings";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 
-const App = ( {appState, addPost, changeNewPostText, addMessage} ) => {
- 
-  
-
+const App = ({ appState, dispatch }) => {
   return (
     <BrowserRouter>
       <div className="app-wrapper">
@@ -22,20 +19,13 @@ const App = ( {appState, addPost, changeNewPostText, addMessage} ) => {
           <Route
             path="/Profile"
             element={
-              <Profile
-                myPostData={appState.profilePage}
-                addPost={addPost}
-                changeNewPostText={changeNewPostText}
-              />
+              <Profile myPostData={appState.profilePage} dispatch={dispatch} />
             }
           />
           <Route
             path="/Messages/*"
             element={
-              <Dialogs
-                dialogsData={appState.dialogsPage}
-                addMessage={addMessage}
-              />
+              <Dialogs dialogsData={appState.dialogsPage} dispatch={dispatch} />
             }
           />
           <Route path="/Setting" element={<Settings />} />

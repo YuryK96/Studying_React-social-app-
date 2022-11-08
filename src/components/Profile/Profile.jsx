@@ -2,16 +2,17 @@ import ProfileCss from "./Profile.module.css";
 import MyPosts from "./MyPosts/MyPosts";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
-const Profile = ({myPostData , addPost, changeNewPostText}) => {
+const Profile = ({myPostData ,dispatch}) => {
 
   return (
     <div>
       <ProfileInfo />
       <MyPosts
         myPostData={myPostData.myPostData}
-        addPost={addPost}
+        dispatch={dispatch}
         newPostText={myPostData.newPostText}
-        changeNewPostText={changeNewPostText}
+        
+        
       />
     </div>
   );

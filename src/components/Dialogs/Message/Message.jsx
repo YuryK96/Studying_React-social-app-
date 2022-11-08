@@ -2,7 +2,7 @@ import { createRef } from "react";
 import DialogsCss from "./../Dialogs.module.css";
 import { useState } from "react";
 
-const Messages = ({ messagesData, addMessage }) => {
+const Messages = ({ messagesData, dispatch }) => {
   const [textarea, setTextarea] = useState("");
   let arrMessages = messagesData.map((message) => {
     return (
@@ -28,7 +28,9 @@ const Messages = ({ messagesData, addMessage }) => {
       ></textarea>
       <button
         onClick={() => {
-          addMessage(textarea);
+          dispatch({type: 'ADD-MESSAGE',
+          message: textarea
+        });
           setTextarea("");
         }}
       >
