@@ -8,12 +8,12 @@ import App from "./App";
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-let renderEntireTree = (store) => {
+let renderEntireTree = (state) => {
  
   root.render(
     <React.StrictMode>
       <App
-        appState={store.getState()}
+        appState={state}
         dispatch ={store.dispatch.bind(store)}
        
       />
@@ -22,7 +22,7 @@ let renderEntireTree = (store) => {
 };
 
 
-renderEntireTree(store)
+renderEntireTree(store.getState())
 store.subscribe(renderEntireTree)
 
 

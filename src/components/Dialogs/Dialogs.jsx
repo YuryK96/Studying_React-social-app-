@@ -8,6 +8,7 @@ const Dialogs = ({dialogsData, dispatch}) => {
       <DialogItem dialogsData={dialogsData.dialogsData} />
       <Messages
         messagesData={dialogsData.messagesData}
+        newMessage = {dialogsData.newMessage}
         dispatch={dispatch}
       />
     </div>

@@ -1,9 +1,9 @@
 import { createRef } from "react";
 import DialogsCss from "./../Dialogs.module.css";
-import { useState } from "react";
+import { addNewMessage } from "../../../redux/state";
+import { updateNewMessageTextActionCreator } from "../../../redux/state";
 
-const Messages = ({ messagesData, dispatch }) => {
-  const [textarea, setTextarea] = useState("");
+const Messages = ({ messagesData, dispatch, newMessage }) => {
   let arrMessages = messagesData.map((message) => {
     return (
       <div className={DialogsCss.message}>
@@ -17,9 +17,9 @@ const Messages = ({ messagesData, dispatch }) => {
       {arrMessages}
 
       <textarea
-        value={textarea}
+        value={newMessage}
         onChange={(e) => {
-          setTextarea(e.target.value);
+         dispatch(updateNewMessageTextActionCreator(e));
         }}
         name=""
         id=""
@@ -28,10 +28,8 @@ const Messages = ({ messagesData, dispatch }) => {
       ></textarea>
       <button
         onClick={() => {
-          dispatch({type: 'ADD-MESSAGE',
-          message: textarea
-        });
-          setTextarea("");
+          dispatch(addNewMessage());
+         
         }}
       >
         click
