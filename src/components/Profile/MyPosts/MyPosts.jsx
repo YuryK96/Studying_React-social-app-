@@ -1,10 +1,7 @@
-import { createRef } from "react";
 import MyPostCss from "./MyPosts.module.css";
 import Post from "./Posts/Post";
-import { updateNewPostTextActionCreator } from "../../../redux/profile-reducer";
-import { addPostActionCreater } from "../../../redux/profile-reducer";
 
-const MyPosts = ({ myPostData, newPostText, dispatch }) => {
+const MyPosts = ({ myPostData, newPostText, updateTextPost, addPost }) => {
   let arrPostData = myPostData.map((post) => {
     return <Post value={post.value} countLikes={post.countLikes} />;
   });
@@ -12,7 +9,7 @@ const MyPosts = ({ myPostData, newPostText, dispatch }) => {
   return (
     <div>
       <textarea
-        onChange={(e) => dispatch(updateNewPostTextActionCreator(e))}
+        onChange={(e) => updateTextPost(e)}
         name=""
         id=""
         cols="30"
@@ -21,7 +18,7 @@ const MyPosts = ({ myPostData, newPostText, dispatch }) => {
       />
       <div>
         {" "}
-        <button onClick={() => dispatch(addPostActionCreater())}>click</button>
+        <button onClick={addPost}>click</button>
       </div>
 
       {arrPostData}

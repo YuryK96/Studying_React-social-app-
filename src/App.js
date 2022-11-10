@@ -4,29 +4,22 @@ import "./App.css";
 import Header from "./components/Header/Header";
 import Nav from "./components/Navbar/Navbar";
 import Profile from "./components/Profile/Profile";
-import Dialogs from "./components/Dialogs/Dialogs";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import Settings from "./components/Settings/Settings";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 
-const App = ({ appState, dispatch }) => {
+const App = ({ appState, dispatch, store }) => {
   return (
     <BrowserRouter>
       <div className="app-wrapper">
         <Header />
         <Nav />
         <Routes>
-          <Route
-            path="/Profile"
-            element={
-              <Profile myPostData={appState.profilePage} dispatch={dispatch} />
-            }
-          />
+          <Route path="/Profile" element={<Profile store={store} />} />
           <Route
             path="/Messages/*"
-            element={
-              <Dialogs dialogsData={appState.dialogsPage} dispatch={dispatch} />
-            }
+            element={<DialogsContainer store={store} />}
           />
           <Route path="/Setting" element={<Settings />} />
           <Route path="/News" element={<News />} />

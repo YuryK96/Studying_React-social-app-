@@ -9,5 +9,5 @@ let reducers = combineReducers({
   sideBar: sideBarReducer,
 });
 let store = createStore(reducers);
-console.log(store);
+
 export default store;

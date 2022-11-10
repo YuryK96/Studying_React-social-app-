@@ -1,41 +1,37 @@
 .dialogs {
-    display: grid;
-    grid-template-columns: 5fr 10fr;
-    background: gainsboro;
+  display: grid;
+  grid-template-columns: 5fr 10fr;
+  background: gainsboro;
+  height: 100%;
 }
 
 .dialogWrapper {
-    padding: 1vw;
-    
+  padding: 1vw;
 }
 .dialog {
-    text-align: center;
-    width: 17vw;
-    height: 8vh;
-    border: .1vw solid black;
-    margin: 1vw;
-    
+  text-align: center;
+  width: 17vw;
+  height: 8vh;
+  border: 0.1vw solid black;
+  margin: 1vw;
 }
 .dialog p {
-    font-size: 1.7vmax;
-    text-decoration: none;
-    color: black;
+  font-size: 1.7vmax;
+  text-decoration: none;
+  color: black;
 }
-.dialog a{
-    text-decoration: none;
-    width: 17vw;
-    height: 8vh;
-    display: block;
-    
+.dialog a {
+  text-decoration: none;
+  width: 17vw;
+  height: 8vh;
+  display: block;
 }
-.dialog.active{
-    margin: 2vw;
-    background: gray;
-
+.dialog.active {
+  margin: 2vw;
+  background: gray;
 }
 
 .messages {
-    padding: 1vw;
-    font-size: 1.8vmax;
+  padding: 1vw;
+  font-size: 1.8vmax;
 }
-

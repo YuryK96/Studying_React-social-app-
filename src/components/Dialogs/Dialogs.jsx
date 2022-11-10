@@ -2,14 +2,21 @@ import DialogsCss from "./Dialogs.module.css";
 import Messages from "./Message/Message";
 import DialogItem from "./DialogItem/DialogItem";
 
-const Dialogs = ({ dialogsData, dispatch }) => {
+const Dialogs = ({
+  updateNewMessage,
+  addNewMessage,
+  messagesData,
+  dialogsData,
+  newMessage,
+}) => {
   return (
     <div className={DialogsCss.dialogs}>
-      <DialogItem dialogsData={dialogsData.dialogsData} />
+      <DialogItem dialogsData={dialogsData} />
       <Messages
-        messagesData={dialogsData.messagesData}
-        newMessage={dialogsData.newMessage}
-        dispatch={dispatch}
+        updateNewMessage={updateNewMessage}
+        addNewMessage={addNewMessage}
+        messagesData={messagesData}
+        newMessage={newMessage}
       />
     </div>
   );

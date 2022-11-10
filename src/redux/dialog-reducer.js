@@ -45,7 +45,7 @@ export const updateNewMessageTextActionCreator = (action) => ({
   newMessage: action.target.value,
 });
 
-export const addNewMessage = () => ({
+export const addNewMessageActionCreator = () => ({
   type: ADD_MESSAGE,
 });
 

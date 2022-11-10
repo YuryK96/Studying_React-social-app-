@@ -1,8 +1,11 @@
 import DialogsCss from "./../Dialogs.module.css";
-import { addNewMessage } from "../../../redux/dialog-reducer";
-import { updateNewMessageTextActionCreator } from "../../../redux/dialog-reducer";
 
-const Messages = ({ messagesData, dispatch, newMessage }) => {
+const Messages = ({
+  messagesData,
+  updateNewMessage,
+  newMessage,
+  addNewMessage,
+}) => {
   let arrMessages = messagesData.map((message) => {
     return (
       <div className={DialogsCss.message}>
@@ -18,20 +21,14 @@ const Messages = ({ messagesData, dispatch, newMessage }) => {
       <textarea
         value={newMessage}
         onChange={(e) => {
-          dispatch(updateNewMessageTextActionCreator(e));
+          updateNewMessage(e);
         }}
         name=""
         id=""
         cols="30"
         rows="10"
       ></textarea>
-      <button
-        onClick={() => {
-          dispatch(addNewMessage());
-        }}
-      >
-        click
-      </button>
+      <button onClick={addNewMessage}>click</button>
     </div>
   );
 };
