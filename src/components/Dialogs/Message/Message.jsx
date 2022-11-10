@@ -1,7 +1,6 @@
-import { createRef } from "react";
 import DialogsCss from "./../Dialogs.module.css";
-import { addNewMessage } from "../../../redux/state";
-import { updateNewMessageTextActionCreator } from "../../../redux/state";
+import { addNewMessage } from "../../../redux/dialog-reducer";
+import { updateNewMessageTextActionCreator } from "../../../redux/dialog-reducer";
 
 const Messages = ({ messagesData, dispatch, newMessage }) => {
   let arrMessages = messagesData.map((message) => {
@@ -19,7 +18,7 @@ const Messages = ({ messagesData, dispatch, newMessage }) => {
       <textarea
         value={newMessage}
         onChange={(e) => {
-         dispatch(updateNewMessageTextActionCreator(e));
+          dispatch(updateNewMessageTextActionCreator(e));
         }}
         name=""
         id=""
@@ -29,7 +28,6 @@ const Messages = ({ messagesData, dispatch, newMessage }) => {
       <button
         onClick={() => {
           dispatch(addNewMessage());
-         
         }}
       >
         click

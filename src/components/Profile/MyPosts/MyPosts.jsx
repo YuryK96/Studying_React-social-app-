@@ -1,8 +1,8 @@
 import { createRef } from "react";
 import MyPostCss from "./MyPosts.module.css";
 import Post from "./Posts/Post";
-import { updateNewPostTextActionCreator } from "../../../redux/state";
-import { addPostActionCreater } from "../../../redux/state";
+import { updateNewPostTextActionCreator } from "../../../redux/profile-reducer";
+import { addPostActionCreater } from "../../../redux/profile-reducer";
 
 const MyPosts = ({ myPostData, newPostText, dispatch }) => {
   let arrPostData = myPostData.map((post) => {
