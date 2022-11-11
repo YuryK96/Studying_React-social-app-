@@ -9,24 +9,19 @@ import Settings from "./components/Settings/Settings";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 
-const App = ({ appState, dispatch, store }) => {
+const App = () => {
   return (
-    <BrowserRouter>
-      <div className="app-wrapper">
-        <Header />
-        <Nav />
-        <Routes>
-          <Route path="/Profile" element={<Profile store={store} />} />
-          <Route
-            path="/Messages/*"
-            element={<DialogsContainer store={store} />}
-          />
-          <Route path="/Setting" element={<Settings />} />
-          <Route path="/News" element={<News />} />
-          <Route path="/Music" element={<Music />} />
-        </Routes>
-      </div>
-    </BrowserRouter>
+    <div className="app-wrapper">
+      <Header />
+      <Nav />
+      <Routes>
+        <Route path="/Profile" element={<Profile />} />
+        <Route path="/Messages/*" element={<DialogsContainer />} />
+        <Route path="/Setting" element={<Settings />} />
+        <Route path="/News" element={<News />} />
+        <Route path="/Music" element={<Music />} />
+      </Routes>
+    </div>
   );
 };
 

@@ -1,7 +1,7 @@
 import MyPostCss from "./MyPosts.module.css";
 import Post from "./Posts/Post";
 
-const MyPosts = ({ myPostData, newPostText, updateTextPost, addPost }) => {
+const MyPosts = ({ myPostData, newPostText, onChangePost, onAddPost }) => {
   let arrPostData = myPostData.map((post) => {
     return <Post value={post.value} countLikes={post.countLikes} />;
   });
@@ -9,7 +9,7 @@ const MyPosts = ({ myPostData, newPostText, updateTextPost, addPost }) => {
   return (
     <div>
       <textarea
-        onChange={(e) => updateTextPost(e)}
+        onChange={(action) => onChangePost(action)}
         name=""
         id=""
         cols="30"
@@ -18,7 +18,7 @@ const MyPosts = ({ myPostData, newPostText, updateTextPost, addPost }) => {
       />
       <div>
         {" "}
-        <button onClick={addPost}>click</button>
+        <button onClick={onAddPost}>click</button>
       </div>
 
       {arrPostData}

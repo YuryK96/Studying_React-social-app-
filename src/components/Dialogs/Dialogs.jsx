@@ -3,8 +3,8 @@ import Messages from "./Message/Message";
 import DialogItem from "./DialogItem/DialogItem";
 
 const Dialogs = ({
-  updateNewMessage,
-  addNewMessage,
+  onUpdateNewMessage,
+  onAddNewMessage,
   messagesData,
   dialogsData,
   newMessage,
@@ -13,8 +13,8 @@ const Dialogs = ({
     <div className={DialogsCss.dialogs}>
       <DialogItem dialogsData={dialogsData} />
       <Messages
-        updateNewMessage={updateNewMessage}
-        addNewMessage={addNewMessage}
+        onUpdateNewMessage={onUpdateNewMessage}
+        onAddNewMessage={onAddNewMessage}
         messagesData={messagesData}
         newMessage={newMessage}
       />
