@@ -2,8 +2,8 @@ import MyPostCss from "./MyPosts.module.css";
 import Post from "./Posts/Post";
 
 const MyPosts = ({ myPostData, newPostText, onChangePost, onAddPost }) => {
-  let arrPostData = myPostData.map((post) => {
-    return <Post value={post.value} countLikes={post.countLikes} />;
+  let arrPostData = myPostData.map((post, i) => {
+    return <Post key={i} value={post.value} countLikes={post.countLikes} />;
   });
 
   return (

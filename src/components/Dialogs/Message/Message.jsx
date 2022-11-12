@@ -6,9 +6,9 @@ const Messages = ({
   newMessage,
   onAddNewMessage,
 }) => {
-  let arrMessages = messagesData.map((message) => {
+  let arrMessages = messagesData.map((message, i) => {
     return (
-      <div className={DialogsCss.message}>
+      <div key={i} className={DialogsCss.message}>
         <p>{message.message}</p>
       </div>
     );

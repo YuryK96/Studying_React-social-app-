@@ -1,10 +1,10 @@
 import DialogsCss from "./../Dialogs.module.css";
 import { NavLink } from "react-router-dom";
 
-const DialogItem = ({dialogsData}) => {
+const DialogItem = ({ dialogsData }) => {
   let arrDialog = dialogsData.map((dialog) => {
     return (
-      <div className={DialogsCss.dialog}>
+      <div key={dialog.id} className={DialogsCss.dialog}>
         <NavLink to={"/Messages/" + dialog.id}>
           <p>{dialog.name}</p>
         </NavLink>

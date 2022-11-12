@@ -12,12 +12,12 @@ let initialState = {
   ],
   // Messages in Messages
   messagesData: [
-    { message: "Hi, How are you?" },
-    { message: "What are you going to do at night?" },
-    { message: "We make a patie!" },
-    { message: "4o slichno?" },
-    { message: "Lebowski, Where is my money?!" },
-    { message: "Darou" },
+    { message: "Hi, How are you?", id: "1" },
+    { message: "What are you going to do at night?", id: "2" },
+    { message: "We make a patie!", id: "3" },
+    { message: "4o slichno?", id: "4" },
+    { message: "Lebowski, Where is my money?!", id: "5" },
+    { message: "Darou", id: "6" },
   ],
   newMessage: "",
 };
@@ -25,21 +25,17 @@ let initialState = {
 const dialogReducer = (state = initialState, action) => {
   switch (action.type) {
     case UPDATE_NEW_MESSAGE_TEXT: {
-      let stateCopy = { ...state };
-      stateCopy.newMessage = action.newMessage;
-      return stateCopy;
+      return { ...state, newMessage: action.newMessage };
     }
     case ADD_MESSAGE: {
-      let newMessage = {
-        message: state.newMessage,
+      return {
+        ...state,
+        messagesData: [
+          ...state.messagesData,
+          { message: state.newMessage, id: 7 },
+        ],
+        newMessage: "",
       };
-      let stateCopy = { ...state };
-
-      stateCopy.messagesData = [...state.messagesData];
-      stateCopy.messagesData.push(newMessage);
-
-      stateCopy.newMessage = "";
-      return stateCopy;
     }
     default:
       return state;
