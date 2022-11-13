@@ -17,6 +17,11 @@ const Nav = () => {
         </NavLink>
       </div>
       <div className={NavbarCss.item}>
+        <NavLink className={checkLink} to="/Users">
+          Friends
+        </NavLink>
+      </div>
+      <div className={NavbarCss.item}>
         <NavLink className={checkLink} to="/News">
           News
         </NavLink>

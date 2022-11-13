@@ -1,0 +1,18 @@
+.users {
+  font-size: 1.8vmax;
+  color: rgb(0, 232, 232);
+}
+
+.user {
+  text-align: center;
+  margin: 15px;
+  display: flex;
+  &__photo img {
+    width: 100px;
+  }
+  &__container {
+    display: flex;
+    width: 60%;
+    justify-content: space-around;
+  }
+}
