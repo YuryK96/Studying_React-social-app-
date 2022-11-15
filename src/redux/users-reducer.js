@@ -4,7 +4,6 @@ const SET_USERS = "SET_USERS";
 
 let initialState = {
   users: [],
-  // Post in Profile
 };
 
 const usersReducer = (state = initialState, action) => {
