@@ -1,10 +1,8 @@
 .app-wrapper {
   display: grid;
   grid-template-columns: 1fr 4fr;
-  grid-template-rows: 1fr 10fr;
+  grid-template-rows: 12vh minmax(100vh, max-content);
   grid-gap: 1vmin;
   margin: 1vh auto;
   width: 97vw;
-
 }
-
