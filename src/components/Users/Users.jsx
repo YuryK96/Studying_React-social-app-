@@ -8,6 +8,7 @@ const Users = ({
   onFollow,
   totalUsersCount,
   pageSize,
+  isFetching,
 }) => {
   let pagesCount = Math.ceil(totalUsersCount / pageSize);
   let pages = [];
