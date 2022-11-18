@@ -1,13 +1,20 @@
-
- .header {
+.header {
   grid-column-start: 1;
   grid-column-end: 3;
   background: yellow;
-  }
-  
- .header img {
- width: 10vw;
- height: 10vh;
- margin-left: 1vw;
- margin-top:1vh;
- }
+}
+
+.header img {
+  width: 10vw;
+  height: 10vh;
+  margin-left: 1vw;
+  margin-top: 1vh;
+}
+
+.loginBlock {
+  float: right;
+}
+
+.loginBlock a {
+  color: rgb(4, 2, 2);
+}

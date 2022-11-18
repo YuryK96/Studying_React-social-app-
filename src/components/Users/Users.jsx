@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import s from "./Users.module.scss";
 
 const Users = ({
@@ -42,14 +43,16 @@ const Users = ({
           <section key={u.id}>
             <div className={s.user}>
               <div className={s.user__photo}>
-                <img
-                  src={
-                    u.photos.small != null
-                      ? u.photos.small
-                      : "https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?w=2000"
-                  }
-                  alt=""
-                />
+                <NavLink to={"/Profile/" + u.id}>
+                  <img
+                    src={
+                      u.photos.small != null
+                        ? u.photos.small
+                        : "https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?w=2000"
+                    }
+                    alt=""
+                  />
+                </NavLink>
                 {u.followed ? (
                   <button
                     onClick={() => {
