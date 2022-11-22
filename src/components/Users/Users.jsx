@@ -11,6 +11,8 @@ const Users = ({
   onFollow,
   totalUsersCount,
   pageSize,
+  followingInProgress,
+  toggleIsFollowing,
 }) => {
   let pagesCount = Math.ceil(totalUsersCount / pageSize);
   let pages = [];
@@ -56,11 +58,15 @@ const Users = ({
                 </NavLink>
                 {u.followed ? (
                   <button
+                    disabled={followingInProgress.some((id) => id === u.id)}
                     onClick={() => {
+                      toggleIsFollowing(true, u.id);
+
                       usersAPI.unFollow(u.id).then((response) => {
-                        if (response.data.resultCode === 0) {
+                        if (response.resultCode === 0) {
                           onFollow(u.id);
                         }
+                        toggleIsFollowing(false, u.id);
                       });
                     }}
                   >
@@ -68,11 +74,15 @@ const Users = ({
                   </button>
                 ) : (
                   <button
+                    disabled={followingInProgress.some((id) => id === u.id)}
                     onClick={() => {
+                      toggleIsFollowing(true, u.id);
                       usersAPI.follow(u.id).then((response) => {
-                        if (response.data.resultCode === 0) {
+                        if (response.resultCode === 0) {
                           onUnFollow(u.id);
                         }
+
+                        toggleIsFollowing(false, u.id);
                       });
                     }}
                   >

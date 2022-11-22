@@ -19,12 +19,23 @@ export const usersAPI = {
       });
   },
   unFollow(id) {
-    return instance.delete(`follow/${id}`);
+    return instance.delete(`follow/${id}`).then((response) => {
+      return response.data;
+    });
   },
   follow(id) {
-    return instance.post(`follow/${id}`);
+    return instance.post(`follow/${id}`).then((response) => {
+      return response.data;
+    });
   },
   getProfile(userId) {
-    return instance.get(`profile/${userId}`);
+    return instance.get(`profile/${userId}`).then((response) => {
+      return response.data;
+    });
+  },
+  getUserAuth() {
+    return instance.get("auth/me").then((response) => {
+      return response.data;
+    });
   },
 };
