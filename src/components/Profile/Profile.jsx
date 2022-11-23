@@ -2,7 +2,7 @@ import ProfileCss from "./Profile.module.css";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
-const Profile = ({ profile, setUserProfile }) => {
+const Profile = ({ profile }) => {
   return (
     <div>
       <ProfileInfo profile={profile} />

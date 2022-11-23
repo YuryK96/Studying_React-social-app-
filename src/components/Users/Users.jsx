@@ -1,18 +1,15 @@
-import axios from "axios";
 import { NavLink } from "react-router-dom";
-import { usersAPI } from "../../api/api";
 import s from "./Users.module.scss";
 
 const Users = ({
   onPageChanged,
   currentPage,
   users,
-  onUnFollow,
-  onFollow,
   totalUsersCount,
   pageSize,
   followingInProgress,
-  toggleIsFollowing,
+  toggleUserFollow,
+  toggleUserUnFollow,
 }) => {
   let pagesCount = Math.ceil(totalUsersCount / pageSize);
   let pages = [];
@@ -60,14 +57,7 @@ const Users = ({
                   <button
                     disabled={followingInProgress.some((id) => id === u.id)}
                     onClick={() => {
-                      toggleIsFollowing(true, u.id);
-
-                      usersAPI.unFollow(u.id).then((response) => {
-                        if (response.resultCode === 0) {
-                          onFollow(u.id);
-                        }
-                        toggleIsFollowing(false, u.id);
-                      });
+                      toggleUserFollow(u.id);
                     }}
                   >
                     UnFollow
@@ -76,14 +66,7 @@ const Users = ({
                   <button
                     disabled={followingInProgress.some((id) => id === u.id)}
                     onClick={() => {
-                      toggleIsFollowing(true, u.id);
-                      usersAPI.follow(u.id).then((response) => {
-                        if (response.resultCode === 0) {
-                          onUnFollow(u.id);
-                        }
-
-                        toggleIsFollowing(false, u.id);
-                      });
+                      toggleUserUnFollow(u.id);
                     }}
                   >
                     Follow
