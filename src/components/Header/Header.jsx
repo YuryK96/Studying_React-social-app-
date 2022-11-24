@@ -7,7 +7,7 @@ const Header = ({ isAuth, login }) => {
       <img src="https://cdn.logo.com/hotlink-ok/logo-social.png" alt="" />
 
       <div className={s.loginBlock}>
-        {isAuth ? login : <NavLink to="/login">Login</NavLink>}
+        {isAuth ? login : <NavLink to="/Login">Login</NavLink>}
       </div>
     </header>
   );
