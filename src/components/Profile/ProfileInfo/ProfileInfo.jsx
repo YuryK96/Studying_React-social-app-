@@ -2,7 +2,7 @@ import Preloader from "../../common/Preloader/Preloader";
 import ProfileInfoCss from "./ProfileInfo.module.css";
 import ProfileStatus from "./ProfileStatus";
 
-const ProfileInfo = ({ profile }) => {
+const ProfileInfo = ({ profile, status, updateStatus }) => {
   if (!profile) {
     return <Preloader />;
   } else {
@@ -17,7 +17,7 @@ const ProfileInfo = ({ profile }) => {
         <div className={ProfileInfoCss.avatar}>
           <img src={profile.photos.large} alt="" />
 
-          <ProfileStatus status={profile.aboutMe} />
+          <ProfileStatus status={status} updateStatus={updateStatus} />
           <div>
             <div>Social Network</div>
 

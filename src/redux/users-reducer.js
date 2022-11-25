@@ -124,7 +124,7 @@ export const toggleUserFollow = (id) => (dispatch) => {
   dispatch(toggleIsFollowing(true, id));
 
   usersAPI.unFollow(id).then((response) => {
-    if (response.resultCode === 0) {
+    if (response.data.resultCode === 0) {
       dispatch(follow(id));
     }
     dispatch(toggleIsFollowing(false, id));
@@ -135,7 +135,7 @@ export const toggleUserUnFollow = (id) => (dispatch) => {
   dispatch(toggleIsFollowing(true, id));
 
   usersAPI.follow(id).then((response) => {
-    if (response.resultCode === 0) {
+    if (response.data.resultCode === 0) {
       dispatch(unfollow(id));
     }
     dispatch(toggleIsFollowing(false, id));
