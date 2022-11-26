@@ -14,7 +14,7 @@ let initialState = {
     { value: "Hi my name is Yury", countLikes: "8" },
     { value: "Hi my name is Nastya", countLikes: "15" },
   ],
-  newPostText: "",
+
   userProfile: null,
   status: "",
 };
@@ -27,7 +27,7 @@ const profileReducer = (state = initialState, action) => {
         newPostText: "",
         myPostData: [
           ...state.myPostData,
-          { value: state.newPostText, countLikes: 11 },
+          { value: action.newPostText, countLikes: 11 },
         ],
       };
     }
@@ -46,14 +46,11 @@ const profileReducer = (state = initialState, action) => {
   }
 };
 
-export const addPostActionCreater = () => ({
+export const onAddPost = (newPostText) => ({
   type: ADD_POST,
+  newPostText,
 });
 
-export const updateNewPostTextActionCreator = (action) => ({
-  type: UPDATE_NEW_POST_TEXT,
-  newText: action.target.value,
-});
 export const setUserProfile = (userProfile) => ({
   type: SET_USER_PROFILE,
   userProfile,
