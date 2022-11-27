@@ -1,11 +1,11 @@
 import { useForm } from "react-hook-form";
-import MyPostCss from "./MyPosts.module.css";
+import s from "./MyPosts.module.css";
 import Post from "./Posts/Post";
 
 const MyPosts = ({ myPostData, newPostText, onChangePost, onAddPost }) => {
   const {
     register,
-    formState: { errors },
+    formState: { errors, isValid },
     handleSubmit,
     reset,
   } = useForm();
@@ -22,9 +22,21 @@ const MyPosts = ({ myPostData, newPostText, onChangePost, onAddPost }) => {
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <textarea {...register("newPostText")} cols="30" rows="5" />
+        <textarea
+          className={s.newMessage}
+          style={errors?.newPostText ? { border: "1px solid red" } : null}
+          {...register("newPostText", {
+            required: "need to text something",
+            maxLength: {
+              value: 20,
+              message: "need less 20 symbols",
+            },
+          })}
+          cols="30"
+          rows="5"
+        />
         <div>
-          {" "}
+          <p style={{ color: "red" }}>{errors?.newPostText?.message}</p>{" "}
           <input type={"submit"} />
         </div>
       </form>

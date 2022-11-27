@@ -1,11 +1,31 @@
+import { useForm } from "react-hook-form";
 import DialogsCss from "./../Dialogs.module.css";
 
-const Messages = ({
-  messagesData,
-  onUpdateNewMessage,
-  newMessage,
-  onAddNewMessage,
-}) => {
+const NewMessage = ({ addNewMessage }) => {
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+    reset,
+  } = useForm();
+
+  const onSubmit = (data) => {
+    addNewMessage(data.newMessage);
+    reset();
+  };
+  return (
+    <div>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <textarea {...register("newMessage")} cols="30" rows="10"></textarea>
+        <div>
+          <input type="submit" value={"Send"} />
+        </div>
+      </form>
+    </div>
+  );
+};
+
+const Messages = ({ messagesData, addNewMessage }) => {
   let arrMessages = messagesData.map((message, i) => {
     return (
       <div key={i} className={DialogsCss.message}>
@@ -17,18 +37,7 @@ const Messages = ({
   return (
     <div className={DialogsCss.message}>
       {arrMessages}
-
-      <textarea
-        value={newMessage}
-        onChange={(e) => {
-          onUpdateNewMessage(e);
-        }}
-        name=""
-        id=""
-        cols="30"
-        rows="10"
-      ></textarea>
-      <button onClick={onAddNewMessage}>click</button>
+      <NewMessage addNewMessage={addNewMessage} />
     </div>
   );
 };
