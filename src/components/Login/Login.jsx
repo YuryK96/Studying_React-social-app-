@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import { Navigate } from "react-router-dom";
 
 const LoginForm = ({ login }) => {
   const {
@@ -54,10 +55,6 @@ const LoginForm = ({ login }) => {
   );
 };
 
-const LogOut = () => {
-  return <div>exit</div>;
-};
-
 const Login = ({ login, isAuth }) => {
   return (
     <div>
@@ -67,7 +64,7 @@ const Login = ({ login, isAuth }) => {
           <LoginForm login={login} />
         </div>
       ) : (
-        <LogOut />
+        <Navigate to={"/profile"} />
       )}
     </div>
   );
