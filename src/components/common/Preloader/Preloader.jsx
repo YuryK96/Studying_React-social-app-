@@ -1,14 +1,12 @@
 import preloader from "../../../assets/img/preloader.svg";
 
-const Preloader = ({ isFetching }) => {
+const Preloader = ({}) => {
   return (
     <div>
-      {isFetching ? (
-        <div>
-          {" "}
-          <img src={preloader} />
-        </div>
-      ) : null}
+      <div>
+        {" "}
+        <img src={preloader} />
+      </div>
     </div>
   );
 };

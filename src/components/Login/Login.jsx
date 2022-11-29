@@ -7,32 +7,52 @@ const LoginForm = ({ login }) => {
     formState: { errors, isValid },
     handleSubmit,
     reset,
+    setError,
+    clearErrors,
   } = useForm({
     mode: "onBlur",
   });
 
   const onSubmit = (data) => {
-    login(data.email, data.password, data.rememberMe);
+    login(data.email, data.password, data.rememberMe, setError);
+
     reset();
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div>
         <input
+          onFocus={() => {
+            clearErrors();
+          }}
           placeholder="email"
           {...register("email", {
             required: "need to fill form",
+            pattern: {
+              value:
+                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+              message: "Pleace enter the valid email",
+            },
             minLength: {
               value: 5,
+
               message: "need more 5 symbols",
             },
           })}
         />
       </div>
-      <div>{errors?.email && <p>{errors?.email?.message || "Error!"}</p>}</div>
+      <div>
+        {(errors?.email && (
+          <p style={{ color: "red" }}>{errors?.email?.message || "Error!"}</p>
+        )) || <p style={{ color: "red" }}>{errors?.server?.message}</p>}
+      </div>
       <div>
         <input
+          onFocus={() => {
+            clearErrors();
+          }}
           placeholder="password"
+          type="password"
           {...register("password", {
             required: "need to fill form",
             minLength: {
@@ -43,7 +63,11 @@ const LoginForm = ({ login }) => {
         />
       </div>
       <div>
-        {errors?.password && <p>{errors?.password?.message || "Error!"}</p>}
+        {errors?.password && (
+          <p style={{ color: "red" }}>
+            {errors?.password?.message || "Error!"}
+          </p>
+        )}
       </div>
       <div>
         <input {...register("rememberMe")} type={"checkbox"} />

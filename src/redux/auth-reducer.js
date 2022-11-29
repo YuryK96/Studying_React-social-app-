@@ -43,17 +43,19 @@ export const logOut = () => (dispatch) => {
 };
 
 export const setAuthUser = () => (dispatch) => {
-  authAPI.me().then((response) => {
+  return authAPI.me().then((response) => {
     if (response.data.resultCode === 0) {
       let { id, email, login } = response.data.data;
       dispatch(setAuthUserData(id, email, login, true));
     }
   });
 };
-export const login = (email, password, rememberMe) => (dispatch) => {
+export const login = (email, password, rememberMe, setError) => (dispatch) => {
   authAPI.login(email, password, rememberMe).then((response) => {
     if (response.data.resultCode === 0) {
       dispatch(setAuthUser());
+    } else {
+      setError("server", { message: response.data.messages });
     }
   });
 };
