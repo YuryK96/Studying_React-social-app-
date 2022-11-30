@@ -32,11 +32,13 @@ class ProfileContainer extends React.Component {
   }
 }
 
-let mapStateToProps = (state) => ({
-  profile: state.profilePage.userProfile,
-  status: state.profilePage.status,
-  userId: state.auth.userId,
-});
+let mapStateToProps = (state) => {
+  return {
+    profile: state.profilePage.userProfile,
+    status: state.profilePage.status,
+    userId: state.auth.userId,
+  };
+};
 
 function withRouter(Component) {
   function ComponentWithRouterProp(props) {
