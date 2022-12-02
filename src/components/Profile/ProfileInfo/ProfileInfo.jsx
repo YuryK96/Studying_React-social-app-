@@ -1,6 +1,6 @@
 import Preloader from "../../common/Preloader/Preloader";
 import ProfileInfoCss from "./ProfileInfo.module.css";
-import ProfileStatus from "./ProfileStatus";
+import ProfileStatuswithHooks from "./ProfileStatuswithHooks";
 
 const ProfileInfo = ({ profile, status, updateStatus }) => {
   if (!profile) {
@@ -17,7 +17,7 @@ const ProfileInfo = ({ profile, status, updateStatus }) => {
         <div className={ProfileInfoCss.avatar}>
           <img src={profile.photos.large} alt="" />
 
-          <ProfileStatus status={status} updateStatus={updateStatus} />
+          <ProfileStatuswithHooks status={status} updateStatus={updateStatus} />
           <div>
             <div>Social Network</div>
 
