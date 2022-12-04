@@ -3,15 +3,15 @@ import { profileAPI, usersAPI } from "../api/api";
 const ADD_POST = "ADD-POST";
 const SET_USER_PROFILE = "SET_USER_PROFILE";
 const SET_STATUS = "SET_STATUS";
+const DELETE_POST = "DELETE_POST";
 
 let initialState = {
-  // Post in Profile
   myPostData: [
-    { value: "Hi my name is Petya", countLikes: "10" },
-    { value: "Hi my name is Wasya", countLikes: "11" },
-    { value: "Hi my name is Roma", countLikes: "1" },
-    { value: "Hi my name is Yury", countLikes: "8" },
-    { value: "Hi my name is Nastya", countLikes: "15" },
+    { value: "Hi my name is Petya", countLikes: "10", id: 1 },
+    { value: "Hi my name is Wasya", countLikes: "11", id: 2 },
+    { value: "Hi my name is Roma", countLikes: "1", id: 3 },
+    { value: "Hi my name is Yury", countLikes: "8", id: 4 },
+    { value: "Hi my name is Nastya", countLikes: "15", id: 5 },
   ],
 
   userProfile: null,
@@ -37,6 +37,12 @@ const profileReducer = (state = initialState, action) => {
     case SET_STATUS: {
       return { ...state, status: action.status };
     }
+    case DELETE_POST: {
+      return {
+        ...state,
+        myPostData: state.myPostData.filter((p) => p.id != action.postId),
+      };
+    }
 
     default:
       return state;
@@ -46,6 +52,10 @@ const profileReducer = (state = initialState, action) => {
 export const onAddPost = (newPostText) => ({
   type: ADD_POST,
   newPostText,
+});
+export const deletePost = (postId) => ({
+  type: DELETE_POST,
+  postId,
 });
 
 export const setUserProfile = (userProfile) => ({
