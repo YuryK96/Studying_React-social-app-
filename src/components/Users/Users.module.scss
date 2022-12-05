@@ -13,25 +13,5 @@
   &__container {
     display: flex;
     width: 60%;
-    // justify-content: space-around;
   }
-}
-.pagination {
-  padding-top: 10px;
-  width: 300px;
-  height: 60px;
-  overflow-x: scroll;
-  &__page {
-    font-size: 20px;
-    width: 20px;
-    border: 1px solid black;
-    margin-left: 5px;
-    padding: 5px;
-    cursor: pointer;
-  }
-}
-.selectedPage {
-  font-size: 30px;
-  color: rgb(153, 51, 102);
-  font-weight: 700;
 }

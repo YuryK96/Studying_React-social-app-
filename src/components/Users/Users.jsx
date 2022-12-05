@@ -1,4 +1,5 @@
-import { NavLink } from "react-router-dom";
+import Paginator from "../common/Paginator/Pagination";
+import User from "./User";
 import s from "./Users.module.scss";
 
 const Users = ({
@@ -20,71 +21,22 @@ const Users = ({
 
   return (
     <div>
-      <div className={s.pagination}>
-        {pages.map((p, i) => {
-          return (
-            <span
-              key={i}
-              id={i}
-              onClick={() => {
-                onPageChanged(p);
-              }}
-              className={` ${s.pagination__page}  ${
-                currentPage === p ? s.selectedPage : null
-              }`}
-            >
-              {p}
-            </span>
-          );
-        })}
-      </div>
-      {users.map((u) => {
+      <Paginator
+        onPageChanged={onPageChanged}
+        currentPage={currentPage}
+        totalUsersCount={totalUsersCount}
+        pageSize={pageSize}
+      />
+
+      {users.map((user) => {
         return (
-          <section key={u.id}>
-            <div className={s.user}>
-              <div className={s.user__photo}>
-                <NavLink to={"/Profile/" + u.id}>
-                  <img
-                    src={
-                      u.photos.small != null
-                        ? u.photos.small
-                        : "https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?w=2000"
-                    }
-                    alt=""
-                  />
-                </NavLink>
-                {u.followed ? (
-                  <button
-                    disabled={followingInProgress.some((id) => id === u.id)}
-                    onClick={() => {
-                      toggleUserFollow(u.id);
-                    }}
-                  >
-                    UnFollow
-                  </button>
-                ) : (
-                  <button
-                    disabled={followingInProgress.some((id) => id === u.id)}
-                    onClick={() => {
-                      toggleUserUnFollow(u.id);
-                    }}
-                  >
-                    Follow
-                  </button>
-                )}
-              </div>
-              <div className={s.user__container}>
-                <div className={s.user__containerInfo}>
-                  <div>{u.name}</div>
-                  <div>{u.status}</div>
-                </div>
-                <div className={s.user__containerLocation}>
-                  <div>{"u.location.city"}</div>
-                  <div>{"u.location.country"}</div>
-                </div>
-              </div>
-            </div>
-          </section>
+          <User
+            key={user.id}
+            followingInProgress={followingInProgress}
+            toggleUserFollow={toggleUserFollow}
+            toggleUserUnFollow={toggleUserUnFollow}
+            user={user}
+          />
         );
       })}
     </div>
