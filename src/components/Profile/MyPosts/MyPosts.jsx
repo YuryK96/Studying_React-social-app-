@@ -5,7 +5,6 @@ import Post from "./Posts/Post";
 
 const MyPosts = React.memo(
   ({ myPostData, newPostText, onChangePost, onAddPost }) => {
-    console.log("render");
     const {
       register,
       formState: { errors, isValid },
