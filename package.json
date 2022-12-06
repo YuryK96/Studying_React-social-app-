@@ -41,12 +41,12 @@
     "prettier": "^2.7.1",
     "react-hook-form": "^7.39.5",
     "react-redux": "^8.0.5",
+    "react-test-renderer": "^18.2.0",
     "redux": "^4.2.0",
     "redux-thunk": "^2.4.2",
     "reselect": "^4.1.7",
     "sass": "^1.56.1"
   },
-
   "jest": {
     "transformIgnorePatterns": [
       "node_modules/(?!(react-leaflet|@react-leaflet|d3-*|axios))"

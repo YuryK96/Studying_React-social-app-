@@ -52,12 +52,12 @@ let state = {
 };
 
 test("followed should change on true", () => {
-  let action = { type: "UNFOLLOW", userId: 26971 };
+  let action = { type: "FOLLOW", userId: 26971 };
   let newState = usersReducer(state, action);
   expect(newState.users[4].followed).toBe(true);
 });
 test("followed should change on false", () => {
-  let action = { type: "FOLLOW", userId: 26972 };
+  let action = { type: "UNFOLLOW", userId: 26972 };
   let newState = usersReducer(state, action);
   expect(newState.users[3].followed).toBe(false);
 });
