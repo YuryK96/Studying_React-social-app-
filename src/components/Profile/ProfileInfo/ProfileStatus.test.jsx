@@ -1,24 +1,25 @@
 import React from "react";
-import { create } from "react-test-renderer";
-import ProfileStatus from "./ProfileStatus";
 import ProfileStatuswithHooks from "./ProfileStatuswithHooks";
+import { fireEvent, render, screen } from "@testing-library/react";
 
 describe("ProfileStatus component", () => {
-  test("status from props should be in state", () => {
-    const component = create(<ProfileStatuswithHooks status="lala" />);
-    const instance = component.getInstance();
-    expect(instance.statusState).toBe("lala");
+  it("status from props should be in state", () => {
+    render(<ProfileStatuswithHooks status="lala" />);
+    expect(screen.getByText("lala")).toBeInTheDocument();
   });
-  test("after creation <span> should be displayed ", () => {
-    const component = create(<ProfileStatuswithHooks status="lala" />);
-    const root = component.root;
-    let span = root.findByType("span");
-    expect(span).toBe(1);
+  it("after creation <span> should be displayed ", () => {
+    render(<ProfileStatuswithHooks status="lala" />);
+    expect(screen.getByRole("span")).toBeInTheDocument();
   });
-  test("after creation <span> should contains correct status", () => {
-    const component = create(<ProfileStatuswithHooks status="lala" />);
-    const root = component.root;
-    const span = root.findByType("span");
-    expect(span.innerText).toBe("lala");
+  it("after creation <input> should't be displayed ", () => {
+    render(<ProfileStatuswithHooks status="lala" />);
+    expect(screen.queryByRole("textbox")).toBeNull();
+  });
+  it(" <input> should be displayed in edtiMode instead of <span>", () => {
+    render(<ProfileStatuswithHooks status="lala" />);
+
+    let status = screen.getByRole("span");
+    fireEvent.doubleClick(status);
+    expect(screen.getByRole("textbox")).toBeInTheDocument();
   });
 });

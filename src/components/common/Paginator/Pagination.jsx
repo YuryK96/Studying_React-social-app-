@@ -3,10 +3,10 @@ import s from "./Pagination.module.scss";
 const Paginator = ({
   onPageChanged,
   currentPage,
-  totalUsersCount,
+  totalItemsCount,
   pageSize,
 }) => {
-  let pagesCount = Math.ceil(totalUsersCount / pageSize);
+  let pagesCount = Math.ceil(totalItemsCount / pageSize);
   let pages = [];
 
   for (let i = 1; i <= pagesCount; i++) {
