@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useDebugValue } from "react";
 import ProfileStatuswithHooks from "./ProfileStatuswithHooks";
 import { fireEvent, render, screen } from "@testing-library/react";
 
@@ -21,5 +21,16 @@ describe("ProfileStatus component", () => {
     let status = screen.getByRole("span");
     fireEvent.doubleClick(status);
     expect(screen.getByRole("textbox")).toBeInTheDocument();
+  });
+  it("callback should be called", () => {
+    const mockupdateStatus = jest.fn();
+    render(
+      <ProfileStatuswithHooks status="" updateStatus={mockupdateStatus} />
+    );
+    let status = screen.getByRole("span");
+    fireEvent.doubleClick(status);
+    let input = screen.getByRole("textbox");
+    fireEvent.focusOut(input);
+    expect(mockupdateStatus).toBeCalled();
   });
 });
