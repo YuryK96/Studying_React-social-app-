@@ -12,13 +12,6 @@ const Users = ({
   toggleUserFollow,
   toggleUserUnFollow,
 }) => {
-  let pagesCount = Math.ceil(totalUsersCount / pageSize);
-  let pages = [];
-
-  for (let i = 1; i <= pagesCount; i++) {
-    pages.push(i);
-  }
-
   return (
     <div>
       <Paginator

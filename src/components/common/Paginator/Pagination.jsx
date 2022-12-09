@@ -1,3 +1,4 @@
+import { useState } from "react";
 import s from "./Pagination.module.scss";
 
 const Paginator = ({
@@ -5,6 +6,7 @@ const Paginator = ({
   currentPage,
   totalItemsCount,
   pageSize,
+  portionSize = 10,
 }) => {
   let pagesCount = Math.ceil(totalItemsCount / pageSize);
   let pages = [];
@@ -13,24 +15,55 @@ const Paginator = ({
     pages.push(i);
   }
 
+  let portionCount = Math.ceil(pagesCount / portionSize);
+  const [portionNumber, serPortionNumber] = useState(1);
+  let leftPortionPageNumber = (portionNumber - 1) * portionSize + 1;
+  let rightPortionPageNumber = portionNumber * portionSize;
+
   return (
-    <div className={s.pagination}>
-      {pages.map((p, i) => {
-        return (
-          <span
-            key={i}
-            id={i}
+    <div className={s.paginationItem}>
+      <div className={s.paginationItem__pagination}>
+        {pages
+          .filter(
+            (p) => p >= leftPortionPageNumber && p <= rightPortionPageNumber
+          )
+          .map((p, i) => {
+            return (
+              <span
+                key={i}
+                id={i}
+                onClick={() => {
+                  onPageChanged(p);
+                }}
+                className={` ${s.paginationItem__page}  ${
+                  currentPage === p ? s.selectedPage : null
+                }`}
+              >
+                {p}
+              </span>
+            );
+          })}
+      </div>
+      <div className={s.paginationItem__buttons}>
+        {portionCount > portionNumber && (
+          <button
             onClick={() => {
-              onPageChanged(p);
+              serPortionNumber(portionNumber + 1);
             }}
-            className={` ${s.pagination__page}  ${
-              currentPage === p ? s.selectedPage : null
-            }`}
           >
-            {p}
-          </span>
-        );
-      })}
+            Next
+          </button>
+        )}
+        {portionNumber > 1 && (
+          <button
+            onClick={() => {
+              serPortionNumber(portionNumber - 1);
+            }}
+          >
+            Previous
+          </button>
+        )}
+      </div>
     </div>
   );
 };
