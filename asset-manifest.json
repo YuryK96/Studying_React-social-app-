@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Studying_React-social-app-/static/css/main.7f2895cb.css",
-    "main.js": "/Studying_React-social-app-/static/js/main.47f5b261.js",
+    "main.js": "/Studying_React-social-app-/static/js/main.42a6b84b.js",
     "static/css/672.13596174.chunk.css": "/Studying_React-social-app-/static/css/672.13596174.chunk.css",
     "static/js/672.51bbe921.chunk.js": "/Studying_React-social-app-/static/js/672.51bbe921.chunk.js",
     "static/css/649.e7e20547.chunk.css": "/Studying_React-social-app-/static/css/649.e7e20547.chunk.css",
@@ -10,7 +10,7 @@
     "static/media/preloader.svg": "/Studying_React-social-app-/static/media/preloader.2f0125661784f23fc6a05d1516a9d3c1.svg",
     "index.html": "/Studying_React-social-app-/index.html",
     "main.7f2895cb.css.map": "/Studying_React-social-app-/static/css/main.7f2895cb.css.map",
-    "main.47f5b261.js.map": "/Studying_React-social-app-/static/js/main.47f5b261.js.map",
+    "main.42a6b84b.js.map": "/Studying_React-social-app-/static/js/main.42a6b84b.js.map",
     "672.13596174.chunk.css.map": "/Studying_React-social-app-/static/css/672.13596174.chunk.css.map",
     "672.51bbe921.chunk.js.map": "/Studying_React-social-app-/static/js/672.51bbe921.chunk.js.map",
     "649.e7e20547.chunk.css.map": "/Studying_React-social-app-/static/css/649.e7e20547.chunk.css.map",
@@ -19,6 +19,6 @@
   },
   "entrypoints": [
     "static/css/main.7f2895cb.css",
-    "static/js/main.47f5b261.js"
+    "static/js/main.42a6b84b.js"
   ]
 }
