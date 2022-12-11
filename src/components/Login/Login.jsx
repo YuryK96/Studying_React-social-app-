@@ -34,9 +34,9 @@ const LoginForm = ({ login }) => {
               message: "Pleace enter the valid email",
             },
             minLength: {
-              value: 5,
+              value: 4,
 
-              message: "need more 5 symbols",
+              message: "need more symbols",
             },
           })}
         />
@@ -56,8 +56,8 @@ const LoginForm = ({ login }) => {
           {...register("password", {
             required: "need to fill form",
             minLength: {
-              value: 5,
-              message: "need more 5 symbols",
+              value: 4,
+              message: "need more symbols",
             },
           })}
         />
