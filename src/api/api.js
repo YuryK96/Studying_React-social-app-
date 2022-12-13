@@ -40,6 +40,25 @@ export const profileAPI = {
   updateStatus(status) {
     return instance.put(`profile/status/`, { status: status });
   },
+  updateProfile(data, userId) {
+    return instance.put("profile", {
+      userId: userId,
+      AboutMe: data.aboutMe,
+      lookingForAJob: data.lookingForAJob,
+      lookingForAJobDescription: data.lookingForAJobDescription,
+      fullName: data.name,
+      contacts: {
+        github: data.github,
+        vk: data.vk,
+        facebook: data.facebook,
+        instagram: data.instagram,
+        twitter: data.twitter,
+        website: data.website,
+        youtube: data.youtube,
+        mainLink: data.mainLink,
+      },
+    });
+  },
   setPhoto(photo) {
     const formData = new FormData();
     formData.append("image", photo);

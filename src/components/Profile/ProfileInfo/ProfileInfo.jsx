@@ -1,17 +1,23 @@
+import { useState } from "react";
 import Preloader from "../../common/Preloader/Preloader";
+import ProfileDataForm from "./ProfileDataForm";
 import ProfileInfoCss from "./ProfileInfo.module.css";
 import ProfileStatuswithHooks from "./ProfileStatuswithHooks";
 
-const ProfileInfo = ({ profile, status, updateStatus, isOwner, savePhoto }) => {
+const ProfileInfo = ({
+  profile,
+  status,
+  updateStatus,
+  isOwner,
+  savePhoto,
+  updateProfile,
+  userId,
+}) => {
+  const [editMode, setEditMode] = useState(false);
   if (!profile) {
     return <Preloader />;
   }
 
-  const mainPhotoSelected = (e) => {
-    if (e.target.files.length) {
-      savePhoto(e.target.files[0]);
-    }
-  };
   return (
     <div className={ProfileInfoCss.content}>
       <div className={ProfileInfoCss.head_img}>
@@ -20,7 +26,46 @@ const ProfileInfo = ({ profile, status, updateStatus, isOwner, savePhoto }) => {
           alt=""
         />
       </div>
+      {editMode ? (
+        <ProfileDataForm
+          OutFromEditMode={() => {
+            setEditMode(false);
+          }}
+          profile={profile}
+          isOwner={isOwner}
+          updateProfile={updateProfile}
+          userId={userId}
+        />
+      ) : (
+        <ProfileData
+          profile={profile}
+          isOwner={isOwner}
+          savePhoto={savePhoto}
+          goToEditMode={() => {
+            setEditMode(true);
+          }}
+        />
+      )}
+      <div className={ProfileInfoCss.status}>
+        <ProfileStatuswithHooks status={status} updateStatus={updateStatus} />
+      </div>
+    </div>
+  );
+};
+
+const ProfileData = ({ profile, isOwner, goToEditMode }) => {
+  return (
+    <div className={ProfileInfoCss.item}>
+      {isOwner && (
+        <div>
+          {" "}
+          <button onClick={goToEditMode}>Edit</button>
+        </div>
+      )}
       <div className={ProfileInfoCss.avatar}>
+        <div className={ProfileInfoCss.name}>
+          <b> {profile.fullName} </b>
+        </div>
         <img
           src={
             profile.photos.large ||
@@ -28,46 +73,50 @@ const ProfileInfo = ({ profile, status, updateStatus, isOwner, savePhoto }) => {
           }
           alt=""
         />
-        {isOwner && (
-          <input type={"file"} onChange={(e) => mainPhotoSelected(e)} />
+      </div>
+      <div>
+        {" "}
+        <b> About Me</b>
+      </div>
+      <div className={ProfileInfoCss.aboutMe}>{profile.aboutMe}</div>
+
+      <div>
+        <div>
+          {" "}
+          <b> Work </b>
+        </div>
+        {profile.lookingForAJob ? (
+          <div>Open to work </div>
+        ) : (
+          <div>Not in looking for</div>
         )}
+        <div>{profile.lookingForAJobDescription}</div>
+      </div>
 
-        <ProfileStatuswithHooks status={status} updateStatus={updateStatus} />
+      <div>
         <div>
-          <div>Social Network</div>
-
-          <div>
-            <a target="_blank" href={profile.contacts.facebook}>
-              Faceebook
-            </a>
-          </div>
-
-          <div>
-            <a target="_blank" href={profile.contacts.vk}>
-              vk
-            </a>
-          </div>
-
-          <div>
-            <a target="_blank" href={profile.contacts.twitter}>
-              twitter
-            </a>
-          </div>
-
-          <div>
-            <a target="_blank" href={profile.contacts.github}>
-              gitHub
-            </a>
-          </div>
+          {" "}
+          <b> Contacts</b>
         </div>
-        <div>
-          <div>Work</div>
-          {profile.lookingForAJob ? <div>Open to work </div> : null}
-          <div>{profile.lookingForAJobDescription}</div>
-        </div>
+        {Object.keys(profile.contacts).map((key) => {
+          return (
+            <Contacts
+              key={key}
+              contactTitle={key}
+              contactValue={profile.contacts[key]}
+            />
+          );
+        })}
       </div>
     </div>
   );
 };
 
+const Contacts = ({ contactTitle, contactValue }) => {
+  return (
+    <div>
+      {contactTitle} : {contactValue}
+    </div>
+  );
+};
 export default ProfileInfo;
