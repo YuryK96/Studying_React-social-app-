@@ -62,6 +62,7 @@ const ProfileDataForm = ({
                 clearErrors();
               }}
               {...register("name", {
+                value: profile.fullName,
                 required: "need to fill form",
 
                 minLength: {
@@ -89,7 +90,7 @@ const ProfileDataForm = ({
             }}
             {...register("aboutMe", {
               required: "need to fill form",
-
+              value: profile.aboutMe,
               minLength: {
                 value: 1,
 
@@ -131,7 +132,7 @@ const ProfileDataForm = ({
               type="text"
               {...register("lookingForAJobDescription", {
                 required: "need to fill form",
-
+                value: profile.lookingForAJobDescription,
                 minLength: {
                   value: 1,
 
@@ -163,7 +164,9 @@ const ProfileDataForm = ({
               onFocus={() => {
                 clearErrors();
               }}
-              {...register("facebook")}
+              {...register("facebook", {
+                value: profile.contacts.facebook,
+              })}
             />
 
             <div>
@@ -184,7 +187,9 @@ const ProfileDataForm = ({
               onFocus={() => {
                 clearErrors();
               }}
-              {...register("website")}
+              {...register("website", {
+                value: profile.contacts.website,
+              })}
             />
 
             <div>
@@ -205,7 +210,9 @@ const ProfileDataForm = ({
               onFocus={() => {
                 clearErrors();
               }}
-              {...register("vk")}
+              {...register("vk", {
+                value: profile.contacts.vk,
+              })}
             />
 
             <div>
@@ -226,7 +233,9 @@ const ProfileDataForm = ({
               onFocus={() => {
                 clearErrors();
               }}
-              {...register("twitter")}
+              {...register("twitter", {
+                value: profile.contacts.twitter,
+              })}
             />
 
             <div>
@@ -247,7 +256,9 @@ const ProfileDataForm = ({
               onFocus={() => {
                 clearErrors();
               }}
-              {...register("instagram")}
+              {...register("instagram", {
+                value: profile.contacts.instagram,
+              })}
             />
 
             <div>
@@ -268,7 +279,9 @@ const ProfileDataForm = ({
               onFocus={() => {
                 clearErrors();
               }}
-              {...register("youtube")}
+              {...register("youtube", {
+                value: profile.contacts.youtube,
+              })}
             />
 
             <div>
@@ -288,7 +301,9 @@ const ProfileDataForm = ({
               onFocus={() => {
                 clearErrors();
               }}
-              {...register("github")}
+              {...register("github", {
+                value: profile.contacts.github,
+              })}
             />
 
             <div>
@@ -309,7 +324,9 @@ const ProfileDataForm = ({
               onFocus={() => {
                 clearErrors();
               }}
-              {...register("mainLink")}
+              {...register("mainLink", {
+                value: profile.contacts.mainLink,
+              })}
             />
 
             <div>
