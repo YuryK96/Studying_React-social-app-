@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { Navigate } from "react-router-dom";
 
-const LoginForm = ({ login }) => {
+const LoginForm = ({ login, captcha }) => {
   const {
     register,
     formState: { errors, isValid },
@@ -14,7 +14,7 @@ const LoginForm = ({ login }) => {
   });
 
   const onSubmit = (data) => {
-    login(data.email, data.password, data.rememberMe, setError);
+    login(data.email, data.password, data.rememberMe, data.captcha, setError);
 
     reset();
   };
@@ -72,6 +72,22 @@ const LoginForm = ({ login }) => {
       <div>
         <input {...register("rememberMe")} type={"checkbox"} />
       </div>
+
+      {captcha && (
+        <>
+          <img src={captcha} />
+          <div>
+            <input
+              onFocus={() => {
+                clearErrors();
+              }}
+              type="text"
+              {...register("captcha")}
+            />
+          </div>
+        </>
+      )}
+
       <div>
         <input disabled={!isValid} type="submit" />
       </div>
@@ -79,13 +95,13 @@ const LoginForm = ({ login }) => {
   );
 };
 
-const Login = ({ login, isAuth }) => {
+const Login = ({ login, isAuth, captcha }) => {
   return (
     <div>
       {!isAuth ? (
         <div>
           <h1>Login</h1>
-          <LoginForm login={login} />
+          <LoginForm login={login} captcha={captcha} />
         </div>
       ) : (
         <Navigate to={"/profile"} />
