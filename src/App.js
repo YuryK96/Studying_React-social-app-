@@ -1,5 +1,5 @@
 import React, { Suspense } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import "./App.css";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Nav from "./components/Navbar/Navbar";
@@ -34,6 +34,7 @@ class App extends React.Component {
         <Nav />
         <Suspense fallback={<Preloader />}>
           <Routes>
+            <Route path="/" element={<Navigate to="/Profile" />} />
             <Route path="/Profile/:userId" element={<ProfileContainer />} />
             <Route path="/Profile/" element={<ProfileContainer />} />
 
