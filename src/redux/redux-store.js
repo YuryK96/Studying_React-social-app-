@@ -4,13 +4,13 @@ import {
   compose,
   legacy_createStore as createStore,
 } from "redux";
-import authReducer from "./auth-reducer";
-import dialogReducer from "./dialog-reducer";
+import authReducer from "./auth-reducer.ts";
+import dialogReducer from "./dialog-reducer.ts";
 import profileReducer from "./profile-reducer";
 import sideBarReducer from "./sideBar-reducer";
-import usersReducer from "./users-reducer";
+import usersReducer from "./users-reducer.ts";
 import thunkMiddleware from "redux-thunk";
-import appReducer from "./app-reducer";
+import appReducer from "./app-reducer.ts";
 
 let reducers = combineReducers({
   profilePage: profileReducer,

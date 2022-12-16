@@ -4,7 +4,7 @@ import {
   setCurrentPage,
   toggleUserFollow,
   toggleUserUnFollow,
-} from "../../redux/users-reducer";
+} from "../../redux/users-reducer.ts";
 import Users from "./Users";
 import React from "react";
 import Preloader from "../common/Preloader/Preloader";
