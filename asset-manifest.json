@@ -1,24 +1,24 @@
 {
   "files": {
     "main.css": "/Studying_React-social-app-/static/css/main.7f2895cb.css",
-    "main.js": "/Studying_React-social-app-/static/js/main.5d711122.js",
+    "main.js": "/Studying_React-social-app-/static/js/main.f0cff978.js",
     "static/css/672.13596174.chunk.css": "/Studying_React-social-app-/static/css/672.13596174.chunk.css",
-    "static/js/672.51bbe921.chunk.js": "/Studying_React-social-app-/static/js/672.51bbe921.chunk.js",
+    "static/js/672.5e6a4f38.chunk.js": "/Studying_React-social-app-/static/js/672.5e6a4f38.chunk.js",
     "static/css/203.e22db16f.chunk.css": "/Studying_React-social-app-/static/css/203.e22db16f.chunk.css",
-    "static/js/203.3198a92b.chunk.js": "/Studying_React-social-app-/static/js/203.3198a92b.chunk.js",
+    "static/js/203.72e72b08.chunk.js": "/Studying_React-social-app-/static/js/203.72e72b08.chunk.js",
     "static/js/787.62eb6c37.chunk.js": "/Studying_React-social-app-/static/js/787.62eb6c37.chunk.js",
     "static/media/preloader.svg": "/Studying_React-social-app-/static/media/preloader.2f0125661784f23fc6a05d1516a9d3c1.svg",
     "index.html": "/Studying_React-social-app-/index.html",
     "main.7f2895cb.css.map": "/Studying_React-social-app-/static/css/main.7f2895cb.css.map",
-    "main.5d711122.js.map": "/Studying_React-social-app-/static/js/main.5d711122.js.map",
+    "main.f0cff978.js.map": "/Studying_React-social-app-/static/js/main.f0cff978.js.map",
     "672.13596174.chunk.css.map": "/Studying_React-social-app-/static/css/672.13596174.chunk.css.map",
-    "672.51bbe921.chunk.js.map": "/Studying_React-social-app-/static/js/672.51bbe921.chunk.js.map",
+    "672.5e6a4f38.chunk.js.map": "/Studying_React-social-app-/static/js/672.5e6a4f38.chunk.js.map",
     "203.e22db16f.chunk.css.map": "/Studying_React-social-app-/static/css/203.e22db16f.chunk.css.map",
-    "203.3198a92b.chunk.js.map": "/Studying_React-social-app-/static/js/203.3198a92b.chunk.js.map",
+    "203.72e72b08.chunk.js.map": "/Studying_React-social-app-/static/js/203.72e72b08.chunk.js.map",
     "787.62eb6c37.chunk.js.map": "/Studying_React-social-app-/static/js/787.62eb6c37.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.7f2895cb.css",
-    "static/js/main.5d711122.js"
+    "static/js/main.f0cff978.js"
   ]
 }
