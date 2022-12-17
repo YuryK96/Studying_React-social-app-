@@ -1,7 +1,15 @@
 import { useState } from "react";
 import s from "./Pagination.module.scss";
 
-const Paginator = ({
+type PropsType = {
+  currentPage: number;
+  totalItemsCount: number;
+  pageSize: number;
+  portionSize?: number;
+  onPageChanged: (pageNumber: number) => void;
+};
+
+const Paginator: React.FC<PropsType> = ({
   onPageChanged,
   currentPage,
   totalItemsCount,
@@ -9,7 +17,7 @@ const Paginator = ({
   portionSize = 10,
 }) => {
   let pagesCount = Math.ceil(totalItemsCount / pageSize);
-  let pages = [];
+  let pages: Array<number> = [];
 
   for (let i = 1; i <= pagesCount; i++) {
     pages.push(i);
@@ -31,7 +39,6 @@ const Paginator = ({
             return (
               <span
                 key={i}
-                id={i}
                 onClick={() => {
                   onPageChanged(p);
                 }}
