@@ -38,3 +38,12 @@ export type UserType = {
   photos: PhotosType;
   status: null | string;
 };
+
+export type DialogType = {
+  id: number;
+  name: string;
+};
+export type MessageType = {
+  id: number;
+  message: string;
+};
