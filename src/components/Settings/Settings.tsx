@@ -1,6 +1,6 @@
 import SettingsCss from "./Settings.module.css";
 
-const Settings = () => {
+const Settings: React.FC = () => {
   return <div className={SettingsCss.settings}>Settings</div>;
 };
 

@@ -1,7 +1,15 @@
 import { NavLink } from "react-router-dom";
 import s from "./Users.module.scss";
+import { UserType } from "../../types/types";
 
-const User = ({
+type UserPropsType = {
+  user: UserType;
+  followingInProgress: Array<number>;
+  toggleUserFollow: (id: number) => void;
+  toggleUserUnFollow: (id: number) => void;
+};
+
+const User: React.FC<UserPropsType> = ({
   followingInProgress,
   toggleUserFollow,
   toggleUserUnFollow,

@@ -1,7 +1,26 @@
-import { useForm } from "react-hook-form";
+import { useForm, SubmitHandler } from "react-hook-form";
 import { Navigate } from "react-router-dom";
 
-const LoginForm = ({ login, captcha }) => {
+type LoginFormType = {
+  captcha: string | null;
+  login: (
+    email: string | null,
+    password: string | null,
+    rememberMe: boolean,
+    captcha: string | null,
+    setError: any
+  ) => void;
+};
+
+type FormValues = {
+  email: string | null;
+  password: string | null;
+  rememberMe: boolean;
+  captcha: string | null;
+  setError: any;
+};
+
+const LoginForm: React.FC<LoginFormType> = ({ login, captcha }) => {
   const {
     register,
     formState: { errors, isValid },
@@ -9,11 +28,10 @@ const LoginForm = ({ login, captcha }) => {
     reset,
     setError,
     clearErrors,
-  } = useForm({
+  } = useForm<FormValues>({
     mode: "onBlur",
   });
-
-  const onSubmit = (data) => {
+  const onSubmit: SubmitHandler<FormValues> = (data) => {
     login(data.email, data.password, data.rememberMe, data.captcha, setError);
 
     reset();
@@ -95,7 +113,19 @@ const LoginForm = ({ login, captcha }) => {
   );
 };
 
-const Login = ({ login, isAuth, captcha }) => {
+type LoginType = {
+  captcha: string | null;
+  login: (
+    email: string | null,
+    password: string | null,
+    rememberMe: boolean,
+    captcha: string | null,
+    setError: any
+  ) => void;
+  isAuth: boolean;
+};
+
+const Login: React.FC<LoginType> = ({ login, isAuth, captcha }) => {
   return (
     <div>
       {!isAuth ? (
