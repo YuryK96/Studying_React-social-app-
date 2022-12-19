@@ -1,10 +1,21 @@
 import { useState } from "react";
+import { ContactsType, UserProfileType } from "../../../types/types";
 import Preloader from "../../common/Preloader/Preloader";
 import ProfileDataForm from "./ProfileDataForm";
 import ProfileInfoCss from "./ProfileInfo.module.css";
 import ProfileStatuswithHooks from "./ProfileStatuswithHooks";
 
-const ProfileInfo = ({
+type ProfileInfoType = {
+  profile: UserProfileType | null;
+  status: string;
+  userId: number | null;
+  updateStatus: (status: string) => void;
+  savePhoto: (photo: any) => void;
+  updateProfile: (data: UserProfileType, userId: number, setError: any) => void;
+  isOwner: boolean;
+};
+
+const ProfileInfo: React.FC<ProfileInfoType> = ({
   profile,
   status,
   updateStatus,
@@ -35,12 +46,12 @@ const ProfileInfo = ({
           isOwner={isOwner}
           updateProfile={updateProfile}
           userId={userId}
+          savePhoto={savePhoto}
         />
       ) : (
         <ProfileData
           profile={profile}
           isOwner={isOwner}
-          savePhoto={savePhoto}
           goToEditMode={() => {
             setEditMode(true);
           }}
@@ -53,7 +64,17 @@ const ProfileInfo = ({
   );
 };
 
-const ProfileData = ({ profile, isOwner, goToEditMode }) => {
+type ProfileDataType = {
+  profile: UserProfileType;
+  goToEditMode: () => void;
+  isOwner: boolean;
+};
+
+const ProfileData: React.FC<ProfileDataType> = ({
+  profile,
+  isOwner,
+  goToEditMode,
+}) => {
   return (
     <div className={ProfileInfoCss.item}>
       {isOwner && (
@@ -103,7 +124,7 @@ const ProfileData = ({ profile, isOwner, goToEditMode }) => {
             <Contacts
               key={key}
               contactTitle={key}
-              contactValue={profile.contacts[key]}
+              contactValue={profile.contacts[key as keyof ContactsType]}
             />
           );
         })}
@@ -112,7 +133,15 @@ const ProfileData = ({ profile, isOwner, goToEditMode }) => {
   );
 };
 
-const Contacts = ({ contactTitle, contactValue }) => {
+type ProfileContactsType = {
+  contactTitle: string | null;
+  contactValue: string | null;
+};
+
+const Contacts: React.FC<ProfileContactsType> = ({
+  contactTitle,
+  contactValue,
+}) => {
   return (
     <div>
       {contactTitle} : {contactValue}
