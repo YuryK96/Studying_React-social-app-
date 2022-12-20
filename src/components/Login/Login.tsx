@@ -18,6 +18,7 @@ type FormValues = {
   rememberMe: boolean;
   captcha: string | null;
   setError: any;
+  server?: string;
 };
 
 const LoginForm: React.FC<LoginFormType> = ({ login, captcha }) => {

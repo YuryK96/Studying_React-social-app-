@@ -1,7 +1,37 @@
 import ProfileInfoCss from "./ProfileInfo.module.css";
-import { useForm } from "react-hook-form";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { PhotoType, UserProfileType } from "../../../types/types";
 
-const ProfileDataForm = ({
+type ProfileDataFormType = {
+  profile: UserProfileType;
+  isOwner: boolean;
+  userId: number | null;
+  OutFromEditMode: () => void;
+  savePhoto: (photo: PhotoType) => void;
+  updateProfile: (
+    data: UserProfileType,
+    userId: number | null,
+    setError: any
+  ) => void;
+};
+
+type FormValues = {
+  aboutMe: string | null;
+  facebook: string | null;
+  github: string | null;
+  instagram: string | null;
+  lookingForAJob: boolean;
+  lookingForAJobDescription: string | null;
+  mainLink: string | null;
+  name: string | null;
+  twitter: string | null;
+  vk: string | null;
+  website: string | null;
+  youtube: string | null;
+  server?: string;
+};
+
+const ProfileDataForm: React.FC<ProfileDataFormType> = ({
   profile,
   isOwner,
   savePhoto,
@@ -16,18 +46,39 @@ const ProfileDataForm = ({
     reset,
     setError,
     clearErrors,
-  } = useForm({
+  } = useForm<FormValues>({
     mode: "onBlur",
   });
 
-  const mainPhotoSelected = (e) => {
-    if (e.target.files.length) {
+  const mainPhotoSelected = (e: { target: HTMLInputElement }) => {
+    if (e.target?.files?.length) {
       savePhoto(e.target.files[0]);
     }
   };
 
-  const onSubmit = (data) => {
-    updateProfile(data, userId, setError);
+  const onSubmit: SubmitHandler<FormValues> = (data) => {
+    let CompletedForm = {
+      aboutMe: data.aboutMe,
+      fullName: data.name,
+      lookingForAJob: data.lookingForAJob,
+      lookingForAJobDescription: data.lookingForAJobDescription,
+      userId: userId,
+      photos: {
+        large: null,
+        small: null,
+      },
+      contacts: {
+        facebook: data.facebook,
+        github: data.github,
+        instagram: data.instagram,
+        mainLink: data.mainLink,
+        twitter: data.twitter,
+        vk: data.vk,
+        website: data.website,
+        youtube: data.youtube,
+      },
+    };
+    updateProfile(CompletedForm, userId, setError);
     reset();
     OutFromEditMode();
   };

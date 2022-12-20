@@ -1,22 +1,31 @@
 import React from "react";
-import { useForm } from "react-hook-form";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { MyPostType } from "../../../types/types";
 import s from "./MyPosts.module.css";
 import Post from "./Posts/Post";
 
-const MyPosts = React.memo(
-  ({ myPostData, newPostText, onChangePost, onAddPost }) => {
+type MyPostsType = {
+  myPostData: Array<MyPostType>;
+  onAddPost: (newPostText: string) => void;
+};
+type FormValues = {
+  newPostText: string;
+};
+
+const MyPosts: React.FC<MyPostsType> = React.memo(
+  ({ myPostData, onAddPost }) => {
     const {
       register,
       formState: { errors, isValid },
       handleSubmit,
       reset,
-    } = useForm();
+    } = useForm<FormValues>();
 
     let arrPostData = myPostData.map((post, i) => {
       return <Post key={i} value={post.value} countLikes={post.countLikes} />;
     });
 
-    const onSubmit = (data) => {
+    const onSubmit: SubmitHandler<FormValues> = (data) => {
       onAddPost(data.newPostText);
       reset();
     };
@@ -26,7 +35,9 @@ const MyPosts = React.memo(
         <form onSubmit={handleSubmit(onSubmit)}>
           <textarea
             className={s.newMessage}
-            style={errors?.newPostText ? { border: "1px solid red" } : null}
+            style={
+              errors?.newPostText ? { border: "1px solid red" } : undefined
+            }
             {...register("newPostText", {
               required: "need to text something",
               maxLength: {
@@ -34,8 +45,8 @@ const MyPosts = React.memo(
                 message: "need less 20 symbols",
               },
             })}
-            cols="30"
-            rows="5"
+            cols={30}
+            rows={5}
           />
           <div>
             <p style={{ color: "red" }}>{errors?.newPostText?.message}</p>{" "}

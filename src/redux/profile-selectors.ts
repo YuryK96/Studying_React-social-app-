@@ -9,3 +9,11 @@ export const getUserProfile = (state: AppStateType) => {
 export const getProfileStatus = (state: AppStateType) => {
   return state.profilePage.status;
 };
+
+export const getmyPostData = (state: AppStateType) => {
+  return state.profilePage.myPostData;
+};
+
+export const getnewPostText = (state: AppStateType) => {
+  return state.profilePage.newPostText;
+};

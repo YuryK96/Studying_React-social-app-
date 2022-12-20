@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ContactsType, UserProfileType } from "../../../types/types";
+import { ContactsType, PhotoType, UserProfileType } from "../../../types/types";
 import Preloader from "../../common/Preloader/Preloader";
 import ProfileDataForm from "./ProfileDataForm";
 import ProfileInfoCss from "./ProfileInfo.module.css";
@@ -10,8 +10,12 @@ type ProfileInfoType = {
   status: string;
   userId: number | null;
   updateStatus: (status: string) => void;
-  savePhoto: (photo: any) => void;
-  updateProfile: (data: UserProfileType, userId: number, setError: any) => void;
+  savePhoto: (photo: PhotoType) => void;
+  updateProfile: (
+    data: UserProfileType,
+    userId: number | null,
+    setError: any
+  ) => void;
   isOwner: boolean;
 };
 

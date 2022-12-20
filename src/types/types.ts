@@ -1,23 +1,31 @@
 export type MyPostType = {
-  value: String;
-  countLikes: Number;
-  id: Number;
+  value: string;
+  countLikes: number;
+  id: number;
+};
+
+export type PhotoType = {
+  lastModified: number;
+  lastModifiedDate?: number;
+  name: string;
+  size: number;
+  type: string;
+  webkitRelativePath: string;
+};
+export type PhotosType = {
+  large: null | string;
+  small: null | string;
 };
 
 export type ContactsType = {
   facebook: string | null;
   github: string | null;
   instagram: string | null;
-  mainLink: null;
+  mainLink: string | null;
   twitter: string | null;
   vk: string | null;
   website: string | null;
   youtube: string | null;
-};
-
-export type PhotosType = {
-  large: null | string;
-  small: null | string;
 };
 
 export type UserProfileType = {

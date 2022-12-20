@@ -17,7 +17,7 @@ import {
   getUserProfile,
 } from "../../redux/profile-selectors";
 import { AppStateType } from "../../redux/redux-store";
-import { UserProfileType } from "../../types/types";
+import { PhotoType, UserProfileType } from "../../types/types";
 import { getUserId } from "../../redux/auth-selectors";
 
 type MapStatePropsType = {
@@ -29,9 +29,13 @@ type MapStatePropsType = {
 type MapDispatchPropsType = {
   setUser: (userId: number) => void;
   getStatus: (userId: number) => void;
-  updateStatus: (status: string | null) => void;
-  savePhoto: (photo: any) => void;
-  updateProfile: (data: UserProfileType, userId: number, setError: any) => void;
+  updateStatus: (status: string) => void;
+  savePhoto: (photo: PhotoType) => void;
+  updateProfile: (
+    data: UserProfileType,
+    userId: number | null,
+    setError: any
+  ) => void;
 };
 
 type OwnPropsType = {

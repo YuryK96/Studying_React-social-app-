@@ -1,15 +1,19 @@
 import ProfileCss from "./Profile.module.css";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
-import { UserProfileType } from "../../types/types";
+import { PhotoType, UserProfileType } from "../../types/types";
 
 type ProfileType = {
   profile: UserProfileType | null;
   status: string;
   userId: number | null;
   updateStatus: (status: string) => void;
-  savePhoto: (photo: any) => void;
-  updateProfile: (data: UserProfileType, userId: number, setError: any) => void;
+  savePhoto: (photo: PhotoType) => void;
+  updateProfile: (
+    data: UserProfileType,
+    userId: number | null,
+    setError: any
+  ) => void;
   isOwner: boolean;
 };
 
