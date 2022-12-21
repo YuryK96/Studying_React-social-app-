@@ -8,7 +8,7 @@ type ProfileType = {
   status: string;
   userId: number | null;
   updateStatus: (status: string) => void;
-  savePhoto: (photo: PhotoType) => void;
+  savePhoto: (photo: string | Blob) => void;
   updateProfile: (
     data: UserProfileType,
     userId: number | null,

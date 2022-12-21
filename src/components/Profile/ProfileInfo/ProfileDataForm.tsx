@@ -7,7 +7,7 @@ type ProfileDataFormType = {
   isOwner: boolean;
   userId: number | null;
   OutFromEditMode: () => void;
-  savePhoto: (photo: PhotoType) => void;
+  savePhoto: (photo: string | Blob) => void;
   updateProfile: (
     data: UserProfileType,
     userId: number | null,

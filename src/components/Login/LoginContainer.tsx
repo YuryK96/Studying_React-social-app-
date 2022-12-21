@@ -13,10 +13,10 @@ type MapStatePropsType = {
 
 type MapDispatchPropsType = {
   login: (
-    email: string | null,
-    password: string | null,
+    email: string,
+    password: string,
     rememberMe: boolean,
-    captcha: string | null,
+    captcha: string,
     setError: any
   ) => void;
 };

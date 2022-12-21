@@ -4,19 +4,19 @@ import { Navigate } from "react-router-dom";
 type LoginFormType = {
   captcha: string | null;
   login: (
-    email: string | null,
-    password: string | null,
+    email: string,
+    password: string,
     rememberMe: boolean,
-    captcha: string | null,
+    captcha: string,
     setError: any
   ) => void;
 };
 
 type FormValues = {
-  email: string | null;
-  password: string | null;
+  email: string;
+  password: string;
   rememberMe: boolean;
-  captcha: string | null;
+  captcha: string;
   setError: any;
   server?: string;
 };
@@ -117,10 +117,10 @@ const LoginForm: React.FC<LoginFormType> = ({ login, captcha }) => {
 type LoginType = {
   captcha: string | null;
   login: (
-    email: string | null,
-    password: string | null,
+    email: string,
+    password: string,
     rememberMe: boolean,
-    captcha: string | null,
+    captcha: string,
     setError: any
   ) => void;
   isAuth: boolean;

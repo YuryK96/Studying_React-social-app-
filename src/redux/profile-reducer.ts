@@ -164,7 +164,7 @@ export const updateProfile =
   };
 
 export const savePhoto =
-  (photo: PhotoType): ThunkType =>
+  (photo: string | Blob): ThunkType =>
   async (dispatch) => {
     let response = await profileAPI.setPhoto(photo);
     if (response.data.resultCode === 0) {
