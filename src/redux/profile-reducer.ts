@@ -5,6 +5,7 @@ import {
   MyPostType,
   PhotosType,
   PhotoType,
+  ResultCodesEnum,
   UserProfileType,
 } from "../types/types";
 import { AppStateType } from "./redux-store";
@@ -135,40 +136,41 @@ export const savePhotoSuccess = (
 export const setUser =
   (userId: number | null): ThunkType =>
   async (dispatch) => {
-    let response = await usersAPI.getProfile(userId);
-    dispatch(setUserProfile(response.data));
+    let profileData = await profileAPI.getProfile(userId);
+    dispatch(setUserProfile(profileData));
   };
 export const getStatus =
   (userId: number): ThunkType =>
   async (dispatch) => {
-    let response = await profileAPI.getStatus(userId);
-    dispatch(setStatus(response.data));
+    let statusString = await profileAPI.getStatus(userId);
+    dispatch(setStatus(statusString));
   };
 export const updateStatus =
   (status: string): ThunkType =>
   async (dispatch) => {
-    let response = await profileAPI.updateStatus(status);
-    if (response.data.resultCode === 0) {
+    let StatusData = await profileAPI.updateStatus(status);
+    if (StatusData.resultCode === ResultCodesEnum.Success) {
       dispatch(setStatus(status));
     }
   };
 export const updateProfile =
   (data: UserProfileType, userId: number | null, setError: any): ThunkType =>
   async (dispatch) => {
-    let response = await profileAPI.updateProfile(data, userId);
-    if (response.data.resultCode === 0) {
+    let profileData = await profileAPI.updateProfile(data, userId);
+    if (profileData.resultCode === ResultCodesEnum.Success) {
       dispatch(setUser(userId));
     } else {
-      setError("server", { message: response.data.messages });
+      setError("server", { message: profileData.messages });
     }
   };
 
 export const savePhoto =
   (photo: string | Blob): ThunkType =>
   async (dispatch) => {
-    let response = await profileAPI.setPhoto(photo);
-    if (response.data.resultCode === 0) {
-      dispatch(savePhotoSuccess(response.data.data.photos));
+    let photoData = await profileAPI.setPhoto(photo);
+
+    if (photoData.resultCode === ResultCodesEnum.Success) {
+      dispatch(savePhotoSuccess(photoData.data.photos));
     }
   };
 

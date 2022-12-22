@@ -1,11 +1,7 @@
 import { Dispatch } from "react";
 import { ThunkAction } from "redux-thunk";
-import {
-  authAPI,
-  ResultCodeForCaptcha,
-  ResultCodesEnum,
-  securityAPI,
-} from "../api/api";
+import { authAPI, securityAPI } from "../api/api";
+import { ResultCodeForCaptcha, ResultCodesEnum } from "../types/types";
 import { AppStateType } from "./redux-store";
 
 const SET_USER_DATA = "SET_USER_DATA";

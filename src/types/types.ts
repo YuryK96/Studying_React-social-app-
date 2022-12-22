@@ -1,3 +1,17 @@
+export enum ResultCodesEnum {
+  Success = 0,
+  Error = 1,
+}
+export enum ResultCodeForCaptcha {
+  captchaIsRequired = 10,
+}
+
+export type DefaultResponseTypes = {
+  data?: {};
+  resultCode: ResultCodesEnum;
+  messages?: Array<string>;
+};
+
 export type MyPostType = {
   value: string;
   countLikes: number;
@@ -41,7 +55,7 @@ export type UserProfileType = {
 export type UserType = {
   name: null | string;
   id: number;
-  uniqueUrlName: null | string;
+  uniqueUrlName?: null | string;
   followed: null | boolean;
   photos: PhotosType;
   status: null | string;

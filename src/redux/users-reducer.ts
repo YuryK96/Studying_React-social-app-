@@ -1,7 +1,11 @@
 import { Dispatch } from "react";
 import { ThunkAction } from "redux-thunk";
 import { usersAPI } from "../api/api";
-import { UserType } from "../types/types";
+import {
+  DefaultResponseTypes,
+  ResultCodesEnum,
+  UserType,
+} from "../types/types";
 import { updateObjectInArray } from "../utils/helper/objects-helpers";
 import { AppStateType } from "./redux-store";
 
@@ -174,13 +178,13 @@ export const requestUsers = (page: number, pageSize: number): ThunkType => {
 const _followUnfollowFlow = async (
   dispatch: DispatchType,
   id: number,
-  apiMethod: any,
+  apiMethod: (id: number) => Promise<DefaultResponseTypes>,
   actionCreator: (id: number) => FollowActionType | UnfollowActionType
 ) => {
   dispatch(toggleIsFollowing(true, id));
 
-  let response = await apiMethod(id);
-  if (response.data.resultCode === 0) {
+  let responseData = await apiMethod(id);
+  if (responseData.resultCode === ResultCodesEnum.Success) {
     dispatch(actionCreator(id));
   }
   dispatch(toggleIsFollowing(false, id));

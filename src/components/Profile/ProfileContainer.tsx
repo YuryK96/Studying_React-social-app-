@@ -9,7 +9,7 @@ import {
 import Profile from "./Profile";
 import { connect } from "react-redux";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { withAuthRedirect } from "../../hoc/withAuthRedirect";
+import { WithAuthRedirect } from "../../hoc/withAuthRedirect";
 import { compose } from "redux";
 
 import {
@@ -122,5 +122,5 @@ export default compose(
     }
   ),
   withRouter,
-  withAuthRedirect
+  WithAuthRedirect
 )(ProfileContainer);

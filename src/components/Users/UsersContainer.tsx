@@ -7,7 +7,7 @@ import {
 import Users from "./Users";
 import React from "react";
 import Preloader from "../common/Preloader/Preloader";
-import { withAuthRedirect } from "../../hoc/withAuthRedirect";
+import { WithAuthRedirect } from "../../hoc/withAuthRedirect";
 import { compose } from "redux";
 import {
   getPageSize,
@@ -84,7 +84,6 @@ let mapStateToProps = (state: AppStateType): MapStatePropsType => {
 };
 
 export default compose<React.Component<PropsType>>(
-  // TStateProps = {}, TDispatchProps = {}, TOwnProps = {}, TMergedProps = {}, State = DefaultState
   connect<MapStatePropsType, MapDispatchPropsType, OwnPropsType, AppStateType>(
     mapStateToProps,
     {
@@ -93,5 +92,5 @@ export default compose<React.Component<PropsType>>(
       toggleUserUnFollow,
     }
   ),
-  withAuthRedirect
+  WithAuthRedirect
 )(UsersContainer);
