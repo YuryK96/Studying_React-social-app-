@@ -1,11 +1,13 @@
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { WithAuthRedirect } from "../../hoc/withAuthRedirect";
-import { addNewMessage } from "../../redux/dialog-reducer";
+import { actions } from "../../redux/dialog-reducer";
 import { getDialogsData, getMessagesData } from "../../redux/dialog-selectors";
 import { AppStateType } from "../../redux/redux-store";
 import { DialogType, MessageType } from "../../types/types";
 import Dialogs from "./Dialogs";
+
+const addNewMessage = actions.addNewMessage;
 
 type MapStatePropsType = {
   messagesData: Array<MessageType>;

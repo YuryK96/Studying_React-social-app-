@@ -1,11 +1,4 @@
-import { Dispatch } from "react";
-import { ThunkAction } from "redux-thunk";
 import { DialogType, MessageType } from "../types/types";
-import { AppStateType } from "./redux-store";
-
-const ADD_MESSAGE = "ADD-MESSAGE";
-
-export type initialStateType = typeof initialState;
 
 let initialState = {
   dialogsData: [
@@ -32,7 +25,7 @@ const dialogReducer = (
   action: ActionTypes
 ): initialStateType => {
   switch (action.type) {
-    case ADD_MESSAGE: {
+    case "SN/dialog/ADD_MESSAGE": {
       return {
         ...state,
         messagesData: [
@@ -46,19 +39,14 @@ const dialogReducer = (
   }
 };
 
-type ActionTypes = AddNewMessageActionType;
-
-type getStateType = () => AppStateType;
-type DispatchType = Dispatch<ActionTypes>;
-type ThunkType = ThunkAction<Promise<void>, AppStateType, unknown, ActionTypes>;
-
-type AddNewMessageActionType = {
-  type: typeof ADD_MESSAGE;
-  newMessage: string;
+export const actions = {
+  addNewMessage: (newMessage: string) =>
+    ({
+      type: "SN/dialog/ADD_MESSAGE",
+      newMessage,
+    } as const),
 };
-export const addNewMessage = (newMessage: string): AddNewMessageActionType => ({
-  type: ADD_MESSAGE,
-  newMessage,
-});
-
 export default dialogReducer;
+
+export type initialStateType = typeof initialState;
+type ActionTypes = ReturnType<typeof actions.addNewMessage>;

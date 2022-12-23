@@ -1,17 +1,3 @@
-export enum ResultCodesEnum {
-  Success = 0,
-  Error = 1,
-}
-export enum ResultCodeForCaptcha {
-  captchaIsRequired = 10,
-}
-
-export type DefaultResponseTypes = {
-  data?: {};
-  resultCode: ResultCodesEnum;
-  messages?: Array<string>;
-};
-
 export type MyPostType = {
   value: string;
   countLikes: number;

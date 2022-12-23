@@ -1,5 +1,5 @@
 let initialState = {};
-type initialStateType = typeof initialState;
+
 const sideBarReducer = (
   state = initialState,
   action: any
@@ -8,3 +8,5 @@ const sideBarReducer = (
 };
 
 export default sideBarReducer;
+
+type initialStateType = typeof initialState;

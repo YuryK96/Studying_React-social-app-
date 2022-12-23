@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { compose } from "redux";
-import { onAddPost } from "../../../redux/profile-reducer";
+import { actions } from "../../../redux/profile-reducer";
 import {
   getmyPostData,
   getnewPostText,
@@ -8,6 +8,8 @@ import {
 import { AppStateType } from "../../../redux/redux-store";
 import { MyPostType } from "../../../types/types";
 import MyPosts from "./MyPosts";
+
+const onAddPost = actions.onAddPost;
 
 type MapStatePropsType = {
   myPostData: Array<MyPostType>;
