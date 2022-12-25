@@ -6,6 +6,20 @@ import { getCaptcha, getIsAuth } from "../../redux/auth-selectors";
 import { AppStateType } from "../../redux/redux-store";
 import Login from "./Login";
 
+let mapStateToProps = (state: AppStateType): MapStatePropsType => {
+  return {
+    isAuth: getIsAuth(state),
+    captcha: getCaptcha(state),
+  };
+};
+
+export default compose(
+  connect<MapStatePropsType, MapDispatchPropsType, OwnPropsType, AppStateType>(
+    mapStateToProps,
+    { login }
+  )
+)(Login);
+
 type MapStatePropsType = {
   isAuth: boolean;
   captcha: string | null;
@@ -22,17 +36,3 @@ type MapDispatchPropsType = {
 };
 
 type OwnPropsType = {};
-
-let mapStateToProps = (state: AppStateType): MapStatePropsType => {
-  return {
-    isAuth: getIsAuth(state),
-    captcha: getCaptcha(state),
-  };
-};
-
-export default compose(
-  connect<MapStatePropsType, MapDispatchPropsType, OwnPropsType, AppStateType>(
-    mapStateToProps,
-    { login }
-  )
-)(Login);

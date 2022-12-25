@@ -2,35 +2,6 @@ import ProfileInfoCss from "./ProfileInfo.module.css";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { PhotoType, UserProfileType } from "../../../types/types";
 
-type ProfileDataFormType = {
-  profile: UserProfileType;
-  isOwner: boolean;
-  userId: number | null;
-  OutFromEditMode: () => void;
-  savePhoto: (photo: File) => void;
-  updateProfile: (
-    data: UserProfileType,
-    userId: number | null,
-    setError: any
-  ) => void;
-};
-
-type FormValues = {
-  aboutMe: string | null;
-  facebook: string | null;
-  github: string | null;
-  instagram: string | null;
-  lookingForAJob: boolean;
-  lookingForAJobDescription: string | null;
-  mainLink: string | null;
-  name: string | null;
-  twitter: string | null;
-  vk: string | null;
-  website: string | null;
-  youtube: string | null;
-  server?: string;
-};
-
 const ProfileDataForm: React.FC<ProfileDataFormType> = ({
   profile,
   isOwner,
@@ -402,3 +373,32 @@ const ProfileDataForm: React.FC<ProfileDataFormType> = ({
 };
 
 export default ProfileDataForm;
+
+type ProfileDataFormType = {
+  profile: UserProfileType;
+  isOwner: boolean;
+  userId: number | null;
+  OutFromEditMode: () => void;
+  savePhoto: (photo: File) => void;
+  updateProfile: (
+    data: UserProfileType,
+    userId: number | null,
+    setError: any
+  ) => void;
+};
+
+type FormValues = {
+  aboutMe: string | null;
+  facebook: string | null;
+  github: string | null;
+  instagram: string | null;
+  lookingForAJob: boolean;
+  lookingForAJobDescription: string | null;
+  mainLink: string | null;
+  name: string | null;
+  twitter: string | null;
+  vk: string | null;
+  website: string | null;
+  youtube: string | null;
+  server?: string;
+};

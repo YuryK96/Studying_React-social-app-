@@ -20,27 +20,6 @@ import {
 import { UserType } from "../../types/types";
 import { AppStateType } from "../../redux/redux-store";
 
-type MapStatePropsType = {
-  currentPage: number;
-  pageSize: number;
-  isFetching: boolean;
-  users: Array<UserType>;
-  totalUsersCount: number;
-  followingInProgress: Array<number>;
-};
-
-type MapDispatchPropsType = {
-  requestUsers: (currentPage: number, pageSize: number) => void;
-  toggleUserFollow: (id: number) => void;
-  toggleUserUnFollow: (id: number) => void;
-};
-
-type OwnPropsType = {
-  pageTitle: string;
-};
-
-type PropsType = MapStatePropsType & MapDispatchPropsType & OwnPropsType;
-
 class UsersContainer extends React.Component<PropsType> {
   componentDidMount() {
     let { currentPage, pageSize } = this.props;
@@ -54,7 +33,6 @@ class UsersContainer extends React.Component<PropsType> {
   render() {
     return (
       <div>
-        <h2>{this.props.pageTitle}</h2>
         {this.props.isFetching ? <Preloader /> : null}
 
         <Users
@@ -83,7 +61,7 @@ let mapStateToProps = (state: AppStateType): MapStatePropsType => {
   };
 };
 
-export default compose<React.Component<PropsType>>(
+export default compose<React.ComponentType>(
   connect<MapStatePropsType, MapDispatchPropsType, OwnPropsType, AppStateType>(
     mapStateToProps,
     {
@@ -94,3 +72,22 @@ export default compose<React.Component<PropsType>>(
   ),
   WithAuthRedirect
 )(UsersContainer);
+
+type MapStatePropsType = {
+  currentPage: number;
+  pageSize: number;
+  isFetching: boolean;
+  users: Array<UserType>;
+  totalUsersCount: number;
+  followingInProgress: Array<number>;
+};
+
+type MapDispatchPropsType = {
+  requestUsers: (currentPage: number, pageSize: number) => void;
+  toggleUserFollow: (id: number) => void;
+  toggleUserUnFollow: (id: number) => void;
+};
+
+type OwnPropsType = {};
+
+type PropsType = MapStatePropsType & MapDispatchPropsType & OwnPropsType;

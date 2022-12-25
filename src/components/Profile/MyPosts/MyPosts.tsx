@@ -4,14 +4,6 @@ import { MyPostType } from "../../../types/types";
 import s from "./MyPosts.module.css";
 import Post from "./Posts/Post";
 
-type MyPostsType = {
-  myPostData: Array<MyPostType>;
-  onAddPost: (newPostText: string) => void;
-};
-type FormValues = {
-  newPostText: string;
-};
-
 const MyPosts: React.FC<MyPostsType> = React.memo(
   ({ myPostData, onAddPost }) => {
     const {
@@ -60,3 +52,11 @@ const MyPosts: React.FC<MyPostsType> = React.memo(
 );
 
 export default MyPosts;
+
+type MyPostsType = {
+  myPostData: Array<MyPostType>;
+  onAddPost: (newPostText: string) => void;
+};
+type FormValues = {
+  newPostText: string;
+};

@@ -1,12 +1,6 @@
 import { NavLink } from "react-router-dom";
 import s from "./Header.module.css";
 
-type HeaderType = {
-  isAuth: boolean;
-  login: string | null;
-  logOut: () => void;
-};
-
 const Header: React.FC<HeaderType> = ({ isAuth, login, logOut }) => {
   return (
     <header className={s.header}>
@@ -27,3 +21,9 @@ const Header: React.FC<HeaderType> = ({ isAuth, login, logOut }) => {
 };
 
 export default Header;
+
+type HeaderType = {
+  isAuth: boolean;
+  login: string | null;
+  logOut: () => void;
+};

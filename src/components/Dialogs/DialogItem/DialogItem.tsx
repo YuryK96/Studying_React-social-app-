@@ -2,9 +2,6 @@ import DialogsCss from "./../Dialogs.module.css";
 import { NavLink } from "react-router-dom";
 import { DialogType } from "../../../types/types";
 
-type Propstype = {
-  dialogsData: Array<DialogType>;
-};
 const DialogItem: React.FC<Propstype> = ({ dialogsData }) => {
   let arrDialog = dialogsData.map((dialog) => {
     return (
@@ -20,3 +17,7 @@ const DialogItem: React.FC<Propstype> = ({ dialogsData }) => {
 };
 
 export default DialogItem;
+
+type Propstype = {
+  dialogsData: Array<DialogType>;
+};

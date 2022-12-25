@@ -1,5 +1,3 @@
-import { createSelectorHook } from "react-redux";
-import { createSelector } from "reselect";
 import { AppStateType } from "./redux-store";
 
 export const getCaptcha = (state: AppStateType) => {

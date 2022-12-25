@@ -1,10 +1,6 @@
 import NavbarCss from "./Navbar.module.css";
 import { NavLink } from "react-router-dom";
 
-type isActiveType = {
-  isActive: boolean;
-};
-
 const checkLink = ({ isActive }: isActiveType): string => {
   return isActive ? NavbarCss.active : "";
 };
@@ -47,3 +43,7 @@ const Nav: React.FC = () => {
 };
 
 export default Nav;
+
+type isActiveType = {
+  isActive: boolean;
+};

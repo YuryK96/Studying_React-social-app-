@@ -3,17 +3,6 @@ import Paginator from "../common/Paginator/Pagination";
 import User from "./User";
 import s from "./Users.module.scss";
 
-type UsersType = {
-  currentPage: number;
-  totalUsersCount: number;
-  pageSize: number;
-  onPageChanged: (pageNumber: number) => void;
-  users: Array<UserType>;
-  followingInProgress: Array<number>;
-  toggleUserFollow: (id: number) => void;
-  toggleUserUnFollow: (id: number) => void;
-};
-
 const Users: React.FC<UsersType> = ({
   onPageChanged,
   currentPage,
@@ -49,3 +38,14 @@ const Users: React.FC<UsersType> = ({
 };
 
 export default Users;
+
+type UsersType = {
+  currentPage: number;
+  totalUsersCount: number;
+  pageSize: number;
+  onPageChanged: (pageNumber: number) => void;
+  users: Array<UserType>;
+  followingInProgress: Array<number>;
+  toggleUserFollow: (id: number) => void;
+  toggleUserUnFollow: (id: number) => void;
+};

@@ -3,20 +3,6 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 import { PhotoType, UserProfileType } from "../../types/types";
 
-type ProfileType = {
-  profile: UserProfileType | null;
-  status: string;
-  userId: number | null;
-  updateStatus: (status: string) => void;
-  savePhoto: (photo: File) => void;
-  updateProfile: (
-    data: UserProfileType,
-    userId: number | null,
-    setError: any
-  ) => void;
-  isOwner: boolean;
-};
-
 const Profile: React.FC<ProfileType> = ({
   profile,
   status,
@@ -43,3 +29,17 @@ const Profile: React.FC<ProfileType> = ({
 };
 
 export default Profile;
+
+type ProfileType = {
+  profile: UserProfileType | null;
+  status: string;
+  userId: number | null;
+  updateStatus: (status: string) => void;
+  savePhoto: (photo: File) => void;
+  updateProfile: (
+    data: UserProfileType,
+    userId: number | null,
+    setError: any
+  ) => void;
+  isOwner: boolean;
+};

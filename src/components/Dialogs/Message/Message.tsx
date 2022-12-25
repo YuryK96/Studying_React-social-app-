@@ -2,19 +2,6 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { MessageType } from "../../../types/types";
 import DialogsCss from "./../Dialogs.module.css";
 
-type PropsTypeNewMessage = {
-  addNewMessage: (newMessage: string) => void;
-};
-
-type FormValues = {
-  newMessage: string;
-};
-
-type PropsTypeMessages = {
-  addNewMessage: (newMessage: string) => void;
-  messagesData: Array<MessageType>;
-};
-
 const NewMessage: React.FC<PropsTypeNewMessage> = ({ addNewMessage }) => {
   const {
     register,
@@ -60,3 +47,16 @@ const Messages: React.FC<PropsTypeMessages> = ({
 };
 
 export default Messages;
+
+type PropsTypeNewMessage = {
+  addNewMessage: (newMessage: string) => void;
+};
+
+type FormValues = {
+  newMessage: string;
+};
+
+type PropsTypeMessages = {
+  addNewMessage: (newMessage: string) => void;
+  messagesData: Array<MessageType>;
+};

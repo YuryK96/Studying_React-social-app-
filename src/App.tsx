@@ -10,17 +10,19 @@ import Music from "./components/Music/Music";
 import UsersContainer from "./components/Users/UsersContainer";
 import LoginContainer from "./components/Login/LoginContainer";
 import { connect } from "react-redux";
-import { initializeApp } from "./redux/app-reducer.ts";
+import { initializeApp } from "./redux/app-reducer";
 import Preloader from "./components/common/Preloader/Preloader";
+import { AppStateType } from "./redux/redux-store";
+import { getInitialized } from "./redux/app-selectors";
 
-const DialogsContainer = React.lazy(() =>
-  import("./components/Dialogs/DialogsContainer")
+const DialogsContainer = React.lazy(
+  () => import("./components/Dialogs/DialogsContainer")
 );
-const ProfileContainer = React.lazy(() =>
-  import("./components/Profile/ProfileContainer")
+const ProfileContainer = React.lazy(
+  () => import("./components/Profile/ProfileContainer")
 );
 
-class App extends React.Component {
+class App extends React.Component<PropsType> {
   componentDidMount() {
     this.props.initializeApp();
   }
@@ -40,10 +42,7 @@ class App extends React.Component {
 
             <Route path="/Messages/*" element={<DialogsContainer />} />
 
-            <Route
-              path="/Users"
-              element={<UsersContainer pageTitle={"samurai"} />}
-            />
+            <Route path="/Users" element={<UsersContainer />} />
             <Route path="/Setting" element={<Settings />} />
             <Route path="/News" element={<News />} />
             <Route path="/Music" element={<Music />} />
@@ -55,8 +54,23 @@ class App extends React.Component {
   }
 }
 
-const mapStatetoProps = (state) => ({
-  initialized: state.app.initialized,
+const mapStatetoProps = (state: AppStateType) => ({
+  initialized: getInitialized(state),
 });
 
-export default connect(mapStatetoProps, { initializeApp })(App);
+export default connect<
+  MapStatePropsType,
+  MapDispatchPropsType,
+  OwnPropsType,
+  AppStateType
+>(mapStatetoProps, { initializeApp })(App);
+
+type PropsType = MapStatePropsType & MapDispatchPropsType & OwnPropsType;
+
+type MapStatePropsType = {
+  initialized: boolean;
+};
+type OwnPropsType = {};
+type MapDispatchPropsType = {
+  initializeApp: () => void;
+};

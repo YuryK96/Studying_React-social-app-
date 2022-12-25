@@ -9,17 +9,6 @@ import { AppStateType } from "../../../redux/redux-store";
 import { MyPostType } from "../../../types/types";
 import MyPosts from "./MyPosts";
 
-const onAddPost = actions.onAddPost;
-
-type MapStatePropsType = {
-  myPostData: Array<MyPostType>;
-};
-
-type MapDispatchPropsType = {
-  onAddPost: (newPostText: string) => void;
-};
-
-type OwnPropsType = {};
 let mapStateToProps = (state: AppStateType): MapStatePropsType => {
   return {
     myPostData: getmyPostData(state),
@@ -29,6 +18,15 @@ let mapStateToProps = (state: AppStateType): MapStatePropsType => {
 export default compose(
   connect<MapStatePropsType, MapDispatchPropsType, OwnPropsType, AppStateType>(
     mapStateToProps,
-    { onAddPost }
+    { onAddPost: actions.onAddPost }
   )
 )(MyPosts);
+
+type OwnPropsType = {};
+type MapStatePropsType = {
+  myPostData: Array<MyPostType>;
+};
+
+type MapDispatchPropsType = {
+  onAddPost: (newPostText: string) => void;
+};

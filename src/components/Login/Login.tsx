@@ -1,26 +1,6 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Navigate } from "react-router-dom";
 
-type LoginFormType = {
-  captcha: string | null;
-  login: (
-    email: string,
-    password: string,
-    rememberMe: boolean,
-    captcha: string,
-    setError: any
-  ) => void;
-};
-
-type FormValues = {
-  email: string;
-  password: string;
-  rememberMe: boolean;
-  captcha: string;
-  setError: any;
-  server?: string;
-};
-
 const LoginForm: React.FC<LoginFormType> = ({ login, captcha }) => {
   const {
     register,
@@ -142,3 +122,23 @@ const Login: React.FC<LoginType> = ({ login, isAuth, captcha }) => {
 };
 
 export default Login;
+
+type LoginFormType = {
+  captcha: string | null;
+  login: (
+    email: string,
+    password: string,
+    rememberMe: boolean,
+    captcha: string,
+    setError: any
+  ) => void;
+};
+
+type FormValues = {
+  email: string;
+  password: string;
+  rememberMe: boolean;
+  captcha: string;
+  setError: any;
+  server?: string;
+};

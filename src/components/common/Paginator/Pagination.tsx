@@ -1,14 +1,6 @@
 import { useState } from "react";
 import s from "./Pagination.module.scss";
 
-type PropsType = {
-  currentPage: number;
-  totalItemsCount: number;
-  pageSize: number;
-  portionSize?: number;
-  onPageChanged: (pageNumber: number) => void;
-};
-
 const Paginator: React.FC<PropsType> = ({
   onPageChanged,
   currentPage,
@@ -76,3 +68,11 @@ const Paginator: React.FC<PropsType> = ({
 };
 
 export default Paginator;
+
+type PropsType = {
+  currentPage: number;
+  totalItemsCount: number;
+  pageSize: number;
+  portionSize?: number;
+  onPageChanged: (pageNumber: number) => void;
+};

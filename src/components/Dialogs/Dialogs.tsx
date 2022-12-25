@@ -3,12 +3,6 @@ import Messages from "./Message/Message";
 import DialogItem from "./DialogItem/DialogItem";
 import { DialogType, MessageType } from "../../types/types";
 
-type PropsType = {
-  addNewMessage: (newMessage: string) => void;
-  messagesData: Array<MessageType>;
-  dialogsData: Array<DialogType>;
-};
-
 const Dialogs: React.FC<PropsType> = ({
   addNewMessage,
   messagesData,
@@ -23,3 +17,9 @@ const Dialogs: React.FC<PropsType> = ({
 };
 
 export default Dialogs;
+
+type PropsType = {
+  addNewMessage: (newMessage: string) => void;
+  messagesData: Array<MessageType>;
+  dialogsData: Array<DialogType>;
+};

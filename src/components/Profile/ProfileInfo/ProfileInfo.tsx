@@ -5,20 +5,6 @@ import ProfileDataForm from "./ProfileDataForm";
 import ProfileInfoCss from "./ProfileInfo.module.css";
 import ProfileStatuswithHooks from "./ProfileStatuswithHooks";
 
-type ProfileInfoType = {
-  profile: UserProfileType | null;
-  status: string;
-  userId: number | null;
-  updateStatus: (status: string) => void;
-  savePhoto: (photo: File) => void;
-  updateProfile: (
-    data: UserProfileType,
-    userId: number | null,
-    setError: any
-  ) => void;
-  isOwner: boolean;
-};
-
 const ProfileInfo: React.FC<ProfileInfoType> = ({
   profile,
   status,
@@ -153,3 +139,17 @@ const Contacts: React.FC<ProfileContactsType> = ({
   );
 };
 export default ProfileInfo;
+
+type ProfileInfoType = {
+  profile: UserProfileType | null;
+  status: string;
+  userId: number | null;
+  updateStatus: (status: string) => void;
+  savePhoto: (photo: File) => void;
+  updateProfile: (
+    data: UserProfileType,
+    userId: number | null,
+    setError: any
+  ) => void;
+  isOwner: boolean;
+};

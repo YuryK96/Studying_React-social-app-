@@ -1,10 +1,5 @@
 import PostCss from "./Post.module.css";
 
-type PostType = {
-  countLikes: number;
-  value: string;
-};
-
 const Post: React.FC<PostType> = ({ countLikes, value }) => {
   return (
     <div className={PostCss.wrapper}>
@@ -21,3 +16,8 @@ const Post: React.FC<PostType> = ({ countLikes, value }) => {
 };
 
 export default Post;
+
+type PostType = {
+  countLikes: number;
+  value: string;
+};
