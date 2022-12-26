@@ -70,7 +70,7 @@ const Paginator: React.FC<PropsType> = ({
 export default Paginator;
 
 type PropsType = {
-  currentPage: number;
+  currentPage?: number;
   totalItemsCount: number;
   pageSize: number;
   portionSize?: number;
