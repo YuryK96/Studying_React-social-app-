@@ -11,10 +11,8 @@ let mapStateToPropsForRedirect = (state: AppStateType) => ({
 export function WithAuthRedirect<WCP extends JSX.IntrinsicAttributes>(
   WrappedComponent: ComponentType<WCP>
 ) {
-  const RedirectComponent: React.FC<MapPropsType & MapDispatchPropsType> = (
-    props
-  ) => {
-    let { isAuth, fake, ...restProps } = props;
+  const RedirectComponent: React.FC<MapPropsType> = (props) => {
+    let { isAuth, ...restProps } = props;
     if (!isAuth) return <Navigate to={"/Login"} />;
 
     return <WrappedComponent {...(restProps as WCP)} />;
@@ -22,7 +20,7 @@ export function WithAuthRedirect<WCP extends JSX.IntrinsicAttributes>(
 
   let ConnectedAuthRedirectComponent = connect<
     MapPropsType,
-    MapDispatchPropsType,
+    {},
     WCP,
     AppStateType
   >(mapStateToPropsForRedirect)(RedirectComponent);
@@ -32,7 +30,4 @@ export function WithAuthRedirect<WCP extends JSX.IntrinsicAttributes>(
 
 type MapPropsType = {
   isAuth: boolean;
-};
-type MapDispatchPropsType = {
-  fake: () => void;
 };

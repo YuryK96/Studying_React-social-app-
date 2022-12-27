@@ -149,7 +149,7 @@ const _followUnfollowFlow = async (
 export const toggleUserFollow =
   (id: number): BaseThunkType<ActionTypes> =>
   async (dispatch) => {
-    _followUnfollowFlow(
+    await _followUnfollowFlow(
       dispatch,
       id,
       usersAPI.unFollow.bind(usersAPI),
@@ -160,7 +160,7 @@ export const toggleUserFollow =
 export const toggleUserUnFollow =
   (id: number): BaseThunkType<ActionTypes> =>
   async (dispatch) => {
-    _followUnfollowFlow(
+    await _followUnfollowFlow(
       dispatch,
       id,
       usersAPI.follow.bind(usersAPI),

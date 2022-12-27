@@ -6,8 +6,9 @@ import store from "./redux/redux-store";
 import ReactDOM from "react-dom";
 
 test("renders without crashing", () => {
-  const div = document.createElement("div");
-  ReactDOM.render(
+  const div: any = document.createElement("div");
+
+  render(
     <Provider store={store}>
       <BrowserRouter>
         <App />

@@ -2,7 +2,7 @@ import axios, { AxiosResponse } from "axios";
 import { UserType } from "../types/types";
 import { instance, DefaultResponseTypes } from "./api";
 
-type GetUsersTypes = {
+export type GetUsersTypes = {
   items: Array<UserType>;
   totalCount: number;
   error: string | null;
