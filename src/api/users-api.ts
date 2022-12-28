@@ -9,11 +9,20 @@ export type GetUsersTypes = {
 };
 
 export const usersAPI = {
-  getUsers(currentPage: number, pageSize: number) {
+  getUsers(
+    currentPage: number,
+    pageSize: number,
+    term: string,
+    friend: null | boolean = null
+  ) {
     return instance
-      .get<GetUsersTypes>(`users?page=${currentPage}&count=${pageSize}`, {
-        withCredentials: true,
-      })
+      .get<GetUsersTypes>(
+        `users?page=${currentPage}&count=${pageSize}&term=${term}` +
+          (friend === null ? "" : `&friend=${friend}`),
+        {
+          withCredentials: true,
+        }
+      )
       .then((response) => {
         return response.data;
       });

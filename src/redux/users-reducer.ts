@@ -10,6 +10,10 @@ let initialState = {
   totalUsersCount: 0,
   currentPage: 1,
   isFetching: false,
+  filter: {
+    term: "",
+    friend: null as null | boolean,
+  },
   followingInProgress: [] as Array<number>, // array of users  ids
 };
 
@@ -41,7 +45,15 @@ const usersReducer = (
         ...state,
         users: [...action.users],
       };
-
+    case "SN/users/SET_FILTER":
+      return {
+        ...state,
+        filter: {
+          ...state.filter,
+          term: action.payload.term,
+          friend: action.payload.friend,
+        },
+      };
     case "SN/users/SET_CURRENT_PAGE":
       return {
         ...state,
@@ -94,6 +106,12 @@ export const actions = {
       page,
     } as const),
 
+  setFilter: (filter: FilterFormType) =>
+    ({
+      type: "SN/users/SET_FILTER",
+      payload: filter,
+    } as const),
+
   setTotalUserCount: (totalCount: number) =>
     ({
       type: "SN/users/SET_TOTAL_USER_COUNT",
@@ -116,12 +134,19 @@ export const actions = {
 
 export const requestUsers = (
   page: number,
-  pageSize: number
+  pageSize: number,
+  filter: FilterFormType
 ): BaseThunkType<ActionTypes> => {
   return async (dispatch, getState) => {
     dispatch(actions.toggleIsFetching(true));
     dispatch(actions.setCurrentPage(page));
-    let response = await usersAPI.getUsers(page, pageSize);
+    dispatch(actions.setFilter(filter));
+    let response = await usersAPI.getUsers(
+      page,
+      pageSize,
+      filter.term,
+      filter.friend
+    );
 
     dispatch(actions.toggleIsFetching(false));
     dispatch(actions.setUsers(response.items));
@@ -171,6 +196,7 @@ export const toggleUserUnFollow =
 export default usersReducer;
 
 export type InitialStateType = typeof initialState;
+export type FilterFormType = typeof initialState.filter;
 
 type ActionTypes =
   | ReturnType<typeof actions.setCurrentPage>
@@ -179,4 +205,5 @@ type ActionTypes =
   | ReturnType<typeof actions.toggleIsFollowing>
   | ReturnType<typeof actions.follow>
   | ReturnType<typeof actions.setUsers>
-  | ReturnType<typeof actions.unfollow>;
+  | ReturnType<typeof actions.unfollow>
+  | ReturnType<typeof actions.setFilter>;

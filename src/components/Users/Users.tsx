@@ -1,9 +1,12 @@
+import { FilterFormType } from "../../redux/users-reducer";
 import { UserType } from "../../types/types";
 import Paginator from "../common/Paginator/Pagination";
 import User from "./User";
 import s from "./Users.module.scss";
+import UsersSearchForm from "./UsersSearchForm";
 
 const Users: React.FC<UsersType> = ({
+  isFetching,
   onPageChanged,
   currentPage,
   users,
@@ -12,9 +15,15 @@ const Users: React.FC<UsersType> = ({
   followingInProgress,
   toggleUserFollow,
   toggleUserUnFollow,
+  onFilterChanged,
 }) => {
   return (
     <div>
+      <UsersSearchForm
+        onFilterChanged={onFilterChanged}
+        isFetching={isFetching}
+      />
+
       <Paginator
         onPageChanged={onPageChanged}
         currentPage={currentPage}
@@ -48,4 +57,6 @@ type UsersType = {
   followingInProgress: Array<number>;
   toggleUserFollow: (id: number) => void;
   toggleUserUnFollow: (id: number) => void;
+  onFilterChanged: (filter: FilterFormType) => void;
+  isFetching: boolean;
 };
