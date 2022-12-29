@@ -38,7 +38,7 @@ export default store;
 
 type RootReducerType = typeof rootReducers;
 export type AppStateType = ReturnType<RootReducerType>;
-
+export type AppDispatch = typeof store.dispatch;
 export type DispatchType<A> = Dispatch<A>;
 export type BaseThunkType<A extends Action, R = Promise<void>> = ThunkAction<
   R,

@@ -7,8 +7,8 @@ import Nav from "./components/Navbar/Navbar";
 import Settings from "./components/Settings/Settings";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
-import UsersContainer from "./components/Users/UsersContainer";
-import LoginContainer from "./components/Login/LoginContainer";
+import UsersPage from "./components/Users/UsersPage";
+import Login from "./components/Login/Login";
 import { connect } from "react-redux";
 import { initializeApp } from "./redux/app-reducer";
 import Preloader from "./components/common/Preloader/Preloader";
@@ -19,7 +19,7 @@ const DialogsContainer = React.lazy(
   () => import("./components/Dialogs/DialogsContainer")
 );
 const ProfileContainer = React.lazy(
-  () => import("./components/Profile/ProfileContainer")
+  () => import("./components/Profile/Profile")
 );
 
 class App extends React.Component<PropsType> {
@@ -42,11 +42,11 @@ class App extends React.Component<PropsType> {
 
             <Route path="/Messages/*" element={<DialogsContainer />} />
 
-            <Route path="/Users" element={<UsersContainer />} />
+            <Route path="/Users" element={<UsersPage />} />
             <Route path="/Setting" element={<Settings />} />
             <Route path="/News" element={<News />} />
             <Route path="/Music" element={<Music />} />
-            <Route path="/Login" element={<LoginContainer />} />
+            <Route path="/Login" element={<Login />} />
           </Routes>{" "}
         </Suspense>
       </div>
