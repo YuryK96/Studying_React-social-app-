@@ -1,9 +1,12 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useSelector } from "react-redux";
 import { FilterFormType } from "../../redux/users-reducer";
+import { getFilter } from "../../redux/users-selectors";
 
 const UsersSearchForm: React.FC<UsersSearchFormPropsType> = React.memo(
   ({ onFilterChanged, isFetching }) => {
+    const filter = useSelector(getFilter);
     const {
       register,
       handleSubmit,
@@ -23,6 +26,7 @@ const UsersSearchForm: React.FC<UsersSearchFormPropsType> = React.memo(
               },
             })}
             placeholder="Name"
+            defaultValue={filter.term}
           />
           {errors?.term && <p>{errors.term.message}</p>}
 
@@ -30,6 +34,7 @@ const UsersSearchForm: React.FC<UsersSearchFormPropsType> = React.memo(
             {...register("friend", {
               required: "select one option",
             })}
+            defaultValue={String(filter.friend)}
           >
             <option value="null">All</option>
             <option value="true">Only followed</option>

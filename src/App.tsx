@@ -42,7 +42,7 @@ class App extends React.Component<PropsType> {
 
             <Route path="/Messages/*" element={<DialogsContainer />} />
 
-            <Route path="/Users" element={<UsersPage />} />
+            <Route path="/Users/*" element={<UsersPage />} />
             <Route path="/Setting" element={<Settings />} />
             <Route path="/News" element={<News />} />
             <Route path="/Music" element={<Music />} />
