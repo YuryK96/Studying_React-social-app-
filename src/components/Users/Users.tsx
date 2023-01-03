@@ -49,8 +49,8 @@ export const Users: React.FC<UsersType> = ({}) => {
 
     let actualPage = currentPage;
     let actualFilter = filter;
-
     if (urlPage) actualPage = urlPage;
+
     switch (urlFriend) {
       case "null":
         actualFilter = { ...actualFilter, friend: null };
@@ -66,6 +66,7 @@ export const Users: React.FC<UsersType> = ({}) => {
         break;
     }
     if (urlTerm) actualFilter = { ...actualFilter, term: urlTerm };
+
     dispatch(requestUsers(actualPage, pageSize, actualFilter));
   }, [location.pathname]);
 
