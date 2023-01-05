@@ -10,6 +10,9 @@ import Preloader from "./components/common/Preloader/Preloader";
 import { AppDispatch, AppStateType } from "./redux/redux-store";
 import { getInitialized } from "./redux/app-selectors";
 import Header from "./components/Header/Header";
+import Container from "@mui/material/Container";
+import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
+import { DrawerMenu } from "./components/Drawer/DrawerMenu";
 
 const DialogsContainer = React.lazy(
   () => import("./components/Dialogs/DialogsContainer")
@@ -30,24 +33,25 @@ export const App: React.FC<PropsType> = ({}) => {
   }
 
   return (
-    <div className="app-wrapper">
+    <Container disableGutters={true} maxWidth={false}>
       <Header />
-      <div>
-        <NavLink to="/Profile">Profile</NavLink>
-        <NavLink to="/Messages">Messages</NavLink>
-        <NavLink to="/Users">Users</NavLink>
-      </div>
-      <Suspense fallback={<Preloader />}>
-        <Routes>
-          <Route path="/" element={<Navigate to="/Profile" />} />
-          <Route path="/Profile/:userId" element={<ProfileContainer />} />
-          <Route path="/Profile/" element={<ProfileContainer />} />
-          <Route path="/Messages/*" element={<DialogsContainer />} />
-          <Route path="/Users/*" element={<UsersPage />} />
-          <Route path="/Login" element={<Login />} />
-        </Routes>{" "}
-      </Suspense>
-    </div>
+
+      <Grid2 container>
+        <Grid2 xs={2}></Grid2>
+        <Grid2 xs={9}>
+          <Suspense fallback={<Preloader />}>
+            <Routes>
+              <Route path="/" element={<Navigate to="/Profile" />} />
+              <Route path="/Profile/:userId" element={<ProfileContainer />} />
+              <Route path="/Profile/" element={<ProfileContainer />} />
+              <Route path="/Messages/*" element={<DialogsContainer />} />
+              <Route path="/Users/*" element={<UsersPage />} />
+              <Route path="/Login" element={<Login />} />
+            </Routes>{" "}
+          </Suspense>
+        </Grid2>
+      </Grid2>
+    </Container>
   );
 };
 type PropsType = {};
