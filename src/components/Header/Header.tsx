@@ -87,7 +87,8 @@ const Header: React.FC<HeaderType> = ({}) => {
             sx={{
               display: "flex",
               justifyContent: "end",
-              width: "80%",
+              width: "85%",
+              transition: 1,
             }}
           >
             {isAuth ? (

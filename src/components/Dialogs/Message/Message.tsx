@@ -1,6 +1,28 @@
 import { useForm, SubmitHandler } from "react-hook-form";
-import { MessageType } from "../../../types/types";
+import { DialogType, MessageType } from "../../../types/types";
 import DialogsCss from "./../Dialogs.module.css";
+
+const Messages: React.FC<PropsTypeMessages> = ({
+  messagesData,
+  addNewMessage,
+}) => {
+  let arrMessages = messagesData.map((item, i) => {
+    return (
+      <div key={i} className={DialogsCss.message}>
+        <p>{item.messagesData[0].message}</p>
+      </div>
+    );
+  });
+
+  return (
+    <div className={DialogsCss.message}>
+      {arrMessages}
+      <NewMessage addNewMessage={addNewMessage} />
+    </div>
+  );
+};
+
+export default Messages;
 
 const NewMessage: React.FC<PropsTypeNewMessage> = ({ addNewMessage }) => {
   const {
@@ -26,28 +48,6 @@ const NewMessage: React.FC<PropsTypeNewMessage> = ({ addNewMessage }) => {
   );
 };
 
-const Messages: React.FC<PropsTypeMessages> = ({
-  messagesData,
-  addNewMessage,
-}) => {
-  let arrMessages = messagesData.map((message, i) => {
-    return (
-      <div key={i} className={DialogsCss.message}>
-        <p>{message.message}</p>
-      </div>
-    );
-  });
-
-  return (
-    <div className={DialogsCss.message}>
-      {arrMessages}
-      <NewMessage addNewMessage={addNewMessage} />
-    </div>
-  );
-};
-
-export default Messages;
-
 type PropsTypeNewMessage = {
   addNewMessage: (newMessage: string) => void;
 };
@@ -58,5 +58,5 @@ type FormValues = {
 
 type PropsTypeMessages = {
   addNewMessage: (newMessage: string) => void;
-  messagesData: Array<MessageType>;
+  messagesData: Array<DialogType>;
 };

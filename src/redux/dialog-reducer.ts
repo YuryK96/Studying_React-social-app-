@@ -2,22 +2,52 @@ import { DialogType, MessageType } from "../types/types";
 
 let initialState = {
   dialogsData: [
-    { name: "Vasya", id: 1 },
-    { name: "Petya", id: 2 },
-    { name: "Alberto", id: 3 },
-    { name: "Nikitos", id: 4 },
-    { name: "Lebowski", id: 5 },
-    { name: "iValera", id: 6 },
+    {
+      name: "Vasya",
+      id: 0,
+      messagesData: [{ message: "Hi, How are you?", id: 1 }],
+    },
+    {
+      name: "Petya",
+      id: 2,
+      messagesData: [
+        { message: "Hi, How are you?", id: 1 },
+        { message: "What are you going to do at night?", id: 2 },
+      ],
+    },
+    {
+      name: "Alberto",
+      id: 3,
+      messagesData: [
+        { message: "Hi, How are you?", id: 1 },
+        { message: "What are you going to do at night?", id: 2 },
+      ],
+    },
+    {
+      name: "Nikitos",
+      id: 4,
+      messagesData: [
+        { message: "Hi, How are you?", id: 1 },
+        { message: "What are you going to do at night?", id: 2 },
+      ],
+    },
+    {
+      name: "Lebowski",
+      id: 5,
+      messagesData: [
+        { message: "Hi, How are you?", id: 1 },
+        { message: "What are you going to do at night?", id: 2 },
+      ],
+    },
+    {
+      name: "iValera",
+      id: 6,
+      messagesData: [
+        { message: "Hi, How are you?", id: 1 },
+        { message: "What are you going to do at night?", id: 2 },
+      ],
+    },
   ] as Array<DialogType>,
-  // Messages in Messages
-  messagesData: [
-    { message: "Hi, How are you?", id: 1 },
-    { message: "What are you going to do at night?", id: 2 },
-    { message: "We make a patie!", id: 3 },
-    { message: "4o slichno?", id: 4 },
-    { message: "Lebowski, Where is my money?!", id: 5 },
-    { message: "Darou", id: 6 },
-  ] as Array<MessageType>,
 };
 
 const dialogReducer = (
@@ -28,10 +58,7 @@ const dialogReducer = (
     case "SN/dialog/ADD_MESSAGE": {
       return {
         ...state,
-        messagesData: [
-          ...state.messagesData,
-          { message: action.newMessage, id: 7 },
-        ],
+        dialogsData: [...state.dialogsData],
       };
     }
     default:
@@ -40,10 +67,11 @@ const dialogReducer = (
 };
 
 export const actions = {
-  addNewMessage: (newMessage: string) =>
+  addNewMessage: (newMessage: string, id: number = 0) =>
     ({
       type: "SN/dialog/ADD_MESSAGE",
       newMessage,
+      id,
     } as const),
 };
 export default dialogReducer;
