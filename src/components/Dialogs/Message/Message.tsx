@@ -10,10 +10,12 @@ const Messages: React.FC<PropsTypeMessages> = ({
 }) => {
   const location = useLocation();
   const [userIndex, getUserIndex] = useState(0);
+  const [urlId, getUrlId] = useState(0);
 
   useEffect(() => {
     const url = new URLSearchParams(location.pathname);
     const urlId = Number(url.get("userId"));
+    getUrlId(urlId);
     getUserIndex(messagesData.findIndex((x) => x.id === urlId));
   }, [location.pathname]);
 
@@ -28,7 +30,7 @@ const Messages: React.FC<PropsTypeMessages> = ({
   return (
     <div className={DialogsCss.message}>
       {arrMessages}
-      <NewMessage addNewMessage={addNewMessage} userIndex={userIndex} />
+      <NewMessage addNewMessage={addNewMessage} urlId={urlId} />
     </div>
   );
 };
@@ -37,7 +39,7 @@ export default Messages;
 
 const NewMessage: React.FC<PropsTypeNewMessage> = ({
   addNewMessage,
-  userIndex,
+  urlId,
 }) => {
   const {
     register,
@@ -47,7 +49,7 @@ const NewMessage: React.FC<PropsTypeNewMessage> = ({
   } = useForm<FormValues>();
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
-    addNewMessage(data.newMessage, userIndex);
+    addNewMessage(data.newMessage, urlId);
     reset();
   };
   return (
@@ -64,7 +66,7 @@ const NewMessage: React.FC<PropsTypeNewMessage> = ({
 
 type PropsTypeNewMessage = {
   addNewMessage: (newMessage: string, userIndex: number) => void;
-  userIndex: number;
+  urlId: number;
 };
 
 type FormValues = {
@@ -72,6 +74,6 @@ type FormValues = {
 };
 
 type PropsTypeMessages = {
-  addNewMessage: (newMessage: string, userIndex: number) => void;
+  addNewMessage: (newMessage: string, urlId: number) => void;
   messagesData: Array<DialogType>;
 };

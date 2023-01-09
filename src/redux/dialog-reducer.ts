@@ -56,14 +56,22 @@ const dialogReducer = (
 ): initialStateType => {
   switch (action.type) {
     case "SN/dialog/ADD_MESSAGE": {
-      let Newstate: initialStateType = JSON.parse(JSON.stringify(state));
-
-      Newstate.dialogsData[action.id].messagesData.push({
-        message: action.newMessage,
-        id: 1,
-      });
-
-      return Newstate;
+      return {
+        ...state,
+        dialogsData: state.dialogsData.map((item, i) => {
+          if (item.id === action.id) {
+            return {
+              ...item,
+              messagesData: [
+                ...item.messagesData,
+                { message: action.newMessage, id: 1 },
+              ],
+            };
+          } else {
+            return item;
+          }
+        }),
+      };
     }
     default:
       return state;
