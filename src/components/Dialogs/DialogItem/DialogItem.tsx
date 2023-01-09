@@ -6,7 +6,7 @@ const DialogItem: React.FC<Propstype> = ({ dialogsData }) => {
   let arrDialog = dialogsData.map((dialog) => {
     return (
       <div key={dialog.id} className={DialogsCss.dialog}>
-        <NavLink to={"/Messages/" + dialog.id}>
+        <NavLink to={"/Messages/&userId=" + dialog.id}>
           <p>{dialog.name}</p>
         </NavLink>
       </div>

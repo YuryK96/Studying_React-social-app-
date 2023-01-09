@@ -1,4 +1,5 @@
 import { useForm, SubmitHandler } from "react-hook-form";
+import { useLocation } from "react-router-dom";
 import { DialogType, MessageType } from "../../../types/types";
 import DialogsCss from "./../Dialogs.module.css";
 
@@ -6,10 +7,15 @@ const Messages: React.FC<PropsTypeMessages> = ({
   messagesData,
   addNewMessage,
 }) => {
-  let arrMessages = messagesData.map((item, i) => {
+  const location = useLocation();
+  const url = new URLSearchParams(location.pathname);
+  const urlId = Number(url.get("userId"));
+  let userIndex = messagesData.findIndex((x) => x.id === urlId);
+
+  let arrMessages = messagesData[userIndex].messagesData.map((item, i) => {
     return (
       <div key={i} className={DialogsCss.message}>
-        <p>{item.messagesData[0].message}</p>
+        <p>{item.message}</p>
       </div>
     );
   });
@@ -17,14 +23,17 @@ const Messages: React.FC<PropsTypeMessages> = ({
   return (
     <div className={DialogsCss.message}>
       {arrMessages}
-      <NewMessage addNewMessage={addNewMessage} />
+      <NewMessage addNewMessage={addNewMessage} userIndex={userIndex} />
     </div>
   );
 };
 
 export default Messages;
 
-const NewMessage: React.FC<PropsTypeNewMessage> = ({ addNewMessage }) => {
+const NewMessage: React.FC<PropsTypeNewMessage> = ({
+  addNewMessage,
+  userIndex,
+}) => {
   const {
     register,
     formState: { errors },
@@ -33,7 +42,7 @@ const NewMessage: React.FC<PropsTypeNewMessage> = ({ addNewMessage }) => {
   } = useForm<FormValues>();
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
-    addNewMessage(data.newMessage);
+    addNewMessage(data.newMessage, userIndex);
     reset();
   };
   return (
@@ -49,7 +58,8 @@ const NewMessage: React.FC<PropsTypeNewMessage> = ({ addNewMessage }) => {
 };
 
 type PropsTypeNewMessage = {
-  addNewMessage: (newMessage: string) => void;
+  addNewMessage: (newMessage: string, userIndex: number) => void;
+  userIndex: number;
 };
 
 type FormValues = {
@@ -57,6 +67,6 @@ type FormValues = {
 };
 
 type PropsTypeMessages = {
-  addNewMessage: (newMessage: string) => void;
+  addNewMessage: (newMessage: string, userIndex: number) => void;
   messagesData: Array<DialogType>;
 };

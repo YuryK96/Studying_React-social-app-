@@ -14,8 +14,8 @@ const Dialogs: React.FC<PropsType> = () => {
   const dispatch: AppDispatch = useDispatch();
   const dialogsData = useSelector(getDialogsData);
 
-  const handleAddNewMessage = (newMessage: string) => {
-    dispatch(actions.addNewMessage(newMessage));
+  const handleAddNewMessage = (newMessage: string, id: number) => {
+    dispatch(actions.addNewMessage(newMessage, id));
   };
 
   return (

@@ -28,7 +28,7 @@ let initialState = {
       id: 4,
       messagesData: [
         { message: "Hi, How are you?", id: 1 },
-        { message: "What are you going to do at night?", id: 2 },
+        { message: "bb?", id: 2 },
       ],
     },
     {
@@ -36,7 +36,7 @@ let initialState = {
       id: 5,
       messagesData: [
         { message: "Hi, How are you?", id: 1 },
-        { message: "What are you going to do at night?", id: 2 },
+        { message: "aa?", id: 2 },
       ],
     },
     {
@@ -44,7 +44,7 @@ let initialState = {
       id: 6,
       messagesData: [
         { message: "Hi, How are you?", id: 1 },
-        { message: "What are you going to do at night?", id: 2 },
+        { message: "213?", id: 2 },
       ],
     },
   ] as Array<DialogType>,
@@ -56,10 +56,14 @@ const dialogReducer = (
 ): initialStateType => {
   switch (action.type) {
     case "SN/dialog/ADD_MESSAGE": {
-      return {
-        ...state,
-        dialogsData: [...state.dialogsData],
-      };
+      let Newstate: initialStateType = JSON.parse(JSON.stringify(state));
+
+      Newstate.dialogsData[action.id].messagesData.push({
+        message: action.newMessage,
+        id: 1,
+      });
+
+      return Newstate;
     }
     default:
       return state;
