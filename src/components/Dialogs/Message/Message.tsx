@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useLocation } from "react-router-dom";
 import { DialogType, MessageType } from "../../../types/types";
@@ -8,9 +9,13 @@ const Messages: React.FC<PropsTypeMessages> = ({
   addNewMessage,
 }) => {
   const location = useLocation();
-  const url = new URLSearchParams(location.pathname);
-  const urlId = Number(url.get("userId"));
-  let userIndex = messagesData.findIndex((x) => x.id === urlId);
+  const [userIndex, getUserIndex] = useState(0);
+
+  useEffect(() => {
+    const url = new URLSearchParams(location.pathname);
+    const urlId = Number(url.get("userId"));
+    getUserIndex(messagesData.findIndex((x) => x.id === urlId));
+  }, [location.pathname]);
 
   let arrMessages = messagesData[userIndex].messagesData.map((item, i) => {
     return (
