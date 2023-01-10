@@ -32,7 +32,7 @@ let initialState = {
       ],
     },
     {
-      name: "Lebowski",
+      name: "Artem",
       id: 5,
       messagesData: [
         { message: "Hi, How are you?", id: 1 },

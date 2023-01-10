@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useLocation } from "react-router-dom";
 import { DialogType, MessageType } from "../../../types/types";
-import DialogsCss from "./../Dialogs.module.css";
+import DialogsCss from "../Dialogs.module.scss";
+import { Box, Button, TextField, Typography } from "@mui/material";
+import SendIcon from '@mui/icons-material/Send';
 
 const Messages: React.FC<PropsTypeMessages> = ({
   messagesData,
@@ -21,17 +23,19 @@ const Messages: React.FC<PropsTypeMessages> = ({
 
   let arrMessages = messagesData[userIndex].messagesData.map((item, i) => {
     return (
-      <div key={i} className={DialogsCss.message}>
-        <p>{item.message}</p>
-      </div>
+      <Box key={i} sx={{ paddingTop: 1 }} >
+        <Typography>{item.message}</Typography>
+      </Box>
     );
   });
 
   return (
-    <div className={DialogsCss.message}>
-      {arrMessages}
+    <Box sx={{height: "80vh", padding:1, paddingLeft: 2}}>
+    <Box sx={{display: "flex", flexDirection:"column", minHeight: "60%"}} >
+       {arrMessages}</Box>
       <NewMessage addNewMessage={addNewMessage} urlId={urlId} />
-    </div>
+    </Box>
+
   );
 };
 
@@ -53,14 +57,16 @@ const NewMessage: React.FC<PropsTypeNewMessage> = ({
     reset();
   };
   return (
-    <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <textarea {...register("newMessage")} cols={30} rows={10}></textarea>
-        <div>
-          <input type="submit" value={"Send"} />
-        </div>
+    <Box>
+      <form onSubmit={handleSubmit(onSubmit)} className={DialogsCss.form_Message}>
+        <TextField  label="New Message"
+                    multiline
+                    minRows={3} {...register("newMessage")} ></TextField>
+        <Box sx={{marginTop: 1}}>
+          <Button sx={{width:"100%"}} type="submit" variant="outlined" endIcon={<SendIcon />}  >Send</Button>
+        </Box>
       </form>
-    </div>
+    </Box>
   );
 };
 

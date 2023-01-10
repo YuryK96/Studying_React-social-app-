@@ -71,7 +71,8 @@ const Header: React.FC<HeaderType> = ({}) => {
           >
             <MenuIcon />
           </IconButton>
-
+          { window.innerWidth < 500 && open ? '' :
+            <>
           <Box
             component="img"
             sx={{
@@ -125,6 +126,8 @@ const Header: React.FC<HeaderType> = ({}) => {
               </NavLink>
             )}
           </Box>
+            </>
+          }
         </Toolbar>
       </AppBar>
 
