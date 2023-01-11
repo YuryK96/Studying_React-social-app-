@@ -6,7 +6,7 @@ import { BaseThunkType, DispatchType } from "./redux-store";
 
 let initialState = {
   users: [] as Array<UserType>,
-  pageSize: 5,
+  pageSize: 9,
   totalUsersCount: 0,
   currentPage: 1,
   isFetching: false,

@@ -21,8 +21,9 @@ import Paginator from "../common/Paginator/Pagination";
 import User from "./User";
 import s from "./Users.module.scss";
 import UsersSearchForm from "./UsersSearchForm";
-import { Box } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import Container from "@mui/material/Container";
+import { useWindowSize } from "../hook/useWindowSize";
 
 export const Users: React.FC<UsersType> = ({}) => {
   const dispatch: AppDispatch = useDispatch();
@@ -35,6 +36,7 @@ export const Users: React.FC<UsersType> = ({}) => {
   const filter = useSelector(getFilter);
   const navigate = useNavigate();
   const location = useLocation();
+  const windowWidth = useWindowSize();
 
   useEffect(() => {
     navigate(
@@ -88,7 +90,7 @@ export const Users: React.FC<UsersType> = ({}) => {
   };
 
   return (
-    <Container sx={{paddingTop: 1}}>
+    <Container sx={{ paddingTop: 1 }}>
       <UsersSearchForm
         onFilterChanged={onFilterChanged}
         isFetching={isFetching}
@@ -100,18 +102,27 @@ export const Users: React.FC<UsersType> = ({}) => {
         totalItemsCount={totalUsersCount}
         pageSize={pageSize}
       />
-
-      {users.map((user) => {
-        return (
-          <User
-            key={user.id}
-            followingInProgress={followingInProgress}
-            toggleUserFollow={follow}
-            toggleUserUnFollow={unfollow}
-            user={user}
-          />
-        );
-      })}
+      <Box marginTop={0.5} maxWidth={500}>
+        <Grid
+          container
+          spacing={1}
+          justifyContent={windowWidth.width < 350 ? "center" : "start"}
+          wrap={"wrap"}
+        >
+          {users.map((user) => {
+            return (
+              <Grid item key={user.id}>
+                <User
+                  followingInProgress={followingInProgress}
+                  toggleUserFollow={follow}
+                  toggleUserUnFollow={unfollow}
+                  user={user}
+                />
+              </Grid>
+            );
+          })}
+        </Grid>
+      </Box>
     </Container>
   );
 };

@@ -1,13 +1,17 @@
 import preloader from "../../../assets/img/preloader.svg";
+import { Box } from "@mui/material";
+import Container from "@mui/material/Container";
 
 const Preloader: React.FC = ({}) => {
   return (
-    <div>
-      <div>
+    <Container
+      sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
+    >
+      <Box>
         {" "}
-        <img src={preloader} />
-      </div>
-    </div>
+        <Box component={"img"} src={preloader} />
+      </Box>
+    </Container>
   );
 };
 
