@@ -21,6 +21,8 @@ import Paginator from "../common/Paginator/Pagination";
 import User from "./User";
 import s from "./Users.module.scss";
 import UsersSearchForm from "./UsersSearchForm";
+import { Box } from "@mui/material";
+import Container from "@mui/material/Container";
 
 export const Users: React.FC<UsersType> = ({}) => {
   const dispatch: AppDispatch = useDispatch();
@@ -86,7 +88,7 @@ export const Users: React.FC<UsersType> = ({}) => {
   };
 
   return (
-    <div>
+    <Container sx={{paddingTop: 1}}>
       <UsersSearchForm
         onFilterChanged={onFilterChanged}
         isFetching={isFetching}
@@ -110,7 +112,7 @@ export const Users: React.FC<UsersType> = ({}) => {
           />
         );
       })}
-    </div>
+    </Container>
   );
 };
 

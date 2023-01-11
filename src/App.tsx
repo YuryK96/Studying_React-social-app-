@@ -1,7 +1,6 @@
-import React, { Suspense, useEffect } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { Routes, Route, Navigate, NavLink } from "react-router-dom";
 import "./App.css";
-
 import UsersPage from "./components/Users/UsersPage";
 import Login from "./components/Login/Login";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,8 +10,6 @@ import { AppDispatch, AppStateType } from "./redux/redux-store";
 import { getInitialized } from "./redux/app-selectors";
 import Header from "./components/Header/Header";
 import Container from "@mui/material/Container";
-import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
-import { DrawerMenu } from "./components/Drawer/DrawerMenu";
 import { Box, CSSObject, styled, Theme } from "@mui/material";
 
 const DialogsContainer = React.lazy(

@@ -10,6 +10,7 @@ import s from "./Header.module.scss";
 import { DrawerMenu } from "../Drawer/DrawerMenu";
 import { useState } from "react";
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
+import { useWindowSize } from "../hook/useWindowSize";
 
 const drawerWidth = 240;
 
@@ -39,7 +40,7 @@ const Header: React.FC<HeaderType> = ({}) => {
   const dispatch: AppDispatch = useDispatch();
   const isAuth = useSelector(getIsAuth);
   const login = useSelector(getLogin);
-
+  const windowWidth = useWindowSize();
   const [open, setOpen] = useState(false);
 
   const handleDrawerOpen = () => {
@@ -71,63 +72,65 @@ const Header: React.FC<HeaderType> = ({}) => {
           >
             <MenuIcon />
           </IconButton>
-          { window.innerWidth < 500 && open ? '' :
+          {windowWidth.width < 500 && open ? (
+            ""
+          ) : (
             <>
-          <Box
-            component="img"
-            sx={{
-              height: 34,
-              p: "inherit",
-            }}
-            alt="Logo"
-            src="https://cdn.logo.com/hotlink-ok/logo-social.png"
-          />
+              <Box
+                component="img"
+                sx={{
+                  height: 34,
+                  p: "inherit",
+                }}
+                alt="Logo"
+                src="https://cdn.logo.com/hotlink-ok/logo-social.png"
+              />
 
-          <Box
-            component={"div"}
-            sx={{
-              display: "flex",
-              justifyContent: "end",
-              width: "85%",
-              transition: 1,
-            }}
-          >
-            {isAuth ? (
-              <>
-                <Typography
-                  variant="button"
-                  color={"tomato"}
-                  sx={{
-                    fontSize: "default",
-                    display: "flex",
-                    mr: 1,
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  {" "}
-                  {login}{" "}
-                </Typography>
+              <Box
+                component={"div"}
+                sx={{
+                  display: "flex",
+                  justifyContent: "end",
+                  width: "85%",
+                  transition: 1,
+                }}
+              >
+                {isAuth ? (
+                  <>
+                    <Typography
+                      variant="button"
+                      color={"tomato"}
+                      sx={{
+                        fontSize: "default",
+                        display: "flex",
+                        mr: 1,
+                        justifyContent: "center",
+                        alignItems: "center",
+                      }}
+                    >
+                      {" "}
+                      {login}{" "}
+                    </Typography>
 
-                <Button
-                  variant="contained"
-                  sx={{}}
-                  onClick={onLogOut}
-                  color="secondary"
-                >
-                  LogOut
-                </Button>
-              </>
-            ) : (
-              <NavLink to="/Login" className={s.loginLink}>
-                <Button variant="outlined" sx={{}} color="inherit">
-                  Login
-                </Button>
-              </NavLink>
-            )}
-          </Box>
+                    <Button
+                      variant="contained"
+                      sx={{}}
+                      onClick={onLogOut}
+                      color="secondary"
+                    >
+                      LogOut
+                    </Button>
+                  </>
+                ) : (
+                  <NavLink to="/Login" className={s.loginLink}>
+                    <Button variant="outlined" sx={{}} color="inherit">
+                      Login
+                    </Button>
+                  </NavLink>
+                )}
+              </Box>
             </>
-          }
+          )}
         </Toolbar>
       </AppBar>
 

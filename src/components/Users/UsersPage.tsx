@@ -5,17 +5,18 @@ import { getIsFetching } from "../../redux/users-selectors";
 import { Users } from "./Users";
 import { compose } from "redux";
 import { WithAuthRedirect } from "../../hoc/withAuthRedirect";
+import { Box } from "@mui/material";
 
 type UsersPageType = {};
 
 const UsersPage: React.FC<UsersPageType> = () => {
   const isFetching = useSelector(getIsFetching);
   return (
-    <div>
+    <Box>
       {isFetching ? <Preloader /> : null}
 
       <Users />
-    </div>
+    </Box>
   );
 };
 
