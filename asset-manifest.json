@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.css": "/Studying_React-social-app-/static/css/main.044da8b2.css",
-    "main.js": "/Studying_React-social-app-/static/js/main.274f8353.js",
-    "static/css/483.d4d4f6f4.chunk.css": "/Studying_React-social-app-/static/css/483.d4d4f6f4.chunk.css",
-    "static/js/483.b31f8b43.chunk.js": "/Studying_React-social-app-/static/js/483.b31f8b43.chunk.js",
-    "static/css/453.e187b099.chunk.css": "/Studying_React-social-app-/static/css/453.e187b099.chunk.css",
-    "static/js/453.8e892bb5.chunk.js": "/Studying_React-social-app-/static/js/453.8e892bb5.chunk.js",
+    "main.css": "/Studying_React-social-app-/static/css/main.d42a70bd.css",
+    "main.js": "/Studying_React-social-app-/static/js/main.fe6a0355.js",
+    "static/css/849.aa0f4597.chunk.css": "/Studying_React-social-app-/static/css/849.aa0f4597.chunk.css",
+    "static/js/849.145cfaf6.chunk.js": "/Studying_React-social-app-/static/js/849.145cfaf6.chunk.js",
+    "static/css/571.099a3762.chunk.css": "/Studying_React-social-app-/static/css/571.099a3762.chunk.css",
+    "static/js/571.234458f0.chunk.js": "/Studying_React-social-app-/static/js/571.234458f0.chunk.js",
     "static/js/787.62eb6c37.chunk.js": "/Studying_React-social-app-/static/js/787.62eb6c37.chunk.js",
     "static/media/roboto-all-500-normal.woff": "/Studying_React-social-app-/static/media/roboto-all-500-normal.0ab669b7a0d19b178f57.woff",
     "static/media/roboto-all-700-normal.woff": "/Studying_React-social-app-/static/media/roboto-all-700-normal.a457fde362a540fcadff.woff",
@@ -41,16 +41,16 @@
     "static/media/roboto-greek-ext-300-normal.woff2": "/Studying_React-social-app-/static/media/roboto-greek-ext-300-normal.35b9d6be04b95f0f0530.woff2",
     "static/media/roboto-greek-ext-700-normal.woff2": "/Studying_React-social-app-/static/media/roboto-greek-ext-700-normal.bd9854c751441ccc1a70.woff2",
     "index.html": "/Studying_React-social-app-/index.html",
-    "main.044da8b2.css.map": "/Studying_React-social-app-/static/css/main.044da8b2.css.map",
-    "main.274f8353.js.map": "/Studying_React-social-app-/static/js/main.274f8353.js.map",
-    "483.d4d4f6f4.chunk.css.map": "/Studying_React-social-app-/static/css/483.d4d4f6f4.chunk.css.map",
-    "483.b31f8b43.chunk.js.map": "/Studying_React-social-app-/static/js/483.b31f8b43.chunk.js.map",
-    "453.e187b099.chunk.css.map": "/Studying_React-social-app-/static/css/453.e187b099.chunk.css.map",
-    "453.8e892bb5.chunk.js.map": "/Studying_React-social-app-/static/js/453.8e892bb5.chunk.js.map",
+    "main.d42a70bd.css.map": "/Studying_React-social-app-/static/css/main.d42a70bd.css.map",
+    "main.fe6a0355.js.map": "/Studying_React-social-app-/static/js/main.fe6a0355.js.map",
+    "849.aa0f4597.chunk.css.map": "/Studying_React-social-app-/static/css/849.aa0f4597.chunk.css.map",
+    "849.145cfaf6.chunk.js.map": "/Studying_React-social-app-/static/js/849.145cfaf6.chunk.js.map",
+    "571.099a3762.chunk.css.map": "/Studying_React-social-app-/static/css/571.099a3762.chunk.css.map",
+    "571.234458f0.chunk.js.map": "/Studying_React-social-app-/static/js/571.234458f0.chunk.js.map",
     "787.62eb6c37.chunk.js.map": "/Studying_React-social-app-/static/js/787.62eb6c37.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.044da8b2.css",
-    "static/js/main.274f8353.js"
+    "static/css/main.d42a70bd.css",
+    "static/js/main.fe6a0355.js"
   ]
 }
