@@ -20,6 +20,7 @@ import {
 import { compose } from "redux";
 import { WithAuthRedirect } from "../../hoc/withAuthRedirect";
 import { ComponentType, useEffect } from "react";
+import { Box } from "@mui/material";
 
 const Profile: React.FC<ProfileType> = ({ router }) => {
   const dispatch: AppDispatch = useDispatch();
@@ -64,7 +65,7 @@ const Profile: React.FC<ProfileType> = ({ router }) => {
   }, [router.params.userId]);
 
   return (
-    <div>
+    <Box>
       <ProfileInfo
         isOwner={!router.params.userId}
         profile={profile}
@@ -75,7 +76,7 @@ const Profile: React.FC<ProfileType> = ({ router }) => {
         userId={userId}
       />
       <MyPostsContainer />
-    </div>
+    </Box>
   );
 };
 

@@ -1,6 +1,9 @@
 import ProfileInfoCss from "./ProfileInfo.module.css";
-import { useForm, SubmitHandler } from "react-hook-form";
-import { PhotoType, UserProfileType } from "../../../types/types";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { UserProfileType } from "../../../types/types";
+import { Box, Button, Typography } from "@mui/material";
+import AddAPhotoIcon from "@mui/icons-material/AddAPhoto";
+import IconButton from "@mui/material/IconButton";
 
 const ProfileDataForm: React.FC<ProfileDataFormType> = ({
   profile,
@@ -56,22 +59,35 @@ const ProfileDataForm: React.FC<ProfileDataFormType> = ({
 
   return (
     <div className={ProfileInfoCss.item}>
-      <div className={ProfileInfoCss.avatar}>
-        <div className={ProfileInfoCss.name}>
-          <b> {profile.fullName} </b>
-        </div>
-        <img
+      <Box
+        sx={{
+          textAlign: "center",
+
+          minWidth: 150,
+          maxWidth: 150,
+        }}
+      >
+        <Typography fontWeight={500}>{profile.fullName}</Typography>
+        <Box
+          component={"img"}
+          borderRadius={3}
+          width={"100%"}
           src={
             profile.photos.large ||
             "https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?w=2000"
           }
-          alt=""
-        />
-
+        />{" "}
         {isOwner && (
-          <input type={"file"} onChange={(e) => mainPhotoSelected(e)} />
+          <IconButton component="label">
+            <AddAPhotoIcon />
+            <input
+              hidden
+              type={"file"}
+              onChange={(e) => mainPhotoSelected(e)}
+            />
+          </IconButton>
         )}
-      </div>
+      </Box>
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
@@ -136,7 +152,11 @@ const ProfileDataForm: React.FC<ProfileDataFormType> = ({
 
         <div>
           <label htmlFor="lookingForAJob">Are you looking for a job?</label>{" "}
-          <input {...register("lookingForAJob")} type={"checkbox"} />
+          <input
+            {...register("lookingForAJob")}
+            defaultChecked={profile.lookingForAJob}
+            type={"checkbox"}
+          />
         </div>
 
         <div>

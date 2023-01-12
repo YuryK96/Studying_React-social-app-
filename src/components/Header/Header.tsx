@@ -76,16 +76,17 @@ const Header: React.FC<HeaderType> = ({}) => {
             ""
           ) : (
             <>
-              <Box
-                component="img"
-                sx={{
-                  height: 34,
-                  p: "inherit",
-                }}
-                alt="Logo"
-                src="https://cdn.logo.com/hotlink-ok/logo-social.png"
-              />
-
+              {windowWidth.width > 345 && (
+                <Box
+                  component="img"
+                  sx={{
+                    height: 34,
+                    p: "inherit",
+                  }}
+                  alt="Logo"
+                  src="https://cdn.logo.com/hotlink-ok/logo-social.png"
+                />
+              )}
               <Box
                 component={"div"}
                 sx={{

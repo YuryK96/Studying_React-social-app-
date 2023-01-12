@@ -1,6 +1,7 @@
 import ProfileInfoCss from "./ProfileInfo.module.css";
 import { ChangeEvent, useState } from "react";
 import { useEffect } from "react";
+import { Box, TextField, Typography } from "@mui/material";
 
 const ProfileStatuswithHooks: React.FC<ProfileStatuswithHooksType> = ({
   status,
@@ -24,27 +25,33 @@ const ProfileStatuswithHooks: React.FC<ProfileStatuswithHooksType> = ({
     setStatusState(event.currentTarget.value);
   };
   return (
-    <div>
+    <Box display={"flex"} justifyContent={"center"}>
       {!editMode && (
-        <div>
-          <span role="span" onDoubleClick={activateEditMode}>
+        <Box>
+          <Typography
+            borderBottom={"1px solid gray"}
+            minWidth={100}
+            role="span"
+            onDoubleClick={activateEditMode}
+          >
             {status || "------"}
-          </span>
-        </div>
+          </Typography>
+        </Box>
       )}
 
       {editMode && (
-        <div>
+        <Box>
           {" "}
-          <input
+          <TextField
             autoFocus
             onBlur={deactivateEditMode}
             onChange={onStatusChange}
             value={statusState}
+            size={"small"}
           />
-        </div>
+        </Box>
       )}
-    </div>
+    </Box>
   );
 };
 
