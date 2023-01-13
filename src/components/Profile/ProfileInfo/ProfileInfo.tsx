@@ -22,7 +22,12 @@ const ProfileInfo: React.FC<ProfileInfoType> = ({
   }
 
   return (
-    <Box className={ProfileInfoCss.content}>
+    <Box
+      sx={{
+        background: " rgb(232, 231, 231)",
+        borderRadius: 10,
+      }}
+    >
       {editMode ? (
         <ProfileDataForm
           OutFromEditMode={() => {

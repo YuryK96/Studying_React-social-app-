@@ -1,6 +1,5 @@
 import ProfileCss from "./Profile.module.css";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
-import MyPostsContainer from "./MyPosts/MyPostsContainer";
 import { PhotoType, UserProfileType } from "../../types/types";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -21,6 +20,7 @@ import { compose } from "redux";
 import { WithAuthRedirect } from "../../hoc/withAuthRedirect";
 import { ComponentType, useEffect } from "react";
 import { Box } from "@mui/material";
+import MyPosts from "./MyPosts/MyPosts";
 
 const Profile: React.FC<ProfileType> = ({ router }) => {
   const dispatch: AppDispatch = useDispatch();
@@ -75,7 +75,7 @@ const Profile: React.FC<ProfileType> = ({ router }) => {
         updateProfile={onUpdateProfile}
         userId={userId}
       />
-      <MyPostsContainer />
+      <MyPosts />
     </Box>
   );
 };

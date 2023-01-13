@@ -1,9 +1,19 @@
-import ProfileInfoCss from "./ProfileInfo.module.css";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { UserProfileType } from "../../../types/types";
-import { Box, Button, Typography } from "@mui/material";
+import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
+import {
+  Box,
+  Button,
+  Checkbox,
+  FormControl,
+  FormControlLabel,
+  TextField,
+  Typography,
+} from "@mui/material";
 import AddAPhotoIcon from "@mui/icons-material/AddAPhoto";
 import IconButton from "@mui/material/IconButton";
+import React from "react";
+import { useWindowSize } from "../../hook/useWindowSize";
 
 const ProfileDataForm: React.FC<ProfileDataFormType> = ({
   profile,
@@ -13,6 +23,7 @@ const ProfileDataForm: React.FC<ProfileDataFormType> = ({
   updateProfile,
   userId,
 }) => {
+  const windowWidth = useWindowSize();
   const {
     register,
     formState: { errors, isValid },
@@ -20,6 +31,7 @@ const ProfileDataForm: React.FC<ProfileDataFormType> = ({
     reset,
     setError,
     clearErrors,
+    control,
   } = useForm<FormValues>({
     mode: "onBlur",
   });
@@ -58,340 +70,191 @@ const ProfileDataForm: React.FC<ProfileDataFormType> = ({
   };
 
   return (
-    <div className={ProfileInfoCss.item}>
-      <Box
-        sx={{
-          textAlign: "center",
+    <Box display={"flex"}>
+      <FormControl>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <Box
+            display={"flex"}
+            marginLeft={1}
+            justifyContent={windowWidth.width > 560 ? "start" : "center"}
+            flexWrap={"wrap"}
+          >
+            <Box
+              sx={{
+                textAlign: "center",
+                margin: 1,
 
-          minWidth: 150,
-          maxWidth: 150,
-        }}
-      >
-        <Typography fontWeight={500}>{profile.fullName}</Typography>
-        <Box
-          component={"img"}
-          borderRadius={3}
-          width={"100%"}
-          src={
-            profile.photos.large ||
-            "https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?w=2000"
-          }
-        />{" "}
-        {isOwner && (
-          <IconButton component="label">
-            <AddAPhotoIcon />
-            <input
-              hidden
-              type={"file"}
-              onChange={(e) => mainPhotoSelected(e)}
-            />
-          </IconButton>
-        )}
-      </Box>
-
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
-          <div>
-            <div>
-              <b> Name</b>
-            </div>
-            <input
-              onFocus={() => {
-                clearErrors();
+                minWidth: 200,
+                maxWidth: 200,
               }}
-              {...register("name", {
-                value: profile.fullName,
-                required: "need to fill form",
-
-                minLength: {
-                  value: 1,
-
-                  message: "need more symbols",
-                },
-              })}
-            />
-          </div>
-          <div>
-            {(errors?.name && (
-              <p style={{ color: "red" }}>
-                {errors?.name?.message || "Error!"}
-              </p>
-            )) || <p style={{ color: "red" }}>{errors?.server?.message}</p>}
-          </div>{" "}
-          <div>
-            {" "}
-            <b> About Me</b>
-          </div>
-          <input
-            onFocus={() => {
-              clearErrors();
-            }}
-            {...register("aboutMe", {
-              required: "need to fill form",
-              value: profile.aboutMe,
-              minLength: {
-                value: 1,
-
-                message: "need more symbols",
-              },
-            })}
-          />
-        </div>
-        <div>
-          {(errors?.aboutMe && (
-            <p style={{ color: "red" }}>
-              {errors?.aboutMe?.message || "Error!"}
-            </p>
-          )) || <p style={{ color: "red" }}>{errors?.server?.message}</p>}
-        </div>
-
-        <div>
-          {" "}
-          <b> Work </b>
-        </div>
-
-        <div>
-          <label htmlFor="lookingForAJob">Are you looking for a job?</label>{" "}
-          <input
-            {...register("lookingForAJob")}
-            defaultChecked={profile.lookingForAJob}
-            type={"checkbox"}
-          />
-        </div>
-
-        <div>
-          <div>
-            <label
-              style={{ display: "block" }}
-              htmlFor="lookingForAJobDescription"
             >
-              dream job describtion
-            </label>
-            <input
-              onFocus={() => {
-                clearErrors();
-              }}
-              type="text"
-              {...register("lookingForAJobDescription", {
-                required: "need to fill form",
-                value: profile.lookingForAJobDescription,
-                minLength: {
-                  value: 1,
+              <Typography fontWeight={500}>{profile.fullName}</Typography>
+              <Box
+                component={"img"}
+                borderRadius={3}
+                width={"100%"}
+                src={
+                  profile.photos.large ||
+                  "https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?w=2000"
+                }
+              />{" "}
+              {isOwner && (
+                <IconButton component="label">
+                  <AddAPhotoIcon />
+                  <input
+                    hidden
+                    type={"file"}
+                    onChange={(e) => mainPhotoSelected(e)}
+                  />
+                </IconButton>
+              )}
+              <Box margin={1}>
+                <TextField
+                  label="Name"
+                  size={"small"}
+                  onFocus={() => {
+                    clearErrors();
+                  }}
+                  {...register("name", {
+                    value: profile.fullName,
+                    required: "need to fill form",
 
-                  message: "need more symbols",
-                },
+                    minLength: {
+                      value: 1,
+
+                      message: "need more symbols",
+                    },
+                  })}
+                />
+              </Box>
+              {(errors?.name && (
+                <Typography sx={{ color: "red", margin: 1 }}>
+                  {errors?.name?.message || "Error!"}
+                </Typography>
+              )) || (
+                <Typography sx={{ color: "red", margin: 1 }}>
+                  {errors?.server?.message}
+                </Typography>
+              )}
+              <Box margin={1}>
+                <TextField
+                  label="About Me"
+                  multiline
+                  minRows={3}
+                  size={"small"}
+                  onFocus={() => {
+                    clearErrors();
+                  }}
+                  {...register("aboutMe", {
+                    required: "need to fill form",
+                    value: profile.aboutMe,
+                    minLength: {
+                      value: 1,
+
+                      message: "need more symbols",
+                    },
+                  })}
+                />
+
+                {(errors?.aboutMe && (
+                  <Typography sx={{ color: "red", margin: 1 }}>
+                    {errors?.aboutMe?.message || "Error!"}
+                  </Typography>
+                )) || (
+                  <Typography sx={{ color: "red", margin: 1 }}>
+                    {errors?.server?.message}
+                  </Typography>
+                )}
+              </Box>
+            </Box>
+
+            <Box>
+              <Typography fontWeight={500} padding={1}>
+                {" "}
+                Contacts:
+              </Typography>
+              {Object.entries(profile.contacts).map((item, index) => {
+                const socName: any = item[0];
+                return (
+                  <Box key={index} margin={1}>
+                    <TextField
+                      size={"small"}
+                      label={item[0]}
+                      type="url"
+                      onFocus={() => {
+                        clearErrors();
+                      }}
+                      {...register(item[0] as SocialType, {
+                        value: item[1],
+                      })}
+                    />
+
+                    {errors?.[socName as keyof SocialTypeKey] && (
+                      <Typography sx={{ color: "red", margin: 1 }}>
+                        {errors?.[socName as keyof SocialTypeKey]?.message ||
+                          "Error!"}
+                      </Typography>
+                    )}
+                  </Box>
+                );
               })}
-            />
-          </div>
-          <div>
-            {errors?.lookingForAJobDescription && (
-              <p style={{ color: "red" }}>
-                {errors?.lookingForAJobDescription?.message || "Error!"}
-              </p>
-            )}
-          </div>
-        </div>
+            </Box>
+            <Box>
+              <Box m={1}>
+                <Typography fontWeight={500}> Work:</Typography>
+                <FormControlLabel
+                  label="Are you looking for a job?"
+                  control={
+                    <Checkbox
+                      {...register("lookingForAJob")}
+                      defaultChecked={profile.lookingForAJob}
+                    />
+                  }
+                />
+                <Box m={1}>
+                  <TextField
+                    label="Dream job describtion"
+                    multiline
+                    minRows={2}
+                    onFocus={() => {
+                      clearErrors();
+                    }}
+                    type="text"
+                    {...register("lookingForAJobDescription", {
+                      required: "need to fill form",
+                      value: profile.lookingForAJobDescription,
+                      minLength: {
+                        value: 1,
 
-        <div>
-          <div>
-            {" "}
-            <b> Contacts</b>
-          </div>
-          <div>
-            <label className={ProfileInfoCss.label} htmlFor="facebook ">
-              facebook:
-            </label>
-            <input
-              type="url"
-              onFocus={() => {
-                clearErrors();
-              }}
-              {...register("facebook", {
-                value: profile.contacts.facebook,
-              })}
-            />
+                        message: "need more symbols",
+                      },
+                    })}
+                  />
 
-            <div>
-              {(errors?.facebook && (
-                <p style={{ color: "red" }}>
-                  {errors?.facebook?.message || "Error!"}
-                </p>
-              )) || <p style={{ color: "red" }}>{errors?.server?.message}</p>}
-            </div>
-          </div>
-
-          <div>
-            <label className={ProfileInfoCss.label} htmlFor="website ">
-              website:
-            </label>
-            <input
-              type="url"
-              onFocus={() => {
-                clearErrors();
-              }}
-              {...register("website", {
-                value: profile.contacts.website,
-              })}
-            />
-
-            <div>
-              {(errors?.website && (
-                <p style={{ color: "red" }}>
-                  {errors?.website?.message || "Error!"}
-                </p>
-              )) || <p style={{ color: "red" }}>{errors?.server?.message}</p>}
-            </div>
-          </div>
-
-          <div>
-            <label className={ProfileInfoCss.label} htmlFor="vk ">
-              vk:
-            </label>
-            <input
-              type="url"
-              onFocus={() => {
-                clearErrors();
-              }}
-              {...register("vk", {
-                value: profile.contacts.vk,
-              })}
-            />
-
-            <div>
-              {(errors?.vk && (
-                <p style={{ color: "red" }}>
-                  {errors?.vk?.message || "Error!"}
-                </p>
-              )) || <p style={{ color: "red" }}>{errors?.server?.message}</p>}
-            </div>
-          </div>
-
-          <div>
-            <label className={ProfileInfoCss.label} htmlFor="twitter ">
-              twitter:
-            </label>
-            <input
-              type="url"
-              onFocus={() => {
-                clearErrors();
-              }}
-              {...register("twitter", {
-                value: profile.contacts.twitter,
-              })}
-            />
-
-            <div>
-              {(errors?.twitter && (
-                <p style={{ color: "red" }}>
-                  {errors?.twitter?.message || "Error!"}
-                </p>
-              )) || <p style={{ color: "red" }}>{errors?.server?.message}</p>}
-            </div>
-          </div>
-
-          <div>
-            <label className={ProfileInfoCss.label} htmlFor="instagram ">
-              instagram:
-            </label>
-            <input
-              type="url"
-              onFocus={() => {
-                clearErrors();
-              }}
-              {...register("instagram", {
-                value: profile.contacts.instagram,
-              })}
-            />
-
-            <div>
-              {(errors?.instagram && (
-                <p style={{ color: "red" }}>
-                  {errors?.instagram?.message || "Error!"}
-                </p>
-              )) || <p style={{ color: "red" }}>{errors?.server?.message}</p>}
-            </div>
-          </div>
-
-          <div>
-            <label className={ProfileInfoCss.label} htmlFor="youtube ">
-              youtube:
-            </label>
-            <input
-              type="url"
-              onFocus={() => {
-                clearErrors();
-              }}
-              {...register("youtube", {
-                value: profile.contacts.youtube,
-              })}
-            />
-
-            <div>
-              {(errors?.youtube && (
-                <p style={{ color: "red" }}>
-                  {errors?.youtube?.message || "Error!"}
-                </p>
-              )) || <p style={{ color: "red" }}>{errors?.server?.message}</p>}
-            </div>
-          </div>
-          <div>
-            <label className={ProfileInfoCss.label} htmlFor="github ">
-              github:
-            </label>
-            <input
-              type="url"
-              onFocus={() => {
-                clearErrors();
-              }}
-              {...register("github", {
-                value: profile.contacts.github,
-              })}
-            />
-
-            <div>
-              {(errors?.github && (
-                <p style={{ color: "red" }}>
-                  {errors?.github?.message || "Error!"}
-                </p>
-              )) || <p style={{ color: "red" }}>{errors?.server?.message}</p>}
-            </div>
-          </div>
-
-          <div>
-            <label className={ProfileInfoCss.label} htmlFor="mainLink ">
-              mainLink:
-            </label>
-            <input
-              type="url"
-              onFocus={() => {
-                clearErrors();
-              }}
-              {...register("mainLink", {
-                value: profile.contacts.mainLink,
-              })}
-            />
-
-            <div>
-              {(errors?.mainLink && (
-                <p style={{ color: "red" }}>
-                  {errors?.mainLink?.message || "Error!"}
-                </p>
-              )) || <p style={{ color: "red" }}>{errors?.server?.message}</p>}
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <input disabled={!isValid} type="submit" />
-        </div>
-      </form>
-      <div>
-        <button onClick={OutFromEditMode}>Back</button>
-      </div>
-    </div>
+                  {errors?.lookingForAJobDescription && (
+                    <Typography sx={{ color: "red", margin: 1 }}>
+                      {errors?.lookingForAJobDescription?.message || "Error!"}
+                    </Typography>
+                  )}
+                </Box>
+              </Box>
+            </Box>
+          </Box>
+          <Box marginBottom={1} display={"flex"} justifyContent={"center"}>
+            <Button disabled={!isValid} variant="outlined" type="submit">
+              Edit
+            </Button>
+          </Box>
+        </form>
+      </FormControl>
+      <Box>
+        <IconButton onClick={OutFromEditMode}>
+          <KeyboardBackspaceIcon />
+        </IconButton>
+      </Box>
+    </Box>
   );
 };
-
 export default ProfileDataForm;
 
 type ProfileDataFormType = {
@@ -407,6 +270,26 @@ type ProfileDataFormType = {
   ) => void;
 };
 
+interface SocialTypeKey {
+  facebook: "facebook";
+  github: "github";
+  instagram: "instagram";
+  mainLink: "mainLink";
+  twitter: "twitter";
+  vk: "vk";
+  website: "website";
+  youtube: "youtube";
+}
+
+type SocialType =
+  | "facebook"
+  | "github"
+  | "instagram"
+  | "mainLink"
+  | "twitter"
+  | "vk"
+  | "website"
+  | "youtube";
 type FormValues = {
   aboutMe: string | null;
   facebook: string | null;
