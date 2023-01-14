@@ -4,6 +4,7 @@ import { Navigate } from "react-router-dom";
 import { getIsAuth } from "../../redux/auth-selectors";
 import { LoginForm } from "./LoginForm";
 import { Box, Typography } from "@mui/material";
+import Container from "@mui/material/Container";
 
 type LoginType = {};
 
@@ -11,18 +12,18 @@ const Login: React.FC<LoginType> = () => {
   const isAuth = useSelector(getIsAuth);
 
   return (
-    <Box>
+    <Container>
       {!isAuth ? (
         <Box>
-          <Typography m={2} variant="h4">
-            Login
+          <Typography m={2} variant="h5">
+            Authorization
           </Typography>
           <LoginForm />
         </Box>
       ) : (
         <Navigate to={"/profile"} />
       )}
-    </Box>
+    </Container>
   );
 };
 

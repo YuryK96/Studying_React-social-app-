@@ -5,11 +5,11 @@ import { BaseThunkType } from "./redux-store";
 
 let initialState = {
   myPostData: [
-    { value: "Hi my name is Petya", countLikes: 10, id: 1 },
-    { value: "Hi my name is Wasya", countLikes: 11, id: 2 },
-    { value: "Hi my name is Roma", countLikes: 1, id: 3 },
-    { value: "Hi my name is Yury", countLikes: 8, id: 4 },
-    { value: "Hi my name is Nastya", countLikes: 15, id: 5 },
+    { value: "You look great!", countLikes: 10, id: 1 },
+    { value: "Interesting", countLikes: 11, id: 2 },
+    { value: "Nice", countLikes: 1, id: 3 },
+    { value: "Amazing", countLikes: 8, id: 4 },
+    { value: "Do you like cats?", countLikes: 15, id: 5 },
   ] as Array<MyPostType>,
   newPostText: "",
   userProfile: null as UserProfileType | null,

@@ -137,7 +137,7 @@ export const ProfileData: React.FC<ProfileDataType> = ({
           </Typography>
         </Box>
         <Typography color={"rgba(49, 47, 48, 0.8)"}>
-          {profile.lookingForAJobDescription}{" "}
+          {profile.lookingForAJobDescription}
         </Typography>
       </Box>
 

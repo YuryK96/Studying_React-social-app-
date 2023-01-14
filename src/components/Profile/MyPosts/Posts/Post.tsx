@@ -24,12 +24,20 @@ const Post: React.FC<PostType> = ({ countLikes, value }) => {
             alt=""
           />{" "}
         </Box>
-        <Typography m={1} textAlign={"center"}>
-          likes: <Typography color={"green"}>{countLikes}</Typography>
-        </Typography>{" "}
+        <Box
+          m={1}
+          display={"flex"}
+          justifyContent={"center"}
+          textAlign={"center"}
+        >
+          <Typography> likes: </Typography>{" "}
+          <Typography color={"green"}>{countLikes}</Typography>
+        </Box>{" "}
       </Box>
 
-      <Typography className={PostCss.post}>{value}</Typography>
+      <Typography textAlign={"center"} className={PostCss.post}>
+        {value}
+      </Typography>
     </Box>
   );
 };

@@ -4,18 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e8ab325c-0a2c-4957-8c48-ebd0aea66475" name="Changes" comment="markup Profile.tsx using Material UI">
+    <list default="true" id="e8ab325c-0a2c-4957-8c48-ebd0aea66475" name="Changes" comment="markup MyPosts.tsx, Post.tsx, Profile.tsx, ProfileDataForm.tsx, ProfileInfo.tsx, MyPosts.tsx using Material UI">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Login/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Login/Login.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Profile/MyPosts/MyPosts.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/MyPosts/MyPosts.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Profile/MyPosts/MyPosts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/MyPosts/MyPosts.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Profile/MyPosts/MyPostsContainer.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Profile/MyPosts/Posts/Post.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/MyPosts/Posts/Post.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Login/LoginForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Login/LoginForm.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Profile/MyPosts/Posts/Post.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/MyPosts/Posts/Post.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Profile/Profile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/Profile.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Profile/ProfileInfo/ProfileDataForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/ProfileInfo/ProfileDataForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Profile/ProfileInfo/ProfileInfo.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/ProfileInfo/ProfileInfo.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Profile/ProfileInfo/ProfileInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/ProfileInfo/ProfileInfo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/ProfileInfo/ProfileData.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/ProfileInfo/ProfileData.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/profile-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/profile-reducer.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,7 +112,8 @@
       <workItem from="1673468991286" duration="6676000" />
       <workItem from="1673546632875" duration="10734000" />
       <workItem from="1673596107570" duration="7197000" />
-      <workItem from="1673627693514" duration="16283000" />
+      <workItem from="1673627693514" duration="16928000" />
+      <workItem from="1673716877381" duration="7474000" />
     </task>
     <task id="LOCAL-00001" summary="markup Dialog using Material UI">
       <created>1673380558348</created>
@@ -140,7 +136,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673558910918</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="markup MyPosts.tsx, Post.tsx, Profile.tsx, ProfileDataForm.tsx, ProfileInfo.tsx, MyPosts.tsx using Material UI">
+      <created>1673644998372</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1673644998372</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -175,6 +178,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="markup Dialog using Material UI" />
     <MESSAGE value="markup Profile.tsx using Material UI" />
-    <option name="LAST_COMMIT_MESSAGE" value="markup Profile.tsx using Material UI" />
+    <MESSAGE value="markup MyPosts.tsx, Post.tsx, Profile.tsx, ProfileDataForm.tsx, ProfileInfo.tsx, MyPosts.tsx using Material UI" />
+    <option name="LAST_COMMIT_MESSAGE" value="markup MyPosts.tsx, Post.tsx, Profile.tsx, ProfileDataForm.tsx, ProfileInfo.tsx, MyPosts.tsx using Material UI" />
   </component>
 </project>
