@@ -3,48 +3,48 @@ import { DialogType, MessageType } from "../types/types";
 let initialState = {
   dialogsData: [
     {
-      name: "Vasya",
+      name: "User 1",
       id: 0,
       messagesData: [{ message: "Hi, How are you?", id: 1 }],
     },
     {
-      name: "Petya",
+      name: "User 2",
       id: 2,
       messagesData: [
-        { message: "Hi, How are you?", id: 1 },
+        { message: "Hello", id: 1 },
         { message: "What are you going to do at night?", id: 2 },
       ],
     },
     {
-      name: "Alberto",
+      name: "User 3",
       id: 3,
       messagesData: [
-        { message: "Hi, How are you?", id: 1 },
-        { message: "What are you going to do at night?", id: 2 },
+        { message: "Hi, nice to meet you", id: 1 },
+        { message: "My name is Sergio", id: 2 },
       ],
     },
     {
-      name: "Nikitos",
+      name: "User 4",
       id: 4,
       messagesData: [
-        { message: "Hi, How are you?", id: 1 },
-        { message: "bb?", id: 2 },
+        { message: "Hi", id: 1 },
+        { message: "Sup?", id: 2 },
       ],
     },
     {
-      name: "Artem",
+      name: "User 5",
       id: 5,
       messagesData: [
-        { message: "Hi, How are you?", id: 1 },
-        { message: "aa?", id: 2 },
+        { message: "Welcome", id: 1 },
+        { message: "You are amazing", id: 2 },
       ],
     },
     {
-      name: "iValera",
+      name: "User 6",
       id: 6,
       messagesData: [
-        { message: "Hi, How are you?", id: 1 },
-        { message: "213?", id: 2 },
+        { message: "Hi, did you check your email?", id: 1 },
+        { message: "sure", id: 2 },
       ],
     },
   ] as Array<DialogType>,

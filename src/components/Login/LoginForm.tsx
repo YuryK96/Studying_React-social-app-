@@ -51,6 +51,7 @@ export const LoginForm: React.FC<LoginFormType> = ({}) => {
             }}
             label="Login or email"
             size={"small"}
+            defaultValue={"free@samuraijs.com"}
             error={!!errors?.email}
             helperText={errors?.email?.message}
             {...register("email", {
@@ -72,6 +73,7 @@ export const LoginForm: React.FC<LoginFormType> = ({}) => {
 
         <Box m={1} marginTop={2}>
           <TextField
+            defaultValue={"free"}
             inputProps={{
               autoComplete: "new-password",
               form: {

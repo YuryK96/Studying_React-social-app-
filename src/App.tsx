@@ -18,7 +18,7 @@ const DialogsContainer = React.lazy(
 const ProfileContainer = React.lazy(
   () => import("./components/Profile/Profile")
 );
-
+const ChatPage = React.lazy(() => import("./pages/Chat/ChatPage"));
 export const App: React.FC<PropsType> = ({}) => {
   const initialize = useSelector(getInitialized);
   const dispatch: AppDispatch = useDispatch();
@@ -56,6 +56,7 @@ export const App: React.FC<PropsType> = ({}) => {
             <Route path="/Messages/*" element={<DialogsContainer />} />
             <Route path="/Users/*" element={<UsersPage />} />
             <Route path="/Login" element={<Login />} />
+            <Route path="/Chat" element={<ChatPage />} />
           </Routes>{" "}
         </Suspense>
       </PaddingBox>

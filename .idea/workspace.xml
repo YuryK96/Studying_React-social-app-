@@ -4,18 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e8ab325c-0a2c-4957-8c48-ebd0aea66475" name="Changes" comment="markup MyPosts.tsx, Post.tsx, Profile.tsx, ProfileDataForm.tsx, ProfileInfo.tsx, MyPosts.tsx using Material UI">
+    <list default="true" id="e8ab325c-0a2c-4957-8c48-ebd0aea66475" name="Changes" comment="markup Login.tsx, LoginForm.tsx,  using Material UI. Turn off browser autoFill">
+      <change afterPath="$PROJECT_DIR$/src/pages/Chat/ChatPage.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Login/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Login/Login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Drawer/DrawerMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Drawer/DrawerMenu.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Login/LoginForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Login/LoginForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Profile/MyPosts/Posts/Post.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/MyPosts/Posts/Post.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Profile/ProfileInfo/ProfileData.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/ProfileInfo/ProfileData.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/profile-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/profile-reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/dialog-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/dialog-reducer.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript JSX File" />
+      </list>
+    </option>
   </component>
   <component name="FormatOnSaveOptions">
     <option name="myRunOnSave" value="true" />
@@ -113,7 +120,10 @@
       <workItem from="1673546632875" duration="10734000" />
       <workItem from="1673596107570" duration="7197000" />
       <workItem from="1673627693514" duration="16928000" />
-      <workItem from="1673716877381" duration="7474000" />
+      <workItem from="1673716877381" duration="7656000" />
+      <workItem from="1673774692004" duration="258000" />
+      <workItem from="1673776077293" duration="1200000" />
+      <workItem from="1673796689293" duration="13939000" />
     </task>
     <task id="LOCAL-00001" summary="markup Dialog using Material UI">
       <created>1673380558348</created>
@@ -143,7 +153,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673644998372</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="markup Login.tsx, LoginForm.tsx,  using Material UI. Turn off browser autoFill">
+      <created>1673724653398</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1673724653398</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -179,6 +196,7 @@
     <MESSAGE value="markup Dialog using Material UI" />
     <MESSAGE value="markup Profile.tsx using Material UI" />
     <MESSAGE value="markup MyPosts.tsx, Post.tsx, Profile.tsx, ProfileDataForm.tsx, ProfileInfo.tsx, MyPosts.tsx using Material UI" />
-    <option name="LAST_COMMIT_MESSAGE" value="markup MyPosts.tsx, Post.tsx, Profile.tsx, ProfileDataForm.tsx, ProfileInfo.tsx, MyPosts.tsx using Material UI" />
+    <MESSAGE value="markup Login.tsx, LoginForm.tsx,  using Material UI. Turn off browser autoFill" />
+    <option name="LAST_COMMIT_MESSAGE" value="markup Login.tsx, LoginForm.tsx,  using Material UI. Turn off browser autoFill" />
   </component>
 </project>
