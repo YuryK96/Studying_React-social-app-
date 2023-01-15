@@ -5,7 +5,9 @@ The project has functionality as: Authorization, Profile editing including addin
 
 Material UI was used for the appearance of the application and its adaptability to other devices.
 
-Link: https://yuryk96.github.io/Studying_React-social-app-/
+Server API was used from https://social-network.samuraijs.com/
+
+Social network pet project Link: https://yuryk96.github.io/Studying_React-social-app-/
 
 Data for Authorization:
 
