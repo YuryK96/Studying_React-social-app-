@@ -1,9 +1,18 @@
 import { Avatar, Box, Button, TextField, Typography } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Divider from "@mui/material/Divider";
 import SendIcon from "@mui/icons-material/Send";
 import { SubmitHandler, useForm } from "react-hook-form";
 import Preloader from "../../components/common/Preloader/Preloader";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, AppStateType } from "../../redux/redux-store";
+import {
+  ChatMessageType,
+  sendMessage,
+  startMessagesListening,
+  stopMessagesListening,
+} from "../../redux/chat-reducer";
+import { ChatMessageApiType } from "../../api/chat-api";
 
 const ChatPage: React.FC = () => {
   return (
@@ -14,143 +23,115 @@ const ChatPage: React.FC = () => {
 };
 
 const Chat: React.FC = () => {
-  const [wsChannel, setWsChannel] = useState<WebSocket | null | undefined>(
-    null
-  );
-  const [isOpenChannel, setIsOpenChannel] = useState<boolean>(false);
-
+  const statusChannel = useSelector((state: AppStateType) => state.chat.status);
+  const dispatch: AppDispatch = useDispatch();
   useEffect(() => {
-    let ws: WebSocket;
-
-    function closeHendler() {
-      setTimeout(() => {
-        setIsOpenChannel(false);
-
-        createChannel();
-      }, 3000);
-    }
-
-    function changeIsOpenChannel() {
-      setIsOpenChannel(true);
-    }
-
-    function createChannel() {
-      ws?.removeEventListener("close", closeHendler);
-      ws?.removeEventListener("open", changeIsOpenChannel);
-      ws?.close();
-
-      ws = new WebSocket(
-        "wss://social-network.samuraijs.com/handlers/ChatHandler.ashx"
-      );
-      ws.addEventListener("close", closeHendler);
-      ws.addEventListener("open", changeIsOpenChannel);
-      setWsChannel(ws);
-    }
-
-    createChannel();
+    dispatch(startMessagesListening());
 
     return () => {
-      ws.removeEventListener("close", closeHendler);
-      ws.removeEventListener("open", changeIsOpenChannel);
-
-      ws.close();
+      dispatch(stopMessagesListening());
     };
   }, []);
 
   return (
     <>
-      {!isOpenChannel && <Preloader />}
+      {statusChannel !== "read" && (
+        <Box
+          position={"fixed"}
+          z-index={2}
+          width={"100%"}
+          display={"flex"}
+          justifyContent={"center"}
+        >
+          {" "}
+          <Preloader />{" "}
+        </Box>
+      )}
       <Box display={"flex"} width={"100%"} flexDirection={"column"}>
-        <Messages wsChannel={wsChannel} />
-        <AddmessageForm isOpenChannel={isOpenChannel} wsChannel={wsChannel} />
+        <Messages />
+        <AddmessageForm />
       </Box>
     </>
   );
 };
-const Messages: React.FC<{ wsChannel: WebSocket | null | undefined }> = ({
-  wsChannel,
-}) => {
-  const [messages, setMessages] = useState<ChatMessageType[]>([]);
+const Messages: React.FC<{}> = ({}) => {
+  const messagesAnchorRef = useRef<HTMLDivElement>(null);
+  const messages = useSelector((state: AppStateType) => state.chat.messages);
+  const [isAutoScroll, setIsAutoScroll] = useState(true);
+
+  const scrollHandler = (e: React.UIEvent<HTMLDivElement, UIEvent>) => {
+    let element = e.currentTarget;
+    if (
+      Math.abs(
+        element.scrollHeight - element.clientHeight - element.scrollTop
+      ) < 1
+    ) {
+      setIsAutoScroll(true);
+    } else if (
+      isAutoScroll === true &&
+      Math.abs(
+        element.scrollHeight - element.clientHeight - element.scrollTop
+      ) < 10
+    ) {
+      setIsAutoScroll(false);
+    }
+  };
 
   useEffect(() => {
-    let getMessageHandler = (e: MessageEvent) => {
-      let newMessage = JSON.parse(e.data);
-
-      setMessages((prevMessages) => {
-        if (newMessage.length > 1) {
-          prevMessages = [];
-        }
-        return [...prevMessages, ...newMessage];
-      });
-    };
-
-    wsChannel?.addEventListener("message", (e: MessageEvent) => {
-      getMessageHandler(e);
-    });
-
-    return () => {
-      wsChannel?.removeEventListener("message", getMessageHandler);
-    };
-  }, [wsChannel]);
+    if (isAutoScroll) {
+      messagesAnchorRef.current?.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [messages]);
 
   return (
     <Box
+      onScroll={(e) => scrollHandler(e)}
       sx={{
         height: "65vh",
         overflowY: "auto",
       }}
     >
-      {messages.map((m: any, index) => {
+      {messages.map((m: ChatMessageType, index) => {
         return (
-          <Box key={index}>
+          <Box key={m.id}>
             <Message message={m} /> <Divider />{" "}
           </Box>
         );
       })}
+      <Box ref={messagesAnchorRef}></Box>
     </Box>
   );
 };
-const Message: React.FC<{ message: ChatMessageType }> = ({ message }) => {
-  return (
-    <Box display={"flex"} alignItems={"center"} m={2}>
-      <Box
-        width={100}
-        display={"flex"}
-        justifyContent={"center"}
-        alignItems={"center"}
-        flexDirection={"column"}
-      >
-        {" "}
-        <Typography fontSize={13} textAlign={"center"}>
-          {message.userName}
+const Message: React.FC<{ message: ChatMessageApiType }> = React.memo(
+  ({ message }) => {
+    return (
+      <Box display={"flex"} alignItems={"center"} m={2}>
+        <Box
+          width={100}
+          display={"flex"}
+          justifyContent={"center"}
+          alignItems={"center"}
+          flexDirection={"column"}
+        >
+          {" "}
+          <Typography fontSize={13} textAlign={"center"}>
+            {message.userName}
+          </Typography>
+          <Avatar sizes={"100%"} variant="rounded" src={message.photo} />{" "}
+        </Box>
+        <Typography marginLeft={"10%"} textAlign={"center"}>
+          {message.message}
         </Typography>
-        <Avatar sizes={"100%"} variant="rounded" src={message.photo} />{" "}
       </Box>
-      <Typography marginLeft={"10%"} textAlign={"center"}>
-        {message.message}
-      </Typography>
-    </Box>
-  );
-};
-const AddmessageForm: React.FC<{
-  wsChannel: WebSocket | null | undefined;
-  isOpenChannel: boolean;
-}> = ({ wsChannel, isOpenChannel }) => {
+    );
+  }
+);
+const AddmessageForm: React.FC<{}> = ({}) => {
+  const statusChannel = useSelector((state: AppStateType) => state.chat.status);
   const [message, setMessage] = useState("");
-  const [readyStatus, setReadyStatus] = useState<"pending" | "ready">(
-    "pending"
-  );
-  useEffect(() => {
-    let openHandler = () => {
-      setReadyStatus("ready");
-    };
 
-    wsChannel?.addEventListener("open", openHandler);
+  const dispatch: AppDispatch = useDispatch();
 
-    return () => {
-      wsChannel?.removeEventListener("open", openHandler);
-    };
-  }, [wsChannel]);
   const {
     register,
     formState: { errors },
@@ -160,19 +141,31 @@ const AddmessageForm: React.FC<{
 
   const onSubmit: SubmitHandler<FormValues> = () => {};
 
-  const sendMessage = () => {
+  const sendMessageHandler = () => {
     if (!message) {
       return;
     }
 
-    wsChannel?.send(message);
+    dispatch(sendMessage(message));
     setMessage("");
+  };
+
+  const onKeyDownHandler = (
+    event: React.KeyboardEvent<HTMLDivElement>
+  ): void => {
+    if ((event.key === "Enter" && event.ctrlKey) || event.key === "Enter") {
+      event.preventDefault();
+      event.stopPropagation();
+
+      statusChannel === "read" && sendMessageHandler();
+    }
   };
   return (
     <Box height={"17vh"}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Box m={3} display={"flex"}>
           <TextField
+            onKeyDown={(e) => onKeyDownHandler(e)}
             label="New Message"
             multiline
             {...register("newMessage")}
@@ -182,15 +175,11 @@ const AddmessageForm: React.FC<{
           />
           <Box alignSelf={"end"} marginLeft={1}>
             <Button
-              disabled={
-                isOpenChannel === false ||
-                wsChannel === null ||
-                readyStatus === "pending"
-              }
+              disabled={statusChannel !== "read"}
               type="submit"
               variant="outlined"
               endIcon={<SendIcon />}
-              onClick={sendMessage}
+              onClick={sendMessageHandler}
             >
               Send
             </Button>
@@ -204,11 +193,4 @@ export default ChatPage;
 
 type FormValues = {
   newMessage: string;
-};
-
-export type ChatMessageType = {
-  message: string;
-  photo: string;
-  userId: number;
-  userName: string;
 };

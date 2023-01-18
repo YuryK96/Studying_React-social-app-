@@ -4,10 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e8ab325c-0a2c-4957-8c48-ebd0aea66475" name="Changes" comment="added and markup ChatPage.tsx using Material UI. Added webSocket. Displayed all messages from WebSocket data. Added possibility of sending message in Chat.">
-      <change afterPath="$PROJECT_DIR$/src/api/chat-api.ts" afterDir="false" />
+    <list default="true" id="e8ab325c-0a2c-4957-8c48-ebd0aea66475" name="Changes" comment="Added preloader for ChatPage.tsx. Fixed WebSocket bugs">
+      <change afterPath="$PROJECT_DIR$/src/redux/chat-reducer.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/chat-api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/chat-api.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Chat/ChatPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Chat/ChatPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/redux-store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/redux-store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +48,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/development/soc_app/Studying_React-social-app-&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/development/soc_app/Studying_React-social-app-/src/redux&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
@@ -63,6 +67,9 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\development\soc_app\Studying_React-social-app-\src\redux" />
+    </key>
     <key name="es6.move.members.recent.items">
       <recent name="D:\development\soc_app\Studying_React-social-app-\src\components\Profile\ProfileInfo\ProfileData.tsx" />
     </key>
@@ -138,7 +145,10 @@
       <workItem from="1673796689293" duration="14564000" />
       <workItem from="1673855249963" duration="12775000" />
       <workItem from="1673897228416" duration="9176000" />
-      <workItem from="1673942671693" duration="9642000" />
+      <workItem from="1673942671693" duration="14403000" />
+      <workItem from="1673967810677" duration="9086000" />
+      <workItem from="1673983553876" duration="3059000" />
+      <workItem from="1674028610173" duration="16626000" />
     </task>
     <task id="LOCAL-00001" summary="markup Dialog using Material UI">
       <created>1673380558348</created>
@@ -182,7 +192,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673817986958</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Added preloader for ChatPage.tsx. Fixed WebSocket bugs">
+      <created>1673954577138</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1673954577138</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -220,6 +237,7 @@
     <MESSAGE value="markup MyPosts.tsx, Post.tsx, Profile.tsx, ProfileDataForm.tsx, ProfileInfo.tsx, MyPosts.tsx using Material UI" />
     <MESSAGE value="markup Login.tsx, LoginForm.tsx,  using Material UI. Turn off browser autoFill" />
     <MESSAGE value="added and markup ChatPage.tsx using Material UI. Added webSocket. Displayed all messages from WebSocket data. Added possibility of sending message in Chat." />
-    <option name="LAST_COMMIT_MESSAGE" value="added and markup ChatPage.tsx using Material UI. Added webSocket. Displayed all messages from WebSocket data. Added possibility of sending message in Chat." />
+    <MESSAGE value="Added preloader for ChatPage.tsx. Fixed WebSocket bugs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added preloader for ChatPage.tsx. Fixed WebSocket bugs" />
   </component>
 </project>
