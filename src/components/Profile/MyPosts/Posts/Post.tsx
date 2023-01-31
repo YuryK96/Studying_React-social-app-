@@ -8,7 +8,8 @@ const Post: React.FC<PostType> = ({ countLikes, value }) => {
     <Box
       sx={{
         display: "flex",
-        justifyContent: windowWidth.width > 450 ? "space-between" : "center",
+        paddingRight: windowWidth.width < 630 ? 3 : 0,
+        justifyContent: "space-between",
         alignItems: "center",
         flexWrap: "wrap",
         margin: 2,
